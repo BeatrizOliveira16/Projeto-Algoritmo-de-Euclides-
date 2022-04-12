@@ -17,6 +17,7 @@ class FirstScene extends Phaser.Scene{
 
     create ()
     {
+        //Adicionar as imagens
         this.background = this.add.image(game.config.width / 2, game.config.height / 2, 'background');
         this.button1 = this.add.sprite(0,0,'button1');
         this.button2 = this.add.sprite(0,0,'button2');
@@ -41,32 +42,37 @@ class FirstScene extends Phaser.Scene{
 
         //Escalar o tamanho dos botões 
         Align.scaleToGameW(this.titulo,0.75);
-        Align.scaleToGameW(this.button1,0.30);
-        Align.scaleToGameW(this.button2,0.30);
+        Align.scaleToGameW(this.button1,0.35);
+        Align.scaleToGameW(this.button2,0.35);
         Align.scaleToGameW(this.creditos,0.07);
         Align.scaleToGameW(this.info,0.07);
 
+        this.button1.setOrigin(0.5, 0.70);
+        this.button2.setOrigin(0.5, 0.3);
+
         //Tornar os botões interativos, e as respetivas funções para o clique do utilizador
         this.button1.setInteractive({useHandCursor: true});
-        this.input.on('pointerdown', function () {
+        this.button1.on('pointerdown', function () {
             game.scene.add('UnderstandScene', new UnderstandScene());
             game.scene.start('UnderstandScene');
         }, this);
 
         this.button2.setInteractive({useHandCursor: true});
-        this.input.on('pointerdown', function () {
+        this.button2.on('pointerdown', function () {
             game.scene.add('PracticeScene', new PracticeScene());
             game.scene.start('PracticeScene');
         }, this);
 
         this.creditos.setInteractive({useHandCursor: true});
-        this.input.on('pointerdown', function () {
+        this.creditos.on('pointerdown', function () {
+            game.scene.stop();
             game.scene.add('CreditsScene', new CreditsScene());
             game.scene.start('CreditsScene');
         }, this);
 
         this.info.setInteractive({useHandCursor: true});
-        this.input.on('pointerdown', function () {
+        this.info.on('pointerdown', function () {
+            game.scene.stop();
             game.scene.add('InfoScene', new InfoScene());
             game.scene.start('InfoScene');
         }, this);
