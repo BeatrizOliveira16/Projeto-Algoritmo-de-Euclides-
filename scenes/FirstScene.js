@@ -1,7 +1,7 @@
 class FirstScene extends Phaser.Scene{
     constructor ()
     {
-        super();
+        super('FirstScene');
     }
 
     preload ()
@@ -53,35 +53,31 @@ class FirstScene extends Phaser.Scene{
         //Tornar os botões interativos, e as respetivas funções para o clique do utilizador
         this.button1.setInteractive({useHandCursor: true});
         this.button1.on('pointerdown', function () {
+            game.scene.pause('FirstScene');
             game.scene.add('UnderstandScene', new UnderstandScene());
             game.scene.start('UnderstandScene');
         }, this);
 
         this.button2.setInteractive({useHandCursor: true});
         this.button2.on('pointerdown', function () {
+            game.scene.pause('FirstScene');
             game.scene.add('PracticeScene', new PracticeScene());
             game.scene.start('PracticeScene');
         }, this);
 
         this.creditos.setInteractive({useHandCursor: true});
         this.creditos.on('pointerdown', function () {
-            game.scene.stop();
+            game.scene.pause('FirstScene');
             game.scene.add('CreditsScene', new CreditsScene());
             game.scene.start('CreditsScene');
         }, this);
 
         this.info.setInteractive({useHandCursor: true});
         this.info.on('pointerdown', function () {
-            game.scene.stop();
-            game.scene.add('InfoScene', new InfoScene());
-            game.scene.start('InfoScene');
+            game.scene.pause('FirstScene');
+            game.scene.add('InfoScene', new InfoScene(),true);
         }, this);
-    //scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
     }
 
-    update()
-    {
-
-    
-    }
+    update() {}
 }

@@ -3,7 +3,9 @@ class CreditsScene extends Phaser.Scene{
     {
         super('CreditsScene');
     }
-    preload() {
+
+    preload() 
+    {
         this.load.image('quadCreditos','assets/quadroCreditos.png');
         this.load.image('trevo','assets/bttrevo.png');
         this.load.image('fechar', 'assets/btfechar.png',37,40,18);
@@ -27,13 +29,12 @@ class CreditsScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(44,this.fechar);
         this.fechar.setOrigin(0.5, 0.6);
 
-        this.fechar.setInteractive({ useHandCursor: true });
-        this.fechar.on('pointerdown', function (){
-            game.scene.stop();
+        this.fechar.setInteractive({useHandCursor: true});
+        this.fechar.on('pointerup', function () {
+            game.scene.stop('CreditsScene');
             game.scene.resume('FirstScene');
         }, this);
-
-
+    
     }
 
     update () {}

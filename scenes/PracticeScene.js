@@ -70,7 +70,19 @@ class PracticeScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(140.5,this.corrigir);
         Align.scaleToGameW(this.corrigir, 0.1);
 
-        
+        // Criação do texto que aparece logo que o utilizar abre esta cena
+        // gerar 2 números aleatórios 
+        var mdc;
+        var primeiroNumero = Phaser.Math.Between(0,10000);
+        var segundoNumero = Phaser.Math.Between(0,10000);
+
+
+        mdc = this.add.text(0, 0, 'Calcula o m.d.c entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        mdc.setOrigin(0.3, 1.7);
+        this.aGrid.placeAtIndex(52, mdc);
+        //mdc.setDepth(1); 
+
+        //Criação da Interatividade dos botões e das suas funções
         this.refresh.setInteractive({useHandCursor: true});
         this.refresh.on('pointerdown', function () {
             
@@ -108,9 +120,9 @@ class PracticeScene extends Phaser.Scene{
 
         this.verificar.setInteractive({useHandCursor: true});
         this.verificar.on('pointerdown', function () {
-            
+        
         }, this);
-
+           
         this.corrigir.setInteractive({useHandCursor: true});
         this.corrigir.on('pointerdown', function () {
             
