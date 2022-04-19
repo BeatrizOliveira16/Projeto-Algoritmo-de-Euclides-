@@ -1,3 +1,4 @@
+
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -15,9 +16,12 @@ class PracticeScene extends Phaser.Scene{
         this.load.image('barrainfo1','assets/barrainfo1.png'); //Devemos considerar como um botão???
         this.load.image('barrainfo2','assets/barrainfo2.png',37,40,18);//Devemos considerar como um botão???
     }
-
+     
     create() 
     {    
+
+
+
         var grelhaConfig = {scene:this, rows:12,cols:12};
         this.aGrid = new AlignGrid(grelhaConfig);
         //this.aGrid.showNumbers();
@@ -70,23 +74,28 @@ class PracticeScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(140.5,this.corrigir);
         Align.scaleToGameW(this.corrigir, 0.1);
 
-        // Criação do texto que aparece logo que o utilizar abre esta cena
-        // gerar 2 números aleatórios 
-        var mdc;
-        var primeiroNumero = Phaser.Math.Between(0,10000);
-        var segundoNumero = Phaser.Math.Between(0,10000);
-
-
-        mdc = this.add.text(0, 0, 'Calcula o m.d.c entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-        mdc.setOrigin(0.3, 1.7);
-        this.aGrid.placeAtIndex(52, mdc);
-        //mdc.setDepth(1); 
-
-        //Criação da Interatividade dos botões e das suas funções
+        
         this.refresh.setInteractive({useHandCursor: true});
-        this.refresh.on('pointerdown', function () {
+        this.refresh.on('pointerdown', function()
+        {
+            //mdc.setActive(false).setVisible(false);
+            this.barrainfo1 = this.add.sprite(0,0,'barrainfo1');
+            this.aGrid.placeAtIndex(41.5,this.barrainfo1);
+            Align.scaleToGameW(this.barrainfo1, 0.60);
+
             
-        }, this);
+            var primeiroNumero1 = Phaser.Math.Between(0,10000);
+            var segundoNumero1 = Phaser.Math.Between(0,10000);
+            
+            var mdc1 = this.add.text(0, 0, 'Calcula o m.d.c entre: ' + primeiroNumero1 + '  e  ' + segundoNumero1, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+            mdc1.setOrigin(0.3, 1.7);
+            this.aGrid.placeAtIndex(52, mdc1);
+            //mdc1.setActive(false).setVisible(false);
+        
+
+        
+        },this);
+        
 
         this.infog2.setInteractive({useHandCursor: true});
         this.infog2.on('pointerdown', function () {
@@ -120,14 +129,30 @@ class PracticeScene extends Phaser.Scene{
 
         this.verificar.setInteractive({useHandCursor: true});
         this.verificar.on('pointerdown', function () {
-        
+            
         }, this);
-           
+
+       // gerar 2 numeros 
+        var primeiroNumero = Phaser.Math.Between(0,10000);
+        var segundoNumero = Phaser.Math.Between(0,10000);
+        
+        
+        var mdc = this.add.text(0, 0, 'Calcula o m.d.c entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        mdc.setOrigin(0.3, 1.7);
+        this.aGrid.placeAtIndex(52, mdc);
+
         this.corrigir.setInteractive({useHandCursor: true});
         this.corrigir.on('pointerdown', function () {
             
         }, this);
     }
+
+  
+  
+    update (){
+
+        
+    }
     
-    update () {}
+   
 }
