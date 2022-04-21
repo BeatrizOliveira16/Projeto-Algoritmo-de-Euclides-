@@ -3,7 +3,9 @@ class UnderstandScene extends Phaser.Scene{
     {
         super('UnderstandScene');
     }
-    preload() {}
+    preload() {
+        this.load.image('backl','assets/backl.png',37,40,18);
+    }
 
     create() 
     {
@@ -12,6 +14,18 @@ class UnderstandScene extends Phaser.Scene{
         this.background = this.add.image(game.config.width / 2, game.config.height / 2, 'background');
         this.background.setScale(2);
         this.aGrid.placeAtIndex(77, this.background);
+
+
+        this.backl = this.add.sprite(0,0,'backl');
+        this.aGrid.placeAtIndex(12.25,this.backl);
+        Align.scaleToGameW(this.backl, 0.07);
+
+
+        this.backl.setInteractive({useHandCursor: true});
+        this.backl.on('pointerdown', function () {
+            this.scene.start('FirstScene');
+        }, this);
+
     }
 
     update () {}

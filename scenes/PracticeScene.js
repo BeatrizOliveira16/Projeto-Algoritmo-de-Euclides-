@@ -15,6 +15,7 @@ class PracticeScene extends Phaser.Scene{
         this.load.image('corrigir','assets/btcorrigir.png',37,40,18);
         this.load.image('barrainfo1','assets/barrainfo1.png'); //Devemos considerar como um botão???
         this.load.image('barrainfo2','assets/barrainfo2.png',37,40,18);//Devemos considerar como um botão???
+        this.load.image('backl','assets/backl.png',37,40,18);
     }
      
     create() 
@@ -74,6 +75,10 @@ class PracticeScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(140.5,this.corrigir);
         Align.scaleToGameW(this.corrigir, 0.1);
 
+        this.backl = this.add.sprite(0,0,'backl');
+        this.aGrid.placeAtIndex(12.25,this.backl);
+        Align.scaleToGameW(this.backl, 0.07);
+
         
         this.refresh.setInteractive({useHandCursor: true});
         this.refresh.on('pointerdown', function()
@@ -88,8 +93,9 @@ class PracticeScene extends Phaser.Scene{
             var segundoNumero1 = Phaser.Math.Between(0,10000);
             
             var mdc1 = this.add.text(0, 0, 'Calcula o m.d.c entre: ' + primeiroNumero1 + '  e  ' + segundoNumero1, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-            mdc1.setOrigin(0.3, 1.7);
-            this.aGrid.placeAtIndex(52, mdc1);
+            
+            this.aGrid.placeAtIndex(38, mdc1);
+            mdc1.setOrigin(-0.05, 0.5);
             //mdc1.setActive(false).setVisible(false);
         
 
@@ -101,6 +107,20 @@ class PracticeScene extends Phaser.Scene{
         this.infog2.on('pointerdown', function () {
             
         }, this);
+
+        this.backl.setInteractive({useHandCursor: true});
+        this.backl.on('pointerdown', function () {
+            //this.scene.start('FirstScene');
+
+            this.scene.transition({
+                target: 'FirstScene',
+                duration: 1000,
+                moveBelow: true,
+                //onUpdate: this.transitionBack
+            });
+        }, this);
+
+ 
 
         this.paint.setInteractive({useHandCursor: true});
         this.paint.on('pointerdown', function () {
@@ -138,8 +158,8 @@ class PracticeScene extends Phaser.Scene{
         
         
         var mdc = this.add.text(0, 0, 'Calcula o m.d.c entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-        mdc.setOrigin(0.3, 1.7);
-        this.aGrid.placeAtIndex(52, mdc);
+        this.aGrid.placeAtIndex(38, mdc);
+        mdc.setOrigin(-0.05, 0.5);
 
         this.corrigir.setInteractive({useHandCursor: true});
         this.corrigir.on('pointerdown', function () {
