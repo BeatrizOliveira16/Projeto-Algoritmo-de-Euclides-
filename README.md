@@ -5,4 +5,9 @@ Falta:
 * Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga (funciona :'))
 
 
+
+
+* creditos e informação: concluída 
+
+
 Nota: Neste momento, o código que está aqui, o botão refresh não está a fazer nada
