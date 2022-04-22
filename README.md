@@ -1,6 +1,7 @@
 # Projeto
 Falta:
 * Implementar os botões da cena PraticeScene
+* TABELAAAAA 
 * Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga [done] :'( 
 
 
