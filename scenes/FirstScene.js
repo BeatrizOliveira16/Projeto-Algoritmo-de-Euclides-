@@ -1,12 +1,11 @@
 class FirstScene extends Phaser.Scene{
     constructor ()
     {
-        super('FirstScene');
+        super();
     }
 
     preload ()
-    {
-        //Carregar as imagens
+    {//Carregar as imagens
         this.load.image('background', 'assets/background.png');
         this.load.image('button1', 'assets/bt1.png', 37, 40, 18);
         this.load.image('button2','assets/bt2.png', 37, 40, 18);
@@ -53,31 +52,32 @@ class FirstScene extends Phaser.Scene{
         //Tornar os botões interativos, e as respetivas funções para o clique do utilizador
         this.button1.setInteractive({useHandCursor: true});
         this.button1.on('pointerdown', function () {
-            game.scene.pause('FirstScene');
-            game.scene.add('UnderstandScene', new UnderstandScene());
+            //game.scene.add('UnderstandScene', new UnderstandScene());
             game.scene.start('UnderstandScene');
         }, this);
 
         this.button2.setInteractive({useHandCursor: true});
         this.button2.on('pointerdown', function () {
-            game.scene.pause('FirstScene');
-            game.scene.add('PracticeScene', new PracticeScene());
             game.scene.start('PracticeScene');
         }, this);
 
         this.creditos.setInteractive({useHandCursor: true});
-        this.creditos.on('pointerdown', function () {
-            game.scene.pause('FirstScene');
-            game.scene.add('CreditsScene', new CreditsScene());
-            game.scene.start('CreditsScene');
-        }, this);
+            
+            this.creditos.on('pointerdown', function () {
+                game.scene.start('CreditsScene');
+            }, this);
 
         this.info.setInteractive({useHandCursor: true});
         this.info.on('pointerdown', function () {
-            game.scene.pause('FirstScene');
-            game.scene.add('InfoScene', new InfoScene(),true);
+            game.scene.sleep();
+            game.scene.start('InfoScene');
         }, this);
+    //scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
     }
 
-    update() {}
+    update()
+    {
+
+    
+    }
 }
