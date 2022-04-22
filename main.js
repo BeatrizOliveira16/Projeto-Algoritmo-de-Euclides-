@@ -1,3 +1,12 @@
+let scenes = [];
+scenes.push(FirstScene);
+scenes.push(CreditsScene);
+scenes.push(InfoScene);
+scenes.push(PracticeScene);
+scenes.push(UnderstandScene);
+
+
+
 const config = {
   type: Phaser.AUTO,
   scale: {
@@ -8,8 +17,7 @@ const config = {
     },
   backgroundColor : "#a9e6ff;",
   parent : 'game',
+  scene : scenes 
 };
 
 var game = new Phaser.Game(config);
-game.scene.add('FirstScene', new FirstScene());
-game.scene.start('FirstScene');
