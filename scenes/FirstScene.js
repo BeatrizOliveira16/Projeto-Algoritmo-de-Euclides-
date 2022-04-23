@@ -1,11 +1,12 @@
 class FirstScene extends Phaser.Scene{
     constructor ()
     {
-        super();
+        super('FirstScene');
     }
 
     preload ()
-    {//Carregar as imagens
+    {
+        //Carregar as imagens
         this.load.image('background', 'assets/background.png');
         this.load.image('button1', 'assets/bt1.png', 37, 40, 18);
         this.load.image('button2','assets/bt2.png', 37, 40, 18);
@@ -28,11 +29,8 @@ class FirstScene extends Phaser.Scene{
         this.aGrid = new AlignGrid({scene:this, rows:12,cols:12});
         //this.aGrid.showNumbers();
 
-        //Aumentar o fundo para a janela
-        this.background.setScale(2);
-
         //Colocar os objetos numa posição da matriz/grelha
-        this.aGrid.placeAtIndex(77, this.background);
+        this.aGrid.placeAtIndex(77.5, this.background);
         this.aGrid.placeAtIndex(17.5, this.titulo);
         this.aGrid.placeAtIndex(65.5, this.button1);
         this.aGrid.placeAtIndex(101.5, this.button2);
@@ -40,44 +38,46 @@ class FirstScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(130.5,this.info);
 
         //Escalar o tamanho dos botões 
-        Align.scaleToGameW(this.titulo,0.75);
-        Align.scaleToGameW(this.button1,0.35);
-        Align.scaleToGameW(this.button2,0.35);
-        Align.scaleToGameW(this.creditos,0.07);
-        Align.scaleToGameW(this.info,0.07);
+        Align.scaleToGameW(this.titulo,0.77);
+        Align.scaleToGameW(this.button1,0.40);
+        Align.scaleToGameW(this.button2,0.40);
+        Align.scaleToGameW(this.creditos,0.1);
+        Align.scaleToGameW(this.info,0.1);
 
+        //Aumentar o fundo para a janela
+        this.background.setScale(1.44);
+
+        //Alinhar os botões nos seus eixos
+        this.background.setOrigin(0.5, 0.544);
         this.button1.setOrigin(0.5, 0.70);
+        this.creditos.setOrigin(0.5, 0.70);
         this.button2.setOrigin(0.5, 0.3);
 
         //Tornar os botões interativos, e as respetivas funções para o clique do utilizador
         this.button1.setInteractive({useHandCursor: true});
         this.button1.on('pointerdown', function () {
-            //game.scene.add('UnderstandScene', new UnderstandScene());
+            game.scene.stop('FirstScene');
             game.scene.start('UnderstandScene');
         }, this);
 
         this.button2.setInteractive({useHandCursor: true});
         this.button2.on('pointerdown', function () {
+            game.scene.stop('FirstScene');
             game.scene.start('PracticeScene');
         }, this);
 
         this.creditos.setInteractive({useHandCursor: true});
-            
-            this.creditos.on('pointerdown', function () {
-                game.scene.start('CreditsScene');
-            }, this);
+        this.creditos.on('pointerdown', function () {
+            game.scene.pause('FirstScene');
+            game.scene.start('CreditsScene');
+        }, this);
 
         this.info.setInteractive({useHandCursor: true});
         this.info.on('pointerdown', function () {
-            game.scene.sleep();
+            game.scene.pause('FirstScene');
             game.scene.start('InfoScene');
         }, this);
-    //scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
     }
 
-    update()
-    {
-
-    
-    }
+    update() {}
 }

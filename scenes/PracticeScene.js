@@ -1,4 +1,3 @@
-
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -20,20 +19,18 @@ class PracticeScene extends Phaser.Scene{
      
     create() 
     {    
-
-
-
         var grelhaConfig = {scene:this, rows:12,cols:12};
         this.aGrid = new AlignGrid(grelhaConfig);
         //this.aGrid.showNumbers();
 
         this.background = this.add.image(game.config.width / 2, game.config.height / 2, 'background');
-        this.background.setScale(2);
-        this.aGrid.placeAtIndex(77, this.background);
+        this.aGrid.placeAtIndex(77.5, this.background);
+        this.background.setScale(1.44);
+        this.background.setOrigin(0.5, 0.544);
 
         this.titulo = this.add.image(0,0,'titulo');
-        this.aGrid.placeAtIndex(17.5, this.titulo);
-        Align.scaleToGameW(this.titulo,0.75);
+        this.aGrid.placeAtIndex(17.7, this.titulo);
+        Align.scaleToGameW(this.titulo,0.77);
         
         this.barrainfo1 = this.add.sprite(0,0,'barrainfo1');
         this.aGrid.placeAtIndex(41.5,this.barrainfo1);
@@ -76,7 +73,7 @@ class PracticeScene extends Phaser.Scene{
         Align.scaleToGameW(this.corrigir, 0.1);
 
         this.backl = this.add.sprite(0,0,'backl');
-        this.aGrid.placeAtIndex(12.25,this.backl);
+        this.aGrid.placeAtIndex(12.5,this.backl);
         Align.scaleToGameW(this.backl, 0.07);
 
         
@@ -173,6 +170,5 @@ class PracticeScene extends Phaser.Scene{
 
         
     }
-    
    
 }

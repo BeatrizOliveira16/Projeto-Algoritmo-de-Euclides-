@@ -12,8 +12,9 @@ class UnderstandScene extends Phaser.Scene{
         this.aGrid = new AlignGrid({scene:this, rows:12,cols:12});
         
         this.background = this.add.image(game.config.width / 2, game.config.height / 2, 'background');
-        this.background.setScale(2);
-        this.aGrid.placeAtIndex(77, this.background);
+        this.aGrid.placeAtIndex(77.5, this.background);
+        this.background.setScale(1.44);
+        this.background.setOrigin(0.5, 0.544);
 
 
         this.backl = this.add.sprite(0,0,'backl');
