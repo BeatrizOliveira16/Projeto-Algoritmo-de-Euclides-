@@ -228,7 +228,7 @@ class PracticeScene extends Phaser.Scene{
             table.addTableOXY(dx, dy).updateTable();
             });
            // text 
-
+        /*
            var textEntry = this.add.text(10, 50, '', { font: '32px Courier', fill: '#ffff00' });
            
 
@@ -244,6 +244,8 @@ class PracticeScene extends Phaser.Scene{
                 }
        
             });
+            
+            */
     }
 
   
