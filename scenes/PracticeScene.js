@@ -1,4 +1,4 @@
-let x, cont = 1;
+let x, col,cont = 1;
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -132,13 +132,15 @@ class PracticeScene extends Phaser.Scene{
         this.mais.on('pointerdown', function () {
             cont+=1;
             var y = 168*cont + x ;
-            var element = this.add.dom( y,628).createFromCache('tcolform');
-            element.addListener('click');
+            col = this.add.dom( y,628).createFromCache('tcolform');
+            col.addListener('click');
             
         }, this);
 
         this.menos.setInteractive({useHandCursor: true});
         this.menos.on('pointerdown', function () {
+            col.setActive(false).setVisible(false);
+
             
         }, this);
 
