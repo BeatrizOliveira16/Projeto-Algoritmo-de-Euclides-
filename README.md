@@ -6,6 +6,7 @@ FALTA:
 * Implementar alguns botões
 * TABELAAAAA (em processo) ver a questao das cores
 * botao "+" com um leve erro  
+* botao "-" apaga apenas a ultima coluna (apaga so uma vez )
 
 
 -> UnderstandScene:
