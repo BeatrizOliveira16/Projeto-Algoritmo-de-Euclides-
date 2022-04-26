@@ -3,8 +3,8 @@ FALTA:
 
 -> PraticeScene:
 * Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga ( barrainfo1 e barrainfo2) [done] :'( 
-* TABELAAAAA (em processo) ver a questao das cores
-* botao "+" com um leve erro  
+* TABELAAAAA  (ver a questao das cores)
+* botao "+" com um leve erro (espaço a mais) 
 * botao "-" apaga apenas a ultima coluna (apaga so uma vez )
 
 
