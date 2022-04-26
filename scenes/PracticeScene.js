@@ -1,4 +1,4 @@
-let x, col,cont = 1;
+let x, col,primeiroNumero, segundoNumero, cont = 1;
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -18,6 +18,8 @@ class PracticeScene extends Phaser.Scene{
         this.load.image('backl','assets/backl.png',37,40,18);
         this.load.html('tableform', 'assets/tableform.html');
         this.load.html('tcolform', 'assets/tcolform.html');
+        this.load.html('resultadofinal', 'assets/resultadofinal.html');
+
 
 
     }
@@ -83,28 +85,25 @@ class PracticeScene extends Phaser.Scene{
 
         
         this.refresh.setInteractive({useHandCursor: true});
-        this.refresh.on('pointerdown', function()
-        {
+        this.refresh.on('pointerdown', function(){
             //mdc.setActive(false).setVisible(false);
             this.barrainfo1 = this.add.sprite(0,0,'barrainfo1');
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
             Align.scaleToGameW(this.barrainfo1, 0.60);
+            this.barrainf1();
 
-            
-            var primeiroNumero1 = Phaser.Math.Between(0,10000);
-            var segundoNumero1 = Phaser.Math.Between(0,10000);
-            
-            var mdc1 = this.add.text(0, 0, 'Calcula o m.d.c. entre: ' + primeiroNumero1 + '  e  ' + segundoNumero1, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-            
-            this.aGrid.placeAtIndex(38, mdc1);
-            mdc1.setOrigin(-0.05, 0.5);
-            //mdc1.setActive(false).setVisible(false);
-        
+            this.barrainfo2 = this.add.sprite(0,0,'barrainfo2');
+            this.aGrid.placeAtIndex(125.5,this.barrainfo2);
+            Align.scaleToGameW(this.barrainfo2, 0.65);
+            this.barrainf2();
+
+
+
 
         
         },this);
         
-
+        
         this.infog2.setInteractive({useHandCursor: true});
         this.infog2.on('pointerdown', function () {
             
@@ -154,19 +153,7 @@ class PracticeScene extends Phaser.Scene{
             
         }, this);
 
-       // gerar 2 numeros 
-        var primeiroNumero = Phaser.Math.Between(0,10000);
-        var segundoNumero = Phaser.Math.Between(0,10000);
-        
-        
-        var mdc = this.add.text(0, 0, 'Calcula o m.d.c. entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-        this.aGrid.placeAtIndex(38, mdc);
-        mdc.setOrigin(-0.05, 0.5);
-
-        this.corrigir.setInteractive({useHandCursor: true});
-        this.corrigir.on('pointerdown', function () {
-            
-        }, this);
+      
 
         
 
@@ -176,11 +163,16 @@ class PracticeScene extends Phaser.Scene{
         x=element.x;
         element.addListener('click');
 
+        //criar 2 numeros aleatorios 
+        this.barrainf1();
+
+        var r = this.add.text(0, 0, 'm.d.c. ( ' + primeiroNumero + ' , ' + segundoNumero +' ) = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        this.aGrid.placeAtIndex(122, r);
+        r.setOrigin(-0.05, 0.5);
         
-       
-
-
-    
+        
+        var resultadofinal = this.add.dom(1250,1038).createFromCache('resultadofinal');
+        resultadofinal.addListener('click');
     }
 
   
@@ -189,8 +181,28 @@ class PracticeScene extends Phaser.Scene{
 
         
     }
-    
- 
+    //conteudo da barra1
+    barrainf1(){
+        primeiroNumero = Phaser.Math.Between(0,10000);
+        segundoNumero = Phaser.Math.Between(0,10000);
+        
+        
+        let mdc =  this.add.text(0, 0, 'Calcula o  m.d.c. entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        this.aGrid.placeAtIndex(38, mdc);
+        mdc.setOrigin(-0.05, 0.5);
+    }
+    //conteudo da barra 2
+    barrainf2(){
+        let r = this.add.text(0, 0, 'm.d.c. ( ' + primeiroNumero + ' , ' + segundoNumero +' ) = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        this.aGrid.placeAtIndex(122, r);
+        r.setOrigin(-0.05, 0.5);
+
+       
+
+    }
+
+
+   
     
    
 }
