@@ -1,4 +1,4 @@
-let x, col,primeiroNumero, segundoNumero, cont = 1;
+let x, col,primeiroNumero, segundoNumero,r,mdc, cont = 1;
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -86,21 +86,13 @@ class PracticeScene extends Phaser.Scene{
         
         this.refresh.setInteractive({useHandCursor: true});
         this.refresh.on('pointerdown', function(){
-            //mdc.setActive(false).setVisible(false);
             this.barrainfo1 = this.add.sprite(0,0,'barrainfo1');
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
             Align.scaleToGameW(this.barrainfo1, 0.60);
             this.barrainf1();
 
-            this.barrainfo2 = this.add.sprite(0,0,'barrainfo2');
-            this.aGrid.placeAtIndex(125.5,this.barrainfo2);
-            Align.scaleToGameW(this.barrainfo2, 0.65);
-            this.barrainf2();
+            r.setText('m.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
 
-
-
-
-        
         },this);
         
         
@@ -177,7 +169,7 @@ class PracticeScene extends Phaser.Scene{
         primeiroNumero = Phaser.Math.Between(0,10000);
         segundoNumero = Phaser.Math.Between(0,10000);
         
-        let mdc =  this.add.text(0, 0, 'Calcula o  m.d.c. entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        mdc = this.add.text(0, 0, 'Calcula o  m.d.c. entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
         this.aGrid.placeAtIndex(38, mdc);
         mdc.setOrigin(-0.05, 0.5);
     
@@ -186,14 +178,10 @@ class PracticeScene extends Phaser.Scene{
     
     //conteudo da barra 2
     barrainf2(){
-        let r = this.add.text(0, 0, 'm.d.c. ( ' + primeiroNumero + ' , ' + segundoNumero +' ) = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        r = this.add.text(0, 0, 'm.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
         this.aGrid.placeAtIndex(122, r);
         r.setOrigin(-0.05, 0.5);
     }
 
-
-   
-    
-   
 }
    
