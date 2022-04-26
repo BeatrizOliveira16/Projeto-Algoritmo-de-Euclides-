@@ -115,8 +115,6 @@ class PracticeScene extends Phaser.Scene{
             cont=1; 
         }, this);
 
- 
-
         this.paint.setInteractive({useHandCursor: true});
         this.paint.on('pointerdown', function () {
             
@@ -153,26 +151,18 @@ class PracticeScene extends Phaser.Scene{
             
         }, this);
 
-      
-
-        
-
+        this.barrainf1();
+        this.barrainf2();
          
-        //escritaa
+        //input table
         var element = this.add.dom(1050,630).createFromCache('tableform');
         x=element.x;
         element.addListener('click');
-
-        //criar 2 numeros aleatorios 
-        this.barrainf1();
-
-        var r = this.add.text(0, 0, 'm.d.c. ( ' + primeiroNumero + ' , ' + segundoNumero +' ) = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-        this.aGrid.placeAtIndex(122, r);
-        r.setOrigin(-0.05, 0.5);
         
-        
+        //input resultado final
         var resultadofinal = this.add.dom(1250,1038).createFromCache('resultadofinal');
         resultadofinal.addListener('click');
+      
     }
 
   
@@ -181,24 +171,24 @@ class PracticeScene extends Phaser.Scene{
 
         
     }
+    
     //conteudo da barra1
     barrainf1(){
         primeiroNumero = Phaser.Math.Between(0,10000);
         segundoNumero = Phaser.Math.Between(0,10000);
         
-        
         let mdc =  this.add.text(0, 0, 'Calcula o  m.d.c. entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
         this.aGrid.placeAtIndex(38, mdc);
         mdc.setOrigin(-0.05, 0.5);
+    
     }
+    
+    
     //conteudo da barra 2
     barrainf2(){
         let r = this.add.text(0, 0, 'm.d.c. ( ' + primeiroNumero + ' , ' + segundoNumero +' ) = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
         this.aGrid.placeAtIndex(122, r);
         r.setOrigin(-0.05, 0.5);
-
-       
-
     }
 
 
