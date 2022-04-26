@@ -1,4 +1,4 @@
-let x, col,primeiroNumero, segundoNumero,r,mdc, cont = 1;
+let x, col,primeiroNumero, segundoNumero,r,mdc, y, cont = 1;
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -86,11 +86,13 @@ class PracticeScene extends Phaser.Scene{
         
         this.refresh.setInteractive({useHandCursor: true});
         this.refresh.on('pointerdown', function(){
+            //atualizar inf da barra info1
             this.barrainfo1 = this.add.sprite(0,0,'barrainfo1');
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
             Align.scaleToGameW(this.barrainfo1, 0.60);
             this.barrainf1();
-
+            
+            //atualizar inf da barra info2
             r.setText('m.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
 
         },this);
@@ -119,8 +121,14 @@ class PracticeScene extends Phaser.Scene{
 
         this.mais.setInteractive({useHandCursor: true});
         this.mais.on('pointerdown', function () {
+            if (cont==1){
+                y = 250*cont + x +20 ;
+            }else {
+                y = y + 165;
+            }
             cont+=1;
-            var y = 168*cont + x ;
+            
+            //var y = 168*cont + x ;
             col = this.add.dom( y,628).createFromCache('tcolform');
             col.addListener('click');
             
@@ -130,7 +138,6 @@ class PracticeScene extends Phaser.Scene{
         this.menos.on('pointerdown', function () {
             col.setActive(false).setVisible(false);
 
-            
         }, this);
 
         this.barrainfo2.setInteractive({useHandCursor: true});
