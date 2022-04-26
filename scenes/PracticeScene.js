@@ -1,3 +1,4 @@
+let x, cont = 1;
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -15,6 +16,10 @@ class PracticeScene extends Phaser.Scene{
         this.load.image('barrainfo1','assets/barrainfo1.png'); //Devemos considerar como um botão???
         this.load.image('barrainfo2','assets/barrainfo2.png',37,40,18);//Devemos considerar como um botão???
         this.load.image('backl','assets/backl.png',37,40,18);
+        this.load.html('tableform', 'assets/tableform.html');
+        this.load.html('tcolform', 'assets/tcolform.html');
+
+
     }
      
     create() 
@@ -53,11 +58,11 @@ class PracticeScene extends Phaser.Scene{
         Align.scaleToGameW(this.limpar, 0.05);
 
         this.mais = this.add.sprite(0,0,'mais');
-        this.aGrid.placeAtIndex(66,this.mais);
+        this.aGrid.placeAtIndex(58,this.mais);
         Align.scaleToGameW(this.mais, 0.03);
 
         this.menos = this.add.sprite(0,0,'menos');
-        this.aGrid.placeAtIndex(78,this.menos);
+        this.aGrid.placeAtIndex(85,this.menos);
         Align.scaleToGameW(this.menos, 0.03);
 
         this.barrainfo2 = this.add.sprite(0,0,'barrainfo2');
@@ -89,7 +94,7 @@ class PracticeScene extends Phaser.Scene{
             var primeiroNumero1 = Phaser.Math.Between(0,10000);
             var segundoNumero1 = Phaser.Math.Between(0,10000);
             
-            var mdc1 = this.add.text(0, 0, 'Calcula o m.d.c entre: ' + primeiroNumero1 + '  e  ' + segundoNumero1, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+            var mdc1 = this.add.text(0, 0, 'Calcula o m.d.c. entre: ' + primeiroNumero1 + '  e  ' + segundoNumero1, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
             
             this.aGrid.placeAtIndex(38, mdc1);
             mdc1.setOrigin(-0.05, 0.5);
@@ -107,14 +112,8 @@ class PracticeScene extends Phaser.Scene{
 
         this.backl.setInteractive({useHandCursor: true});
         this.backl.on('pointerdown', function () {
-            //this.scene.start('FirstScene');
-
-            this.scene.transition({
-                target: 'FirstScene',
-                duration: 1000,
-                moveBelow: true,
-                //onUpdate: this.transitionBack
-            });
+            this.scene.start('FirstScene');
+            cont=1; 
         }, this);
 
  
@@ -131,6 +130,10 @@ class PracticeScene extends Phaser.Scene{
 
         this.mais.setInteractive({useHandCursor: true});
         this.mais.on('pointerdown', function () {
+            cont+=1;
+            var y1 = 180*cont + x ;
+            var element = this.add.dom( y1,628).createFromCache('tcolform');
+            element.addListener('click');
             
         }, this);
 
@@ -154,7 +157,7 @@ class PracticeScene extends Phaser.Scene{
         var segundoNumero = Phaser.Math.Between(0,10000);
         
         
-        var mdc = this.add.text(0, 0, 'Calcula o m.d.c entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        var mdc = this.add.text(0, 0, 'Calcula o m.d.c. entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
         this.aGrid.placeAtIndex(38, mdc);
         mdc.setOrigin(-0.05, 0.5);
 
@@ -162,6 +165,20 @@ class PracticeScene extends Phaser.Scene{
         this.corrigir.on('pointerdown', function () {
             
         }, this);
+
+        
+
+         
+        //escritaa
+        var element = this.add.dom(1050,630).createFromCache('tableform');
+        x=element.x;
+        element.addListener('click');
+
+        
+       
+
+
+    
     }
 
   
@@ -170,5 +187,9 @@ class PracticeScene extends Phaser.Scene{
 
         
     }
+    
+ 
+    
    
 }
+   
