@@ -131,8 +131,8 @@ class PracticeScene extends Phaser.Scene{
         this.mais.setInteractive({useHandCursor: true});
         this.mais.on('pointerdown', function () {
             cont+=1;
-            var y1 = 180*cont + x ;
-            var element = this.add.dom( y1,628).createFromCache('tcolform');
+            var y = 168*cont + x ;
+            var element = this.add.dom( y,628).createFromCache('tcolform');
             element.addListener('click');
             
         }, this);
