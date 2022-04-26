@@ -1,9 +1,12 @@
 let x, col,primeiroNumero, segundoNumero,r,mdc, y, cont = 1;
+
 class PracticeScene extends Phaser.Scene{
+
     constructor ()
     {
         super('PracticeScene');
     }
+
     preload() {
         this.load.image('paint','assets/btpaint.png',37,40,18);
         this.load.image('refresh','assets/btrefresh.png',37,40,18);
@@ -13,15 +16,12 @@ class PracticeScene extends Phaser.Scene{
         this.load.image('limpar','assets/btlimpar.png',37,40,18);
         this.load.image('infog2','assets/btinfog2.png',37,40,18);
         this.load.image('corrigir','assets/btcorrigir.png',37,40,18);
-        this.load.image('barrainfo1','assets/barrainfo1.png'); //Devemos considerar como um botão???
-        this.load.image('barrainfo2','assets/barrainfo2.png',37,40,18);//Devemos considerar como um botão???
+        this.load.image('barrainfo1','assets/barrainfo1.png'); 
+        this.load.image('barrainfo2','assets/barrainfo2.png',37,40,18); 
         this.load.image('backl','assets/backl.png',37,40,18);
         this.load.html('tableform', 'assets/tableform.html');
         this.load.html('tcolform', 'assets/tcolform.html');
         this.load.html('resultadofinal', 'assets/resultadofinal.html');
-
-
-
     }
      
     create() 
@@ -60,12 +60,14 @@ class PracticeScene extends Phaser.Scene{
         Align.scaleToGameW(this.limpar, 0.05);
 
         this.mais = this.add.sprite(0,0,'mais');
-        this.aGrid.placeAtIndex(58,this.mais);
-        Align.scaleToGameW(this.mais, 0.03);
+        this.aGrid.placeAtIndex(67,this.mais);
+        Align.scaleToGameW(this.mais, 0.04);
+        this.mais.setOrigin(0.1, 0.5);
 
         this.menos = this.add.sprite(0,0,'menos');
-        this.aGrid.placeAtIndex(85,this.menos);
-        Align.scaleToGameW(this.menos, 0.03);
+        this.aGrid.placeAtIndex(79,this.menos);
+        Align.scaleToGameW(this.menos, 0.04);
+        this.menos.setOrigin(0.1, 0.5);
 
         this.barrainfo2 = this.add.sprite(0,0,'barrainfo2');
         this.aGrid.placeAtIndex(125.5,this.barrainfo2);
@@ -100,7 +102,7 @@ class PracticeScene extends Phaser.Scene{
         
         this.infog2.setInteractive({useHandCursor: true});
         this.infog2.on('pointerdown', function () {
-            
+            // Se o cursor estiver por cima deste botão, tem de aparecer acima da tabela "Clica aqui para obteres uma informação detalhada do procedimento."
         }, this);
 
         this.backl.setInteractive({useHandCursor: true});
@@ -111,7 +113,10 @@ class PracticeScene extends Phaser.Scene{
 
         this.paint.setInteractive({useHandCursor: true});
         this.paint.on('pointerdown', function () {
-            
+            //Se clicarmos um número par de vezes neste botão, temos que ter diferentes cores para as três primeiras células
+            //Senão, as três primeiras células ficam a branco 
+            //Isto não afeta a primeira coluna("onde diz dividendo...")
+            //Se o cursor estiver por cima deste botão, tem de aparecer acima da tabela "Adiciona/remove cores da tabela"
         }, this);
 
         this.limpar.setInteractive({useHandCursor: true});
@@ -140,11 +145,6 @@ class PracticeScene extends Phaser.Scene{
 
         }, this);
 
-        this.barrainfo2.setInteractive({useHandCursor: true});
-        this.barrainfo2.on('pointerdown', function () {
-            
-        }, this);
-
         this.verificar.setInteractive({useHandCursor: true});
         this.verificar.on('pointerdown', function () {
             
@@ -161,34 +161,26 @@ class PracticeScene extends Phaser.Scene{
         //input resultado final
         var resultadofinal = this.add.dom(1250,1038).createFromCache('resultadofinal');
         resultadofinal.addListener('click');
-      
     }
 
-  
-  
-    update (){
-
-        
-    }
+    update (){}
     
     //conteudo da barra1
     barrainf1(){
         primeiroNumero = Phaser.Math.Between(0,10000);
         segundoNumero = Phaser.Math.Between(0,10000);
         
-        mdc = this.add.text(0, 0, 'Calcula o  m.d.c. entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        mdc = this.add.text(0, 0, 'Calcula o  m.d.c. entre: ' + primeiroNumero + '  e  ' + segundoNumero, { fontFamily: 'myfont4', fontSize: 70, color: '#0d0d0d' }).setVisible(true);
         this.aGrid.placeAtIndex(38, mdc);
         mdc.setOrigin(-0.05, 0.5);
     
     }
-    
-    
+        
     //conteudo da barra 2
     barrainf2(){
-        r = this.add.text(0, 0, 'm.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        r = this.add.text(0, 0, 'm.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#0d0d0d' }).setVisible(true);
         this.aGrid.placeAtIndex(122, r);
         r.setOrigin(-0.05, 0.5);
     }
 
 }
-   
