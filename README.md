@@ -3,7 +3,7 @@ FALTA:
 
 -> PraticeScene:
 * Implementar alguns botões
-* TABELAAAAA 
+* TABELAAAAA (em processo)
 * Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga [done] :'( 
 
 
