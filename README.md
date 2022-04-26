@@ -2,10 +2,10 @@
 FALTA:
 
 -> PraticeScene:
-* Implementar alguns botões
-* TABELAAAAA (em processo)
-* botao "+" com um leve erro  
 * Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga [done] :'( 
+* Implementar alguns botões
+* TABELAAAAA (em processo) ver a questao das cores
+* botao "+" com um leve erro  
 
 
 -> UnderstandScene:
