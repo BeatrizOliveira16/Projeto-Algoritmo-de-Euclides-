@@ -59,24 +59,56 @@ class FirstScene extends Phaser.Scene{
             game.scene.stop('FirstScene');
             game.scene.start('UnderstandScene');
         }, this);
+        this.button1.on('pointerover', function(){
+            this.button1.displayHeight += 5;
+            this.button1.displayWidth += 5;
+        },this);
+        this.button1.on('pointerout', function(){
+            this.button1.displayHeight -= 5;
+            this.button1.displayWidth -= 5;
+        },this);
 
         this.button2.setInteractive({useHandCursor: true});
         this.button2.on('pointerdown', function () {
             game.scene.stop('FirstScene');
             game.scene.start('PracticeScene');
         }, this);
+        this.button2.on('pointerover', function(){
+            this.button2.displayHeight += 5;
+            this.button2.displayWidth += 5;
+        },this);
+        this.button2.on('pointerout', function(){
+            this.button2.displayHeight -= 5;
+            this.button2.displayWidth -= 5;
+        },this);
 
         this.creditos.setInteractive({useHandCursor: true});
         this.creditos.on('pointerdown', function () {
             game.scene.pause('FirstScene');
             game.scene.start('CreditsScene');
         }, this);
+        this.creditos.on('pointerover', function(){
+            this.creditos.displayHeight += 5;
+            this.creditos.displayWidth += 5;
+        },this);
+        this.creditos.on('pointerout', function(){
+            this.creditos.displayHeight -= 5;
+            this.creditos.displayWidth -= 5;
+        },this);
 
         this.info.setInteractive({useHandCursor: true});
         this.info.on('pointerdown', function () {
             game.scene.pause('FirstScene');
             game.scene.start('InfoScene');
         }, this);
+        this.info.on('pointerover', function(){
+            this.info.displayHeight += 5;
+            this.info.displayWidth += 5;
+        },this);
+        this.info.on('pointerout', function(){
+            this.info.displayHeight -= 5;
+            this.info.displayWidth -= 5;
+        },this);
     }
 
     update() {}

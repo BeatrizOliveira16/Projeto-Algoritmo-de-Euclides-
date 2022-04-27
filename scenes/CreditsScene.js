@@ -34,6 +34,14 @@ class CreditsScene extends Phaser.Scene{
             game.scene.stop('CreditsScene');
             game.scene.resume('FirstScene');
         }, this);
+        this.fechar.on('pointerover', function(){
+            this.fechar.displayHeight += 5;
+            this.fechar.displayWidth += 5;
+        },this);
+        this.fechar.on('pointerout', function(){
+            this.fechar.displayHeight -= 5;
+            this.fechar.displayWidth -= 5;
+        },this);
     
     }
 

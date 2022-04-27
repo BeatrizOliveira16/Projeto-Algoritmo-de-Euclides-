@@ -38,6 +38,14 @@ class InfoScene extends Phaser.Scene{
             game.scene.stop('InfoScene');
             game.scene.resume('FirstScene');
         }, this);
+        this.btfechar.on('pointerover', function(){
+            this.btfechar.displayHeight += 5;
+            this.btfechar.displayWidth += 5;
+        },this);
+        this.btfechar.on('pointerout', function(){
+            this.btfechar.displayHeight -= 5;
+            this.btfechar.displayWidth -= 5;
+        },this);
 
         this.plusinfo = this.add.sprite(0,0,'plusinfo');
         Align.scaleToGameW(this.plusinfo, 0.024);
@@ -70,7 +78,23 @@ class InfoScene extends Phaser.Scene{
                 this.btfechar1.setVisible(false);
                 this.trevo1.setVisible(false);
             }, this);
+            this.btfechar1.on('pointerover', () => {
+                this.btfechar1.displayHeight += 5;
+                this.btfechar1.displayWidth += 5;
+            });
+            this.btfechar1.on('pointerout', () => {
+                this.btfechar1.displayHeight -= 5;
+                this.btfechar1.displayWidth -= 5;
+            });
         }, this);
+        this.plusinfo.on('pointerover', function(){
+            this.plusinfo.displayHeight += 5;
+            this.plusinfo.displayWidth += 5;
+        },this);
+        this.plusinfo.on('pointerout', function(){
+            this.plusinfo.displayHeight -= 5;
+            this.plusinfo.displayWidth -= 5;
+        },this);
 
 
         this.plusinfo2 = this.add.sprite(0,0,'plusinfo');
@@ -101,7 +125,23 @@ class InfoScene extends Phaser.Scene{
                 this.btfechar2.setVisible(false);
                 this.trevo2.setVisible(false);
            }, this);
-        }, this);   
+           this.btfechar2.on('pointerover', function(){
+            this.btfechar2.displayHeight += 5;
+            this.btfechar2.displayWidth += 5;
+           },this);
+           this.btfechar2.on('pointerout', function(){
+            this.btfechar2.displayHeight -= 5;
+            this.btfechar2.displayWidth -= 5;
+           },this);
+        }, this);  
+        this.plusinfo2.on('pointerover', function(){
+            this.plusinfo2.displayHeight += 5;
+            this.plusinfo2.displayWidth += 5;
+        },this);
+        this.plusinfo2.on('pointerout', function(){
+            this.plusinfo2.displayHeight -= 5;
+            this.plusinfo2.displayWidth -= 5;
+        },this); 
     }
 
     update () {}

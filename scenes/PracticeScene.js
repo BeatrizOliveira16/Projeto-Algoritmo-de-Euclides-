@@ -34,6 +34,7 @@ class PracticeScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(77.5, this.background);
         this.background.setScale(1.44);
         this.background.setOrigin(0.5, 0.544);
+        
 
         this.titulo = this.add.image(0,0,'titulo');
         this.aGrid.placeAtIndex(17.7, this.titulo);
@@ -85,7 +86,6 @@ class PracticeScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(12.5,this.backl);
         Align.scaleToGameW(this.backl, 0.07);
 
-        
         this.refresh.setInteractive({useHandCursor: true});
         this.refresh.on('pointerdown', function(){
             //atualizar inf da barra info1
@@ -93,16 +93,34 @@ class PracticeScene extends Phaser.Scene{
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
             Align.scaleToGameW(this.barrainfo1, 0.60);
             this.barrainf1();
-            
             //atualizar inf da barra info2
             r.setText('m.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-
         },this);
-        
-        
+        this.refresh.on('pointerover', function(){
+            this.refresh.displayHeight += 5;
+            this.refresh.displayWidth += 5;
+        }, this);
+        this.refresh.on('pointerout', function(){
+            this.refresh.displayHeight -= 5;
+            this.refresh.displayWidth -= 5;
+        }, this);
+
         this.infog2.setInteractive({useHandCursor: true});
         this.infog2.on('pointerdown', function () {
+            
+        }, this);
+        this.infog2.on('pointerover', function(){
+            this.infog2.displayHeight += 5;
+            this.infog2.displayWidth += 5;
             // Se o cursor estiver por cima deste botão, tem de aparecer acima da tabela "Clica aqui para obteres uma informação detalhada do procedimento."
+            this.tinfo = this.add.text(0, 0, 'Clica aqui para obteres uma informação detalhada do procedimento.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' })
+            this.tinfo.setVisible(true);
+            this.aGrid.placeAtIndex(51.7,this.tinfo);
+        }, this);
+        this.infog2.on('pointerout', function(){
+            this.infog2.displayHeight -= 5;
+            this.infog2.displayWidth -= 5;
+            this.tinfo.setVisible(false);
         }, this);
 
         this.backl.setInteractive({useHandCursor: true});
@@ -110,13 +128,34 @@ class PracticeScene extends Phaser.Scene{
             this.scene.start('FirstScene');
             cont=1; 
         }, this);
+        this.backl.on('pointerover', function(){
+            this.backl.displayHeight += 5;
+            this.backl.displayWidth += 5;
+        }, this);
+        this.backl.on('pointerout', function(){
+            this.backl.displayHeight -= 5;
+            this.backl.displayWidth -= 5;
+        }, this);
 
         this.paint.setInteractive({useHandCursor: true});
         this.paint.on('pointerdown', function () {
             //Se clicarmos um número par de vezes neste botão, temos que ter diferentes cores para as três primeiras células
             //Senão, as três primeiras células ficam a branco 
             //Isto não afeta a primeira coluna("onde diz dividendo...")
+            
+        }, this);
+        this.paint.on('pointerover', function(){
+            this.paint.displayHeight += 5;
+            this.paint.displayWidth += 5;
             //Se o cursor estiver por cima deste botão, tem de aparecer acima da tabela "Adiciona/remove cores da tabela"
+            this.tpaint = this.add.text(0, 0, 'Adiciona/remove cores da tabela.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' })
+            this.tpaint.setVisible(true);
+            this.aGrid.placeAtIndex(52.7,this.tpaint);
+        },this);
+        this.paint.on('pointerout', function(){
+            this.paint.displayHeight -= 5;
+            this.paint.displayWidth -= 5;
+            this.tpaint.setVisible(false);
         }, this);
 
         this.limpar.setInteractive({useHandCursor: true});
@@ -136,23 +175,44 @@ class PracticeScene extends Phaser.Scene{
             //var y = 168*cont + x ;
             col = this.add.dom( y,628).createFromCache('tcolform');
             col.addListener('click');
-            
+        }, this);
+        this.mais.on('pointerover', function(){
+            this.mais.displayHeight += 5;
+            this.mais.displayWidth += 5;
+            this.tmais = this.add.text(0, 0, 'Adicionar coluna.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' })
+            this.tmais.setVisible(true);
+            this.aGrid.placeAtIndex(53,this.tmais);
+        }, this);
+        this.mais.on('pointerout', function(){
+            this.mais.displayHeight -= 5;
+            this.mais.displayWidth -= 5;
+            this.tmais.setVisible(false);
         }, this);
 
         this.menos.setInteractive({useHandCursor: true});
         this.menos.on('pointerdown', function () {
             col.setActive(false).setVisible(false);
-
+        }, this);
+        this.menos.on('pointerover', function(){
+            this.menos.displayHeight += 5;
+            this.menos.displayWidth += 5;
+            this.tmenos = this.add.text(0, 0, 'Apagar coluna.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' })
+            this.tmenos.setVisible(true);
+            this.aGrid.placeAtIndex(53,this.tmenos);
+        }, this);
+        this.menos.on('pointerout', function(){
+            this.menos.displayHeight -= 5;
+            this.menos.displayWidth -= 5;
+            this.tmenos.setVisible(false);
         }, this);
 
         this.verificar.setInteractive({useHandCursor: true});
         this.verificar.on('pointerdown', function () {
-            
         }, this);
+
 
         this.barrainf1();
         this.barrainf2();
-         
         //input table
         var element = this.add.dom(1050,630).createFromCache('tableform');
         x=element.x;
