@@ -2,18 +2,12 @@
 FALTA:
 
 -> PraticeScene:
-* Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga ( barrainfo1) [done] :'( 
+* Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga ( barrainfo1) e quando fazer refresh é necessário que a tabela volte ao início
 * TABELAAAAA  (ver a questao das cores)
 * botao "-" apaga apenas a ultima coluna (apaga so uma vez )
 
-
 -> UnderstandScene:
 * .... 
-
-
-
-
-
 
 
 
