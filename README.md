@@ -2,9 +2,11 @@
 FALTA:
 * Escolher uma fonte de jeito 
 -> PraticeScene:
-* Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga ( barrainfo1) e quando fazer refresh é necessário que a tabela volte ao início (usar transiçao)
-* TABELAAAAA  (ver a questao das cores)
+* Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga ( barrainfo1) e quando fazer refresh é necessário que a tabela volte ao início (funçao da tabela inicial)
+* TABELAAAAA  (erro ns deslocaçao) e  (ver a questao das cores)
+* verificar valores inseridos pelo utilizador 
 * botao "-" apaga apenas a ultima coluna (apaga so uma vez )
+* mudar a cor dos botoes corrigir, limpar e verificar 
 
 -> UnderstandScene:
 * .... 
