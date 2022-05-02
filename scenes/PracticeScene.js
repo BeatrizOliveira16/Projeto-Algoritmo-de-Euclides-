@@ -1,4 +1,5 @@
-let x, col,primeiroNumero, segundoNumero,r,mdc, y, element,cont = 1;
+let x, col,resultadofinal,primeiroNumero,trfc, trfe, segundoNumero,r,mdc,col1,rf, resultado, resto, quociente, y, element,cont = 1;
+let dividendoC, divisorC, resto1, quociente1;
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -107,7 +108,24 @@ class PracticeScene extends Phaser.Scene{
             this.refresh.displayHeight -= 5;
             this.refresh.displayWidth -= 5;
         }, this);
-        
+
+
+        this.verificar.on('pointerover', function(){
+            this.verificar.setTint(0x0000ff);
+
+        }, this);
+        this.verificar.on('pointerout', function(){
+            this.verificar.setTint();
+        }, this);
+
+        this.corrigir.setInteractive({useHandCursor: true});
+        this.corrigir.on('pointerover', function(){
+            this.corrigir.setTint(0x0000ff);
+
+        }, this);
+        this.corrigir.on('pointerout', function(){
+            this.corrigir.setTint();
+        }, this);
         
         this.infog2.setInteractive({useHandCursor: true});
         this.infog2.on('pointerdown', function () {
@@ -125,6 +143,14 @@ class PracticeScene extends Phaser.Scene{
             this.infog2.displayHeight -= 5;
             this.infog2.displayWidth -= 5;
             this.tinfo.setVisible(false);
+        }, this);
+
+        this.limpar.setInteractive({useHandCursor: true});
+        this.limpar.on('pointerover', function () {
+            this.limpar.setTint(0x0000ff);
+        }, this);
+        this.limpar.on('pointerout', function () {
+            this.limpar.setTint();
         }, this);
 
         this.backl.setInteractive({useHandCursor: true});
@@ -159,7 +185,6 @@ class PracticeScene extends Phaser.Scene{
             this.tpaint.setVisible(false);
         }, this);
 
-        this.limpar.setInteractive({useHandCursor: true});
         this.limpar.on('pointerdown', function () {
             
         }, this);
@@ -167,36 +192,16 @@ class PracticeScene extends Phaser.Scene{
        
         this.mais.setInteractive({useHandCursor: true});
         this.mais.on('pointerdown', function () {
-            //mexer table inicial
-            this.tweens.add({
-                targets: element,
-                x: '-=103',
-                duration: 0.01 ,
-                ease: 'Power3'
-            });
-            //deslocar os botoes  colocados  na esq tabela
-            this.tweens.add({
-                targets: this.paint,
-                x: '-=103',
-                duration: 0.01 ,
-                ease: 'Power3'
-            });
-            this.tweens.add({
-                targets: this.limpar,
-                x: '-=103',
-                duration: 0.01 ,
-                ease: 'Power3'
-            });
-            this.tweens.add({
-                targets: this.infog2,
-                x: '-=103',
-                duration: 0.01 ,
-                ease: 'Power3'
-            });
+            //deslocar a tabela inicial e os botoes  colocados  na esq tabela
+            this.tweens.add({targets: element, x:'-=103',duration: 0.01 ,ease: 'Power3'});
+            this.tweens.add({targets: this.paint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+            this.tweens.add({targets: this.limpar,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+            this.tweens.add({targets: this.infog2,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+            this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
+            this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
 
-           
 
-            
+            // colunas adicionadas
             if (cont==1){
                 y = 3*cont + x + 167.5 ;
             }else {
@@ -205,9 +210,38 @@ class PracticeScene extends Phaser.Scene{
             cont+=1;
             col = this.add.dom(y,628).createFromCache('tcolform');
             col.addListener('click');
+            this.calculaMDCcoluna();
+            //buscar os valores sao colocados na tabela inicial  
+            let dividendo = element.getChildByName("dividendo").value
+            let divisor = element.getChildByName("divisor").value
+            let resto = element.getChildByName("resto").value
+            let quociente = element.getChildByName("quociente").value
+            if (divisor != '' && dividendo != '' && resto != '' && quociente != '')  {
+                console.log(dividendo);
+                console.log(divisor);
+                console.log(resto);
+                console.log(quociente); 
+            }
+            if (dividendo == dividendoC && divisor == divisorC && resto ==resto1 && quociente==quociente1){
+                console.log("oii")
+
+                console.log(dividendoC);
+                console.log(divisorC);
+                console.log(resto1);
+                console.log(quociente1); 
+            } else {
+                console.log("ivo_e_chato")
+                console.log(dividendoC);
+                console.log(divisorC);
+                console.log(resto1);
+                console.log(quociente1); 
+            }
+            
+
             
             
         }, this);
+
         this.mais.on('pointerover', function(){
             this.mais.displayHeight += 5;
             this.mais.displayWidth += 5;
@@ -247,16 +281,36 @@ class PracticeScene extends Phaser.Scene{
 
         this.verificar.setInteractive({useHandCursor: true});
         this.verificar.on('pointerdown', function () {
+            trfc.setVisible(true);
+            trfe.setVisible(true);
+           
+
+            this.calculaMDC();
+            rf = resultadofinal.getChildByName("rf").value
+            console.log(rf);   //valor colocado pela pessoa
+            console.log(resultado); // valor calculado plea funçao calculamdc
             
+            if (rf == resultado){
+                trfe.setActive(false).setVisible(false);
+                trfc.setText('Parabéns. Resultado correto!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+ 
+               // funçao que faz a tabela sozinha 
+            }else {
+                trfc.setActive(false).setVisible(false);
+                trfe.setText( 'Resultado incorreto :( ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                // tabela inicial 
+            }
         }, this);
 
         this.barrainf1();
         this.barrainf2();
         this.tableinput();
+        trfc = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        trfe = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
        
     
         //input resultado final
-        var resultadofinal = this.add.dom(1250,1038).createFromCache('resultadofinal');
+        resultadofinal = this.add.dom(1250,1038).createFromCache('resultadofinal');
         resultadofinal.addListener('click');
       
     }
@@ -281,15 +335,56 @@ class PracticeScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(122, r);
         r.setOrigin(-0.05, 0.5);
     }
-    
-    
-    
+     
     //estrutura inicial da tabela
     tableinput(){
         element = this.add.dom(1050,630).createFromCache('tableform');
         x=element.x;
         element.addListener('click');
     }
+
+    calculaMDC(){
+        while(primeiroNumero != 0 & segundoNumero != 0){
+            if(primeiroNumero > segundoNumero){
+                resto = primeiroNumero % segundoNumero
+                primeiroNumero = segundoNumero
+                segundoNumero = resto
+            }else{
+                resto = segundoNumero % primeiroNumero
+                segundoNumero = primeiroNumero
+                primeiroNumero = resto
+            }
+        }
+
+        if (primeiroNumero == 0) {
+            resultado = segundoNumero
+        }
+        else {
+            resultado = primeiroNumero
+        }
+    }
+
+    calculaMDCcoluna(){
+        if (primeiroNumero > segundoNumero){
+            dividendoC = primeiroNumero
+            divisorC = segundoNumero 
+        } else {
+            divisorC = primeiroNumero
+            dividendoC = segundoNumero
+        }
+        if(dividendoC > divisorC){
+            resto1 = dividendoC % divisorC
+           
+            quociente1 = Math.floor( dividendoC / divisorC)
+        } else { 
+            resto1 = divisorC % dividendoC
+            quociente1 = Math.floor( divisorC / dividendoC)
+    
+        }
+    }
+    
+
+    
 
    
     
