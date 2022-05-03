@@ -1,5 +1,11 @@
-let x, col,resultadofinal,primeiroNumero,trfc, trfe, segundoNumero,r,mdc,col1,rf, resultado, resto, quociente, y, element,cont = 1;
-let dividendoC, divisorC, resto1, quociente1;
+let cont = 1;
+let x, y; // posiçao da tabela e colunas  
+let primeiroNumero, segundoNumero;
+let rf, dividendo, divisor, resto, quociente; // valor colocado pela pessoa 
+let dividendoC, divisorC, resto1, quociente1, resultado; // valores corretos de cada coluna
+let tcolv, trfc, trfe;// texto caso os valores estejam corretos
+let mdc, r;  // texto da barra 1 e 2 
+let resultadofinal, element, col // assets
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -20,9 +26,6 @@ class PracticeScene extends Phaser.Scene{
         this.load.html('tableform', 'assets/tableform.html');
         this.load.html('tcolform', 'assets/tcolform.html');
         this.load.html('resultadofinal', 'assets/resultadofinal.html');
-
-
-
     }
      
     create() 
@@ -212,10 +215,10 @@ class PracticeScene extends Phaser.Scene{
             col.addListener('click');
             this.calculaMDCcoluna();
             //buscar os valores sao colocados na tabela inicial  
-            let dividendo = element.getChildByName("dividendo").value
-            let divisor = element.getChildByName("divisor").value
-            let resto = element.getChildByName("resto").value
-            let quociente = element.getChildByName("quociente").value
+            dividendo = element.getChildByName("dividendo").value
+            divisor = element.getChildByName("divisor").value
+            resto = element.getChildByName("resto").value
+            quociente = element.getChildByName("quociente").value
             if (divisor != '' && dividendo != '' && resto != '' && quociente != '')  {
                 console.log(dividendo);
                 console.log(divisor);
@@ -223,14 +226,17 @@ class PracticeScene extends Phaser.Scene{
                 console.log(quociente); 
             }
             if (dividendo == dividendoC && divisor == divisorC && resto ==resto1 && quociente==quociente1){
-                console.log("oii")
-
+                //col = this.add.dom(y,628).createFromCache('tcolform');
+                //col.addListener('click');
+                console.log("certo")
                 console.log(dividendoC);
                 console.log(divisorC);
                 console.log(resto1);
                 console.log(quociente1); 
             } else {
-                console.log("ivo_e_chato")
+                tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
+                console.log("errado")
                 console.log(dividendoC);
                 console.log(divisorC);
                 console.log(resto1);
@@ -283,8 +289,8 @@ class PracticeScene extends Phaser.Scene{
         this.verificar.on('pointerdown', function () {
             trfc.setVisible(true);
             trfe.setVisible(true);
-           
-
+            tcolv.setVisible(false);
+            
             this.calculaMDC();
             rf = resultadofinal.getChildByName("rf").value
             console.log(rf);   //valor colocado pela pessoa
@@ -307,7 +313,8 @@ class PracticeScene extends Phaser.Scene{
         this.tableinput();
         trfc = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
         trfe = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-       
+        tcolv = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+
     
         //input resultado final
         resultadofinal = this.add.dom(1250,1038).createFromCache('resultadofinal');
@@ -346,7 +353,7 @@ class PracticeScene extends Phaser.Scene{
     calculaMDC(){
         while(primeiroNumero != 0 & segundoNumero != 0){
             if(primeiroNumero > segundoNumero){
-                resto = primeiroNumero % segundoNumero
+                var resto = primeiroNumero % segundoNumero
                 primeiroNumero = segundoNumero
                 segundoNumero = resto
             }else{
