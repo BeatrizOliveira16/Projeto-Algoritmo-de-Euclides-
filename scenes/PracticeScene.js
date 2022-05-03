@@ -2,7 +2,7 @@ let cont = 1;
 let x, y; // posiçao da tabela e colunas  
 let primeiroNumero, segundoNumero;
 let rf, dividendo, divisor, resto, quociente; // valor colocado pela pessoa 
-let dividendoC, divisorC, resto1, quociente1, resultado; // valores corretos de cada coluna
+let dividendoC, divisorC, restoC, quocienteC, resultado; // valores corretos de cada coluna
 let tcolv, trfc, trfe;// texto caso os valores estejam corretos
 let mdc, r;  // texto da barra 1 e 2 
 let resultadofinal, element, col // assets
@@ -225,27 +225,23 @@ class PracticeScene extends Phaser.Scene{
                 console.log(resto);
                 console.log(quociente); 
             }
-            if (dividendo == dividendoC && divisor == divisorC && resto ==resto1 && quociente==quociente1){
+            if (dividendo == dividendoC && divisor == divisorC && resto ==restoC && quociente==quocienteC){
                 //col = this.add.dom(y,628).createFromCache('tcolform');
                 //col.addListener('click');
                 console.log("certo")
                 console.log(dividendoC);
                 console.log(divisorC);
-                console.log(resto1);
-                console.log(quociente1); 
+                console.log(restoC);
+                console.log(quocienteC); 
             } else {
                 tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
 
                 console.log("errado")
                 console.log(dividendoC);
                 console.log(divisorC);
-                console.log(resto1);
-                console.log(quociente1); 
+                console.log(restoC);
+                console.log(quocienteC); 
             }
-            
-
-            
-            
         }, this);
 
         this.mais.on('pointerover', function(){
@@ -380,12 +376,12 @@ class PracticeScene extends Phaser.Scene{
             dividendoC = segundoNumero
         }
         if(dividendoC > divisorC){
-            resto1 = dividendoC % divisorC
+            restoC = dividendoC % divisorC
            
-            quociente1 = Math.floor( dividendoC / divisorC)
+            quocienteC = Math.floor( dividendoC / divisorC)
         } else { 
-            resto1 = divisorC % dividendoC
-            quociente1 = Math.floor( divisorC / dividendoC)
+            restoC = divisorC % dividendoC
+            quocienteC = Math.floor( divisorC / dividendoC)
     
         }
     }
