@@ -1,9 +1,9 @@
 let cont = 1;
 let x, y; // posiçao da tabela e colunas  
-let primeiroNumero, segundoNumero;
+let primeiroNumero, segundoNumero; // valores aleatorios
 let rf, dividendo, divisor, resto, quociente; // valor colocado pela pessoa 
 let dividendoC, divisorC, restoC, quocienteC, resultado; // valores corretos de cada coluna
-let tcolv, trfc, trfe;// texto caso os valores estejam corretos
+let tcolv, trfc, trfe;// texto caso os valores estejam corretos ou errados
 let mdc, r;  // texto da barra 1 e 2 
 let resultadofinal, element, col // assets
 class PracticeScene extends Phaser.Scene{
@@ -98,6 +98,10 @@ class PracticeScene extends Phaser.Scene{
             
             //atualizar inf da barra info2
             r.setText('m.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+            trfc.setActive(false).setVisible(false);
+            trfe.setActive(false).setVisible(false);
+            tcolv.setActive(false).setVisible(false);
+            resultadofinal.getChildByName("rf").value = ''
 
             //retormar ao inicio tabela
             //element.setActive(false).setVisible(false);
@@ -225,7 +229,8 @@ class PracticeScene extends Phaser.Scene{
                 console.log(resto);
                 console.log(quociente); 
             }
-            if (dividendo == dividendoC && divisor == divisorC && resto ==restoC && quociente==quocienteC){
+            if (dividendo == dividendoC && divisor == divisorC && resto ==restoC && quociente==quocienteC &&
+                divisor != '' && dividendo != '' && resto != '' && quociente != ''){
                 //col = this.add.dom(y,628).createFromCache('tcolform');
                 //col.addListener('click');
                 console.log("certo")
@@ -235,7 +240,6 @@ class PracticeScene extends Phaser.Scene{
                 console.log(quocienteC); 
             } else {
                 tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-
                 console.log("errado")
                 console.log(dividendoC);
                 console.log(divisorC);
