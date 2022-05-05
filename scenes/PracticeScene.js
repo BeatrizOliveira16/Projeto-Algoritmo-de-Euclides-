@@ -1,7 +1,9 @@
+let tb = new Tabelas();
+let last;
 let cont = 1;
 let x, y; // posiçao da tabela e colunas  
 let primeiroNumero, segundoNumero; // valores aleatorios
-let rf, dividendo, divisor, resto, quociente; // valor colocado pela pessoa 
+let rf; // valor colocado pela pessoa 
 let dividendoC, divisorC, restoC, quocienteC, resultado; // valores corretos de cada coluna
 let tcolv, trfc, trfe;// texto caso os valores estejam corretos ou errados
 let mdc, r;  // texto da barra 1 e 2 
@@ -218,7 +220,7 @@ class PracticeScene extends Phaser.Scene{
                 y = y + 168.5;
             }
             cont+=1;
-            */
+           
            
             for(var i = 0; i <array.length; i++){
                 array[i] += 168.18;
@@ -228,24 +230,22 @@ class PracticeScene extends Phaser.Scene{
 
             }
             array.push(x);
+             */
 
             //col = this.add.dom(array[i],628).createFromCache('tcolform');
-            col.addListener('click');
+            //col.addListener('click');
             this.calculaMDCcoluna();
             //buscar os valores sao colocados na tabela inicial  
-            dividendo = element.getChildByName("dividendo").value
-            divisor = element.getChildByName("divisor").value
-            resto = element.getChildByName("resto").value
-            quociente = element.getChildByName("quociente").value
-            if (divisor != '' && dividendo != '' && resto != '' && quociente != '')  {
-                console.log(dividendo);
-                console.log(divisor);
-                console.log(resto);
-                console.log(quociente); 
-            }
-            if (dividendo == dividendoC && divisor == divisorC && resto ==restoC && quociente==quocienteC &&
-                divisor != '' && dividendo != '' && resto != '' && quociente != ''){
-                //col = this.add.dom(y,628).createFromCache('tcolform');
+            last = tb.numberofTabelas -1 
+            tb.tabelas[last].dividendo = element.getChildByName("dividendo").value
+            tb.tabelas[last].divisor = element.getChildByName("divisor").value
+            tb.tabelas[last].quociente = element.getChildByName("quociente").value
+            tb.tabelas[last].resto = element.getChildByName("resto").value
+            console.log(tb.tabelas[0].dividendo, tb.tabelas[0].divisor, tb.tabelas[0].quociente, tb.tabelas[0].resto, tb.tabelas[0].posicao)
+            
+            if (tb.tabelas[last].dividendo == dividendoC && tb.tabelas[last].divisor == divisorC && tb.tabelas[last].resto ==restoC && tb.tabelas[last].quociente==quocienteC &&
+                tb.tabelas[last].divisor != '' && tb.tabelas[last].dividendo != '' && tb.tabelas[last].resto != '' && tb.tabelas[last].quociente != ''){
+                col = this.add.dom(y,628).createFromCache('tcolform');
                 //col.addListener('click');
                 console.log("certo")
                 console.log(dividendoC);
@@ -260,6 +260,7 @@ class PracticeScene extends Phaser.Scene{
                 console.log(restoC);
                 console.log(quocienteC); 
             }
+            
         }, this);
 
         this.mais.on('pointerover', function(){
@@ -335,8 +336,8 @@ class PracticeScene extends Phaser.Scene{
         resultadofinal.addListener('click');
       
     }
-    update (){
-    }
+
+    update (){}
     
     //conteudo da barra1
     barrainf1(){
@@ -360,9 +361,10 @@ class PracticeScene extends Phaser.Scene{
     //estrutura inicial da tabela
     tableinput(){
         element = this.add.dom(1050,630).createFromCache('tableform');
+        this.aGrid.placeAtIndex(77.5, element);
         x=element.x;
-        array.push(x) ;
-        console.log(array[0] );
+        console.log(element.scroolWidth)
+        tb.newTabelas(-1, -1,-1,-1,x);
         element.addListener('click');
     }
 
