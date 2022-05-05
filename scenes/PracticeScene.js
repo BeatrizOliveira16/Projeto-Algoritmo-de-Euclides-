@@ -5,7 +5,8 @@ let rf, dividendo, divisor, resto, quociente; // valor colocado pela pessoa
 let dividendoC, divisorC, restoC, quocienteC, resultado; // valores corretos de cada coluna
 let tcolv, trfc, trfe;// texto caso os valores estejam corretos ou errados
 let mdc, r;  // texto da barra 1 e 2 
-let resultadofinal, element, col // assets
+let resultadofinal, element, col; // assets
+const array = [];
 class PracticeScene extends Phaser.Scene{
     constructor ()
     {
@@ -200,22 +201,35 @@ class PracticeScene extends Phaser.Scene{
         this.mais.setInteractive({useHandCursor: true});
         this.mais.on('pointerdown', function () {
             //deslocar a tabela inicial e os botoes  colocados  na esq tabela
-            this.tweens.add({targets: element, x:'-=103',duration: 0.01 ,ease: 'Power3'});
+            //this.tweens.add({targets: element, x:'-=103',duration: 0.01 ,ease: 'Power3'});
             this.tweens.add({targets: this.paint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
             this.tweens.add({targets: this.limpar,x: '-=103',duration: 0.01 ,ease: 'Power3'});
             this.tweens.add({targets: this.infog2,x: '-=103',duration: 0.01 ,ease: 'Power3'});
             this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
             this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+            this.tweens.add({targets: col,x: '-=103',duration: 0.01 ,ease: 'Power3'});
 
 
+            /*
             // colunas adicionadas
             if (cont==1){
-                y = 3*cont + x + 167.5 ;
+                y = 3*cont + x + 278.5 ;
             }else {
                 y = y + 168.5;
             }
             cont+=1;
-            col = this.add.dom(y,628).createFromCache('tcolform');
+            */
+           
+            for(var i = 0; i <array.length; i++){
+                array[i] += 168.18;
+                col = this.add.dom(array[i],628).createFromCache('tcolform');
+
+                console.log(array[i]);
+
+            }
+            array.push(x);
+
+            //col = this.add.dom(array[i],628).createFromCache('tcolform');
             col.addListener('click');
             this.calculaMDCcoluna();
             //buscar os valores sao colocados na tabela inicial  
@@ -347,6 +361,8 @@ class PracticeScene extends Phaser.Scene{
     tableinput(){
         element = this.add.dom(1050,630).createFromCache('tableform');
         x=element.x;
+        array.push(x) ;
+        console.log(array[0] );
         element.addListener('click');
     }
 
