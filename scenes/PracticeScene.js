@@ -8,12 +8,14 @@ let dividendoC, divisorC, restoC, quocienteC, resultado; // valores corretos de 
 let tcolv, trfc, trfe;// texto caso os valores estejam corretos ou errados
 let mdc, r;  // texto da barra 1 e 2 
 let resultadofinal, element, col; // assets
-const array = [];
+
 class PracticeScene extends Phaser.Scene{
+
     constructor ()
     {
         super('PracticeScene');
     }
+
     preload() {
         this.load.image('paint','assets/btpaint.png',37,40,18);
         this.load.image('refresh','assets/btrefresh.png',37,40,18);
@@ -31,8 +33,7 @@ class PracticeScene extends Phaser.Scene{
         this.load.html('resultadofinal', 'assets/resultadofinal.html');
     }
      
-    create() 
-    {    
+    create() {    
         var grelhaConfig = {scene:this, rows:12,cols:12};
         this.aGrid = new AlignGrid(grelhaConfig);
         //this.aGrid.showNumbers();
@@ -104,7 +105,7 @@ class PracticeScene extends Phaser.Scene{
             trfc.setActive(false).setVisible(false);
             trfe.setActive(false).setVisible(false);
             tcolv.setActive(false).setVisible(false);
-            resultadofinal.getChildByName("rf").value = ''
+            resultadofinal.getChildByName("rf").value = '';
 
             //retormar ao inicio tabela
             //element.setActive(false).setVisible(false);
@@ -185,7 +186,7 @@ class PracticeScene extends Phaser.Scene{
             this.paint.displayHeight += 5;
             this.paint.displayWidth += 5;
             //Se o cursor estiver por cima deste botão, tem de aparecer acima da tabela "Adiciona/remove cores da tabela"
-            this.tpaint = this.add.text(0, 0, 'Adiciona/remove cores da tabela.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' })
+            this.tpaint = this.add.text(0, 0, 'Adiciona/remove cores da tabela.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' });
             this.tpaint.setVisible(true);
             this.aGrid.placeAtIndex(52.7,this.tpaint);
         },this);
@@ -230,31 +231,31 @@ class PracticeScene extends Phaser.Scene{
 
             }
             array.push(x);
-             */
-
-            //col = this.add.dom(array[i],628).createFromCache('tcolform');
-            //col.addListener('click');
+            
+            col = this.add.dom(array[i],628).createFromCache('tcolform');
+            col.addListener('click'); 
+            */
             this.calculaMDCcoluna();
             //buscar os valores sao colocados na tabela inicial  
-            last = tb.numberofTabelas -1 
-            tb.tabelas[last].dividendo = element.getChildByName("dividendo").value
-            tb.tabelas[last].divisor = element.getChildByName("divisor").value
-            tb.tabelas[last].quociente = element.getChildByName("quociente").value
-            tb.tabelas[last].resto = element.getChildByName("resto").value
-            console.log(tb.tabelas[0].dividendo, tb.tabelas[0].divisor, tb.tabelas[0].quociente, tb.tabelas[0].resto, tb.tabelas[0].posicao)
+            last = tb.numberofTabelas - 1;
+            tb.tabelas[last].dividendo = element.getChildByName("dividendo").value;
+            tb.tabelas[last].divisor = element.getChildByName("divisor").value;
+            tb.tabelas[last].quociente = element.getChildByName("quociente").value;
+            tb.tabelas[last].resto = element.getChildByName("resto").value;
+            console.log(tb.tabelas[0].dividendo, tb.tabelas[0].divisor, tb.tabelas[0].quociente, tb.tabelas[0].resto, tb.tabelas[0].posicao);
             
             if (tb.tabelas[last].dividendo == dividendoC && tb.tabelas[last].divisor == divisorC && tb.tabelas[last].resto ==restoC && tb.tabelas[last].quociente==quocienteC &&
                 tb.tabelas[last].divisor != '' && tb.tabelas[last].dividendo != '' && tb.tabelas[last].resto != '' && tb.tabelas[last].quociente != ''){
                 col = this.add.dom(y,628).createFromCache('tcolform');
-                //col.addListener('click');
-                console.log("certo")
+                col.addListener('click');
+                console.log("certo");
                 console.log(dividendoC);
                 console.log(divisorC);
                 console.log(restoC);
                 console.log(quocienteC); 
             } else {
                 tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-                console.log("errado")
+                console.log("errado");
                 console.log(dividendoC);
                 console.log(divisorC);
                 console.log(restoC);
@@ -266,7 +267,7 @@ class PracticeScene extends Phaser.Scene{
         this.mais.on('pointerover', function(){
             this.mais.displayHeight += 5;
             this.mais.displayWidth += 5;
-            this.tmais = this.add.text(0, 0, 'Adicionar coluna.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' })
+            this.tmais = this.add.text(0, 0, 'Adicionar coluna.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' });
             this.tmais.setVisible(true);
             this.aGrid.placeAtIndex(53,this.tmais);
         }, this);
@@ -279,13 +280,11 @@ class PracticeScene extends Phaser.Scene{
         this.menos.setInteractive({useHandCursor: true});
         this.menos.on('pointerdown', function () {
             col.setActive(false).setVisible(false);
-            
-
         }, this);
         this.menos.on('pointerover', function(){
             this.menos.displayHeight += 5;
             this.menos.displayWidth += 5;
-            this.tmenos = this.add.text(0, 0, 'Apagar coluna.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' })
+            this.tmenos = this.add.text(0, 0, 'Apagar coluna.', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' });
             this.tmenos.setVisible(true);
             this.aGrid.placeAtIndex(53,this.tmenos);
         }, this);
@@ -307,7 +306,7 @@ class PracticeScene extends Phaser.Scene{
             tcolv.setVisible(false);
             
             this.calculaMDC();
-            rf = resultadofinal.getChildByName("rf").value
+            rf = resultadofinal.getChildByName("rf").value;
             console.log(rf);   //valor colocado pela pessoa
             console.log(resultado); // valor calculado plea funçao calculamdc
             
@@ -334,7 +333,6 @@ class PracticeScene extends Phaser.Scene{
         //input resultado final
         resultadofinal = this.add.dom(1250,1038).createFromCache('resultadofinal');
         resultadofinal.addListener('click');
-      
     }
 
     update (){}
@@ -350,7 +348,6 @@ class PracticeScene extends Phaser.Scene{
     
     }
     
-    
     //conteudo da barra 2
     barrainf2(){
         r = this.add.text(0, 0, 'm.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
@@ -363,7 +360,6 @@ class PracticeScene extends Phaser.Scene{
         element = this.add.dom(1050,630).createFromCache('tableform');
         this.aGrid.placeAtIndex(77.5, element);
         x=element.x;
-        console.log(element.scroolWidth)
         tb.newTabelas(-1, -1,-1,-1,x);
         element.addListener('click');
     }
@@ -371,40 +367,38 @@ class PracticeScene extends Phaser.Scene{
     calculaMDC(){
         while(primeiroNumero != 0 & segundoNumero != 0){
             if(primeiroNumero > segundoNumero){
-                var resto = primeiroNumero % segundoNumero
-                primeiroNumero = segundoNumero
-                segundoNumero = resto
+                var resto = primeiroNumero % segundoNumero;
+                primeiroNumero = segundoNumero;
+                segundoNumero = resto;
             }else{
-                resto = segundoNumero % primeiroNumero
-                segundoNumero = primeiroNumero
-                primeiroNumero = resto
+                resto = segundoNumero % primeiroNumero;
+                segundoNumero = primeiroNumero;
+                primeiroNumero = resto;
             }
         }
 
         if (primeiroNumero == 0) {
-            resultado = segundoNumero
+            resultado = segundoNumero;
         }
         else {
-            resultado = primeiroNumero
+            resultado = primeiroNumero;
         }
     }
 
     calculaMDCcoluna(){
         if (primeiroNumero > segundoNumero){
-            dividendoC = primeiroNumero
-            divisorC = segundoNumero 
+            dividendoC = primeiroNumero;
+            divisorC = segundoNumero;
         } else {
-            divisorC = primeiroNumero
-            dividendoC = segundoNumero
+            divisorC = primeiroNumero;
+            dividendoC = segundoNumero;
         }
         if(dividendoC > divisorC){
-            restoC = dividendoC % divisorC
-           
-            quocienteC = Math.floor( dividendoC / divisorC)
+            restoC = dividendoC % divisorC;
+            quocienteC = Math.floor( dividendoC / divisorC);
         } else { 
-            restoC = divisorC % dividendoC
-            quocienteC = Math.floor( divisorC / dividendoC)
-    
+            restoC = divisorC % dividendoC;
+            quocienteC = Math.floor( divisorC / dividendoC);
         }
     }
     
