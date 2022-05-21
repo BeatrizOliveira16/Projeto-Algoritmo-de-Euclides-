@@ -8,12 +8,6 @@ FALTA:
 * botao "-" apaga apenas a ultima coluna (apaga so uma vez )
  
 
--> UnderstandScene:
-* Feita
-
-
-
-
 
 -> CONCLUIDO:
 
