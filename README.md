@@ -1,5 +1,5 @@
 # Projeto
-FALTA:
+->FALTA:
 * Escolher uma fonte de jeito 
 -> PraticeScene:
 
