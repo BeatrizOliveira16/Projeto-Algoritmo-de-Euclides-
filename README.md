@@ -2,14 +2,14 @@
 FALTA:
 * Escolher uma fonte de jeito 
 -> PraticeScene:
-* Corrigir o erro do facto do botão refresh quando usado escreve por cima do texto que lá está e não o apaga ( barrainfo1) e quando fazer refresh é necessário que a tabela volte ao início (funçao da tabela inicial)
+
 * TABELAAAAA  (erro ns deslocaçao) e  (ver a questao das cores)
-* verificar valores inseridos pelo utilizador 
+* verificar valores inseridos pelo utilizador     //feito (primeira coluna)
 * botao "-" apaga apenas a ultima coluna (apaga so uma vez )
  
 
 -> UnderstandScene:
-* .... 
+* Feita
 
 
 
@@ -18,6 +18,8 @@ FALTA:
 -> CONCLUIDO:
 
 * InfoScene 
+
+* UnderstandScene
 
 * Jogo adaptado para os diversos tipos de ecrãs incluindo smartphones
 
