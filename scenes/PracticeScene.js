@@ -1,13 +1,14 @@
-let tb = new Tabelas();
-let last;
-let cont = 1;
+
+let cont = 0;
 let x, y; // posiçao da tabela e colunas  
 let primeiroNumero, segundoNumero; // valores aleatorios
 let rf; // valor colocado pela pessoa 
 let dividendoC, divisorC, restoC, quocienteC, resultado; // valores corretos de cada coluna
 let tcolv, trfc, trfe;// texto caso os valores estejam corretos ou errados
 let mdc, r;  // texto da barra 1 e 2 
-let resultadofinal, element, col; // assets
+let resultadofinal, element; // assets
+let dividendoUti, divisorUti, restoUti, quocienteUti; // valores inseridos pelo utilizador 1 coluna 
+let  dividendoUti1,divisorUti1,restoUti1,quocienteUti1, nRow, row, table;
 
 class PracticeScene extends Phaser.Scene{
 
@@ -29,7 +30,6 @@ class PracticeScene extends Phaser.Scene{
         this.load.image('barrainfo2','assets/barrainfo2.png',37,40,18);
         this.load.image('backl','assets/backl.png',37,40,18);
         this.load.html('tableform', 'assets/tableform.html');
-        this.load.html('tcolform', 'assets/tcolform.html');
         this.load.html('resultadofinal', 'assets/resultadofinal.html');
     }
      
@@ -68,12 +68,13 @@ class PracticeScene extends Phaser.Scene{
         Align.scaleToGameW(this.limpar, 0.05);
 
         this.mais = this.add.sprite(0,0,'mais');
-        this.aGrid.placeAtIndex(58,this.mais);
-        Align.scaleToGameW(this.mais, 0.03);
+        this.aGrid.placeAtIndex(67,this.mais);
+        Align.scaleToGameW(this.mais, 0.035);
+        
 
         this.menos = this.add.sprite(0,0,'menos');
-        this.aGrid.placeAtIndex(85,this.menos);
-        Align.scaleToGameW(this.menos, 0.03);
+        this.aGrid.placeAtIndex(91,this.menos);
+        Align.scaleToGameW(this.menos, 0.035);
 
         this.barrainfo2 = this.add.sprite(0,0,'barrainfo2');
         this.aGrid.placeAtIndex(125.5,this.barrainfo2);
@@ -157,8 +158,24 @@ class PracticeScene extends Phaser.Scene{
         }, this);
 
         this.limpar.setInteractive({useHandCursor: true});
+        this.limpar.on('pointerdown', function () {
+            if (table.lastElementChild.querySelector('input[name="dividendo"]').value !='' &&
+            table.lastElementChild.querySelector('input[name="divisor"]').value != '' &&
+            table.lastElementChild.querySelector('input[name="resto"]').value != '' &&
+            table.lastElementChild.querySelector('input[name="quociente"]').value != ''){
+
+            
+                table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
+                table.lastElementChild.querySelector('input[name="divisor"]').value = '';
+                table.lastElementChild.querySelector('input[name="resto"]').value = '';
+                table.lastElementChild.querySelector('input[name="quociente"]').value = '';
+            }
+            
+        }, this);
         this.limpar.on('pointerover', function () {
             this.limpar.setTint(0x0000ff);
+              
+            
         }, this);
         this.limpar.on('pointerout', function () {
             this.limpar.setTint();
@@ -168,6 +185,7 @@ class PracticeScene extends Phaser.Scene{
         this.backl.on('pointerdown', function () {
             this.scene.start('FirstScene');
             cont=1; 
+            
         }, this);
         this.backl.on('pointerover', function(){
             this.backl.displayHeight += 5;
@@ -180,7 +198,7 @@ class PracticeScene extends Phaser.Scene{
 
         this.paint.setInteractive({useHandCursor: true});
         this.paint.on('pointerdown', function () {
-            
+           this.openExternalLink();
         }, this);
         this.paint.on('pointerover', function(){
             this.paint.displayHeight += 5;
@@ -200,68 +218,109 @@ class PracticeScene extends Phaser.Scene{
             
         }, this);
         
-       
         this.mais.setInteractive({useHandCursor: true});
         this.mais.on('pointerdown', function () {
-            //deslocar a tabela inicial e os botoes  colocados  na esq tabela
-            //this.tweens.add({targets: element, x:'-=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.paint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.limpar,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.infog2,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: col,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-
-
-            /*
-            // colunas adicionadas
-            if (cont==1){
-                y = 3*cont + x + 278.5 ;
-            }else {
-                y = y + 168.5;
-            }
-            cont+=1;
-           
-           
-            for(var i = 0; i <array.length; i++){
-                array[i] += 168.18;
-                col = this.add.dom(array[i],628).createFromCache('tcolform');
-
-                console.log(array[i]);
-
-            }
-            array.push(x);
             
-            col = this.add.dom(array[i],628).createFromCache('tcolform');
-            col.addListener('click'); 
-            */
-            this.calculaMDCcoluna();
-            //buscar os valores sao colocados na tabela inicial  
-            last = tb.numberofTabelas - 1;
-            tb.tabelas[last].dividendo = element.getChildByName("dividendo").value;
-            tb.tabelas[last].divisor = element.getChildByName("divisor").value;
-            tb.tabelas[last].quociente = element.getChildByName("quociente").value;
-            tb.tabelas[last].resto = element.getChildByName("resto").value;
-            console.log(tb.tabelas[0].dividendo, tb.tabelas[0].divisor, tb.tabelas[0].quociente, tb.tabelas[0].resto, tb.tabelas[0].posicao);
+        
+            // valores inseridos pelo utilizador da 2º coluna pra a frente 
+            dividendoUti1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendo"]').value;
+            divisorUti1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisor"]').value;
+            restoUti1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="resto"]').value;
+            quocienteUti1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').value;
+            //console.log(cont);
+
+
+            // valores inseridos pelo utilizador da 1 coluna 
+            dividendoUti = element.getChildByName("dividendo").value;
+            divisorUti = element.getChildByName("divisor").value;
+            quocienteUti = element.getChildByName("quociente").value;
+            restoUti = element.getChildByName("resto").value;
             
-            if (tb.tabelas[last].dividendo == dividendoC && tb.tabelas[last].divisor == divisorC && tb.tabelas[last].resto ==restoC && tb.tabelas[last].quociente==quocienteC &&
-                tb.tabelas[last].divisor != '' && tb.tabelas[last].dividendo != '' && tb.tabelas[last].resto != '' && tb.tabelas[last].quociente != ''){
-                col = this.add.dom(y,628).createFromCache('tcolform');
-                col.addListener('click');
+       
+            this.calculaMDC1coluna();
+            if ( dividendoUti == dividendoC &&  divisorUti == divisorC && restoUti ==restoC && quocienteUti==quocienteC && 
+                dividendoUti != '' &&  divisorUti != '' && restoUti !='' && quocienteUti!='' ){
+                
+                tcolv.setActive(false).setVisible(false);
+
+                //col.addListener('click');
                 console.log("certo");
                 console.log(dividendoC);
                 console.log(divisorC);
                 console.log(restoC);
                 console.log(quocienteC); 
+
+                nRow = `
+                <div style="display: flex ">
+                    <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
+                        <input id="dividendo" type="number"  name="dividendo" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:#2ECCFA;"> 
+                        <input id="divisor" type="number"  name="divisor" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:#FE2E2E;"> 
+                        <input id="resto" type="number"  name="resto" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:#80FF00;"> 
+                        <input id="quociente" type="number"  name="quociente" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:#E6E6E6;"> 
+                    </div>
+                </div>
+            `;
+                //document.getElementById("row-principal").innerHTML += nRow;   
+                document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
+                
+            
+                cont++;
+                console.log(cont);
+                this.tweens.add({targets: this.paint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.limpar,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.infog2,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.mais,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.menos,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+
+                
+                
+                if (cont>1){
+                    
+                    //console.log(cont);
+                    this.calculaMDCcol();
+                    if ( dividendoUti1 == dividendoC &&  divisorUti1 == divisorC && restoUti1 ==restoC && quocienteUti1==quocienteC &&
+                        divisorUti1 != '' &&  dividendoUti1 != '' && restoUti != '' && quocienteUti1 != ''){
+                        //tcolv.setActive(false).setVisible(false);
+
+                        this.tweens.add({targets: this.paint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                        this.tweens.add({targets: this.limpar,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                        this.tweens.add({targets: this.infog2,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                        this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                        this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                        this.tweens.add({targets: this.mais,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+                        this.tweens.add({targets: this.menos,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+
+                        //col.addListener('click');
+                        console.log("certo");
+                        console.log(dividendoC);
+                        console.log(divisorC);
+                        console.log(restoC);
+                        console.log(quocienteC);
+                    
+                    }else {
+                        tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                        console.log("errado");
+                        console.log(dividendoC);
+                        console.log(divisorC);
+                        console.log(restoC);
+                        console.log(quocienteC); 
+                    }
+                    
+                }
+                
+            
             } else {
+                //errado  da 1 coluna 
                 tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                 console.log("errado");
                 console.log(dividendoC);
                 console.log(divisorC);
                 console.log(restoC);
                 console.log(quocienteC); 
-            }
-            
+            }  
+        
         }, this);
 
         this.mais.on('pointerover', function(){
@@ -279,7 +338,29 @@ class PracticeScene extends Phaser.Scene{
 
         this.menos.setInteractive({useHandCursor: true});
         this.menos.on('pointerdown', function () {
-            col.setActive(false).setVisible(false);
+            //debugger
+            table = document.getElementById('row-principal');
+            if (table.children.length > 2){  
+                table.removeChild(table.lastElementChild);
+                this.tweens.add({targets: this.paint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.limpar,x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.infog2,x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.tinfo, x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.tpaint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.mais,x: '-=150',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.menos,x: '-=150',duration: 0.01 ,ease: 'Power3'});
+
+
+            }else if (table.children.length ==2){
+                
+                table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
+                table.lastElementChild.querySelector('input[name="divisor"]').value = '';
+                table.lastElementChild.querySelector('input[name="resto"]').value = '';
+                table.lastElementChild.querySelector('input[name="quociente"]').value = '';
+            }
+            
+
+
         }, this);
         this.menos.on('pointerover', function(){
             this.menos.displayHeight += 5;
@@ -357,10 +438,9 @@ class PracticeScene extends Phaser.Scene{
      
     //estrutura inicial da tabela
     tableinput(){
-        element = this.add.dom(1050,630).createFromCache('tableform');
+        element = this.add.dom("", "").createFromCache('tableform');
         this.aGrid.placeAtIndex(77.5, element);
-        x=element.x;
-        tb.newTabelas(-1, -1,-1,-1,x);
+      
         element.addListener('click');
     }
 
@@ -385,7 +465,7 @@ class PracticeScene extends Phaser.Scene{
         }
     }
 
-    calculaMDCcoluna(){
+    calculaMDC1coluna(){
         if (primeiroNumero > segundoNumero){
             dividendoC = primeiroNumero;
             divisorC = segundoNumero;
@@ -402,10 +482,22 @@ class PracticeScene extends Phaser.Scene{
         }
     }
     
-
+    // mdc das colunas s/ 1º coluna
     
+    calculaMDCcol(){
+        dividendoC= divisorC;
+        divisorC = restoC;
+        restoC = dividendoC % divisorC;
+        quocienteC = Math.floor( dividendoC / divisorC);
+        
+    }
+    openExternalLink (){
+    
+        var url = 'https://www.google.com/'
+        var s = window.open(url, '_blank');
 
-   
+    }
+
     
 }
    
