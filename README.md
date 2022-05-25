@@ -21,6 +21,8 @@
 
 * Corrigir o facto dos botões da informação e dos créditos não funcionarem depois dessa cena ter sido fechada (Relacionado com o facto do Phaser não aceitar que as Scenes tenha cenas repetidas) 
 
-* botao "-" apaga apenas a ultima coluna (apaga so uma vez )
+* botao "-" 
+
+* botao limpar  
 
 
