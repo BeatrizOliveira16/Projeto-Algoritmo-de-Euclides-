@@ -4,7 +4,7 @@
 -> PraticeScene:
 
 * TABELAAAAA  (erro ns deslocaçao) e  (ver a questao das cores)
-* verificar valores inseridos pelo utilizador     //feito (primeira coluna)
+* verificar valores inseridos pelo utilizador     //feito (primeira coluna) e 2ª coluna 
 
 
 -> CONCLUIDO:
