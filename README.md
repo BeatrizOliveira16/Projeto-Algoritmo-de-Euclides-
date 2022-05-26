@@ -1,8 +1,8 @@
 # Projeto
-->FALTA:
+->*FALTA*:
 * Escolher uma fonte de jeito (bia) 
 
--> PraticeScene:
+-> *PraticeScene*:
 
 * centrar a tabela 
 * botao "-" (atualizar o mdc)
@@ -13,7 +13,7 @@
 
 
 
--> CONCLUIDO:
+-> *CONCLUIDO*:
 * verificaçao dos valores inseridos pelo utilizador     
 * InfoScene 
 * UnderstandScene
