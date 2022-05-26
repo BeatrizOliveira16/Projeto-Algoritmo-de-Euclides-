@@ -5,8 +5,8 @@
 -> *PraticeScene*:
 
 * centrar a tabela 
-* botao "-" (atualizar o mdc
-
+* botao "-" (atualizar o mdc ) 
+* corrigir (fazer tabela ) 
 
 
 -> *CONCLUIDO*:
