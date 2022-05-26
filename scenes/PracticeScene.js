@@ -12,8 +12,7 @@ let  dividendoUti1,divisorUti1,restoUti1,quocienteUti1, nRow, row, table;
 
 class PracticeScene extends Phaser.Scene{
 
-    constructor ()
-    {
+    constructor () {
         super('PracticeScene');
     }
 
@@ -100,38 +99,30 @@ class PracticeScene extends Phaser.Scene{
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
             Align.scaleToGameW(this.barrainfo1, 0.60);
             this.barrainf1();
-            
+        
             //atualizar inf da barra info2
             r.setText('m.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
             trfc.setActive(false).setVisible(false);
             trfe.setActive(false).setVisible(false);
             tcolv.setActive(false).setVisible(false);
             
-
-        
+       
             resultadofinal.getChildByName("rf").value = '';
             table = document.getElementById('row-principal');
             var n = 0;
             while (table.children.length > 2) {
-              
                 table.removeChild(table.lastElementChild);
-                
-                n++;
-                
+                n++;   
             }
             
             console.log(n);
           
-            this.tweens.add({targets: this.paint,x:( '+=103' )* (n+1) ,duration: 0.01 ,ease: 'Power3', paused: false});
-            this.tweens.add({targets: this.limpar,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.infog2,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.tinfo, x: '+=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.tpaint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.mais,x: '-=150',duration: 0.01 ,ease: 'Power3'});
-            this.tweens.add({targets: this.menos,x: '-=150',duration: 0.01 ,ease: 'Power3'});
-
-
-            
+            this.aGrid.placeAtIndex(64,this.infog2);
+            this.aGrid.placeAtIndex(76,this.paint);
+            this.aGrid.placeAtIndex(88,this.limpar);
+            this.aGrid.placeAtIndex(67,this.mais);
+            this.aGrid.placeAtIndex(91,this.menos);
+           
             
             if(table.children.length ==2){
                 
@@ -145,6 +136,7 @@ class PracticeScene extends Phaser.Scene{
             //element.setActive(false).setVisible(false);
             //col.setActive(false).setVisible(false);
         },this);
+
         this.refresh.on('pointerover', function(){
             this.refresh.displayHeight += 5;
             this.refresh.displayWidth += 5;
@@ -154,20 +146,12 @@ class PracticeScene extends Phaser.Scene{
             this.refresh.displayWidth -= 5;
         }, this);
 
-
-        this.verificar.on('pointerover', function(){
-            this.verificar.setTint(0x0000ff);
-
-        }, this);
-        this.verificar.on('pointerout', function(){
-            this.verificar.setTint();
-        }, this);
-
         this.corrigir.setInteractive({useHandCursor: true});
+
         this.corrigir.on('pointerover', function(){
             this.corrigir.setTint(0x0000ff);
-
         }, this);
+
         this.corrigir.on('pointerout', function(){
             this.corrigir.setTint();
         }, this);
@@ -176,6 +160,7 @@ class PracticeScene extends Phaser.Scene{
         this.infog2.on('pointerdown', function () {
             
         }, this);
+
         this.infog2.on('pointerover', function(){
             this.infog2.displayHeight += 5;
             this.infog2.displayWidth += 5;
@@ -184,6 +169,7 @@ class PracticeScene extends Phaser.Scene{
             this.tinfo.setVisible(true);
             this.aGrid.placeAtIndex(51.7,this.tinfo);
         }, this);
+
         this.infog2.on('pointerout', function(){
             this.infog2.displayHeight -= 5;
             this.infog2.displayWidth -= 5;
@@ -195,30 +181,25 @@ class PracticeScene extends Phaser.Scene{
             if (table.lastElementChild.querySelector('input[name="dividendo"]').value !='' &&
             table.lastElementChild.querySelector('input[name="divisor"]').value != '' &&
             table.lastElementChild.querySelector('input[name="resto"]').value != '' &&
-            table.lastElementChild.querySelector('input[name="quociente"]').value != ''){
-
-            
+            table.lastElementChild.querySelector('input[name="quociente"]').value != ''){          
                 table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
                 table.lastElementChild.querySelector('input[name="divisor"]').value = '';
                 table.lastElementChild.querySelector('input[name="resto"]').value = '';
                 table.lastElementChild.querySelector('input[name="quociente"]').value = '';
-            }
-            
+            }  
         }, this);
+
         this.limpar.on('pointerover', function () {
-            this.limpar.setTint(0x0000ff);
-              
-            
+            this.limpar.setTint(0x0000ff);           
         }, this);
         this.limpar.on('pointerout', function () {
             this.limpar.setTint();
         }, this);
-
+ 
         this.backl.setInteractive({useHandCursor: true});
         this.backl.on('pointerdown', function () {
             this.scene.start('FirstScene');
             cont=1; 
-            
         }, this);
         this.backl.on('pointerover', function(){
             this.backl.displayHeight += 5;
@@ -233,6 +214,7 @@ class PracticeScene extends Phaser.Scene{
         this.paint.on('pointerdown', function () {
            this.openExternalLink();
         }, this);
+
         this.paint.on('pointerover', function(){
             this.paint.displayHeight += 5;
             this.paint.displayWidth += 5;
@@ -241,14 +223,11 @@ class PracticeScene extends Phaser.Scene{
             this.tpaint.setVisible(true);
             this.aGrid.placeAtIndex(52.7,this.tpaint);
         },this);
+
         this.paint.on('pointerout', function(){
             this.paint.displayHeight -= 5;
             this.paint.displayWidth -= 5;
             this.tpaint.setVisible(false);
-        }, this);
-
-        this.limpar.on('pointerdown', function () {
-            
         }, this);
         
         this.mais.setInteractive({useHandCursor: true});
@@ -313,15 +292,12 @@ class PracticeScene extends Phaser.Scene{
                 
                 }else {
                     tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-
                     console.log("errado");
                     console.log(dividendoC);
                     console.log(divisorC);
                     console.log(restoC);
                     console.log(quocienteC); 
                 }
-
-                
             }    
 
             else if (cont>0){
@@ -401,11 +377,8 @@ class PracticeScene extends Phaser.Scene{
                 table.lastElementChild.querySelector('input[name="resto"]').value = '';
                 table.lastElementChild.querySelector('input[name="quociente"]').value = '';
             }
-            
-            
-
-
         }, this);
+
         this.menos.on('pointerover', function(){
             this.menos.displayHeight += 5;
             this.menos.displayWidth += 5;
@@ -419,19 +392,22 @@ class PracticeScene extends Phaser.Scene{
             this.tmenos.setVisible(false);
         }, this);
        
-        this.barrainfo2.setInteractive({useHandCursor: true});
-        this.barrainfo2.on('pointerdown', function () {
-            
-        }, this);
         this.verificar.setInteractive({useHandCursor: true});
+        this.verificar.on('pointerover', function(){
+            this.verificar.setTint(0x0000ff);
+        }, this);
+
+        this.verificar.on('pointerout', function(){
+            this.verificar.setTint();
+        }, this);
+
         this.verificar.on('pointerdown', function () {
             trfc.setVisible(true);
             trfe.setVisible(true);
             tcolv.setVisible(false);
            
-            
+        
             this.calculaMDC();
-            console.
             //rf = resultadofinal.getChildByName("rf").value;
            
             console.log(resultadofinal);   //valor colocado pela pessoa
@@ -446,12 +422,11 @@ class PracticeScene extends Phaser.Scene{
             }else if (resultadofinal.v == '' ) {
                 resultadofinal = resultado;
             } else  {
-              
                 trfc.setActive(false).setVisible(false);
                 trfe.setText( 'Resultado incorreto :( ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                 // tabela inicial 
             }
-            
+        
         }, this);
 
         this.barrainf1();
@@ -461,14 +436,10 @@ class PracticeScene extends Phaser.Scene{
         trfe = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
         tcolv = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
 
-
-    
         //input resultado final
         resultadofinal = this.add.dom(1250,1038).createFromCache('resultadofinal');
         resultadofinal.addListener('click');
     }
-
-    update (){}
     
     //conteudo da barra1
     barrainf1(){
@@ -541,17 +512,14 @@ class PracticeScene extends Phaser.Scene{
         dividendoC= divisorC;
         divisorC = restoC;
         restoC = dividendoC % divisorC;
-        quocienteC = Math.floor( dividendoC / divisorC);
-        
+        quocienteC = Math.floor( dividendoC / divisorC);  
     }
     
     openExternalLink (){
-    
         var url = 'https://www.google.com/'
         var s = window.open(url, '_blank');
-
     }
 
-    
+    update (){}
 }
    
