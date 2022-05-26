@@ -276,7 +276,6 @@ class PracticeScene extends Phaser.Scene{
                     //document.getElementById("row-principal").innerHTML += nRow;   
                     document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
                     
-                    
                     cont++;
                     console.log(cont);
                     this.tweens.add({targets: this.paint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
@@ -301,8 +300,6 @@ class PracticeScene extends Phaser.Scene{
             }    
 
             else if (cont>0){
-                    
-
                     //console.log(cont);
 
                     if ( dividendoUti1 == dividendoC &&  divisorUti1 == divisorC && restoUti1 ==restoC && quocienteUti1==quocienteC &&
@@ -330,7 +327,6 @@ class PracticeScene extends Phaser.Scene{
                     
                     }else {
                         tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-
                         console.log("errado");
                         console.log(dividendoC);
                         console.log(divisorC);
@@ -338,8 +334,6 @@ class PracticeScene extends Phaser.Scene{
                         console.log(quocienteC); 
                     }
             } 
-        
-        
         }, this);
 
         this.mais.on('pointerover', function(){
@@ -408,23 +402,17 @@ class PracticeScene extends Phaser.Scene{
            
         
             this.calculaMDC();
-            //rf = resultadofinal.getChildByName("rf").value;
+            rf = resultadofinal.getChildByName("rf").value;
            
             console.log(resultadofinal);   //valor colocado pela pessoa
             console.log(resultado); // valor calculado plea funçao calculamdc
             
-            if (rf=='') resultadofinal= resultado; 
             if (rf == resultado){
                 trfe.setActive(false).setVisible(false);
                 trfc.setText('Parabéns. Resultado correto!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
- 
-               // funçao que faz a tabela sozinha 
-            }else if (resultadofinal.v == '' ) {
-                resultadofinal = resultado;
             } else  {
                 trfc.setActive(false).setVisible(false);
-                trfe.setText( 'Resultado incorreto :( ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-                // tabela inicial 
+                trfe.setText( 'Resultado incorreto :( ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' }); 
             }
         
         }, this);
