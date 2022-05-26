@@ -3,11 +3,11 @@
 * Escolher uma fonte de jeito 
 -> PraticeScene:
 
-* centrar a tabela 
+* * centrar a tabela 
 * * botao "-" (atualizar o mdc)
-* cores (tudo a branco) 
-* refresh (as transsiçoes so mexem uma vez)
-* corrigir (fazer tudo)
+* * cores (tudo a branco) 
+* * refresh (as transsiçoes so mexem uma vez)
+* * corrigir (fazer tudo)
 
 
 
