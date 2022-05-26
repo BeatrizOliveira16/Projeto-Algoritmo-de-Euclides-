@@ -6,13 +6,15 @@
 
 * centrar a tabela 
 * botao "-" (atualizar o mdc)
-* cores (tudo a branco) 
+
 * corrigir (fazer tudo)
 
 
 
 
 -> *CONCLUIDO*:
+* corrigir (fazer tudo)
+* cores (tudo a branco) 
 * verificaçao dos valores inseridos pelo utilizador     
 * InfoScene 
 * UnderstandScene
