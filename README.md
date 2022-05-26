@@ -3,11 +3,16 @@
 * Escolher uma fonte de jeito 
 -> PraticeScene:
 
-* TABELAAAAA  (erro ns deslocaçao) e  (ver a questao das cores)
-* verificar valores inseridos pelo utilizador     //feito (primeira coluna) e 2ª coluna 
+* centrar a tabela 
+* * botao "-" (atualizar o mdc)
+* cores (tudo a branco) 
+* refresh (as transsiçoes so mexem uma vez)
+* corrigir (fazer tudo)
+
 
 
 -> CONCLUIDO:
+* verificaçao dos valores inseridos pelo utilizador     
 
 * InfoScene 
 
@@ -20,8 +25,6 @@
 *  mudar a cor dos botoes corrigir, limpar e verificar
 
 * Corrigir o facto dos botões da informação e dos créditos não funcionarem depois dessa cena ter sido fechada (Relacionado com o facto do Phaser não aceitar que as Scenes tenha cenas repetidas) 
-
-* botao "-" 
 
 * botao limpar  
 
