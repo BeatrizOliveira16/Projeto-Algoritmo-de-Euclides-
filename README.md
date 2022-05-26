@@ -5,10 +5,7 @@
 -> *PraticeScene*:
 
 * centrar a tabela 
-* botao "-" (atualizar o mdc)
-
-* corrigir (fazer tudo)
-
+* botao "-" (atualizar o mdc
 
 
 
