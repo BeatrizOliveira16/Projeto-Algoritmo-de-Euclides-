@@ -1,6 +1,6 @@
 # Projeto
 ->FALTA:
-* Escolher uma fonte de jeito 
+* Escolher uma fonte de jeito (bia) 
 -> PraticeScene:
 
 * centrar a tabela 
