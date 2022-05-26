@@ -12,21 +12,15 @@
 
 
 
+
 -> CONCLUIDO:
 * verificaçao dos valores inseridos pelo utilizador     
-
 * InfoScene 
-
 * UnderstandScene
-
 * Jogo adaptado para os diversos tipos de ecrãs incluindo smartphones
-
 *  CreditsScene
-
 *  mudar a cor dos botoes corrigir, limpar e verificar
-
 * Corrigir o facto dos botões da informação e dos créditos não funcionarem depois dessa cena ter sido fechada (Relacionado com o facto do Phaser não aceitar que as Scenes tenha cenas repetidas) 
-
 * botao limpar  
 
 
