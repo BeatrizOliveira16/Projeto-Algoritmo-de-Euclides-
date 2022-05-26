@@ -7,7 +7,7 @@
 * centrar a tabela 
 * botao "-" (atualizar o mdc ) 
 * corrigir (fazer tabela ) 
-* cores (retornar as cores) 
+* cores (retornar as cores vivas ) 
 
 
 
