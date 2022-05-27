@@ -4,7 +4,7 @@
 
 -> *PraticeScene*:
 * botao limpar estoura qnd nao tem valores 
-* clicar no mais dps do verificar estoura
+* clicar no mais dps do verificar estoura (so se nao tiver nada preenchido)
 * centrar a tabela 
 * botao "-" (atualizar o mdc )  (em processo) :( (apenas apaga a 2ªcoluna e retoma sem stress) 
 * corrigir (fazer tabela ) 
