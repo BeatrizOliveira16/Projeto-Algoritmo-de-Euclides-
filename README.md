@@ -7,7 +7,7 @@
 * centrar a tabela 
 * botao "-" (atualizar o mdc ) 
 * corrigir (fazer tabela ) 
-* cores (retornar as cores vivas ) 
+ 
 
 
 
@@ -24,5 +24,6 @@
 * botao limpar 
 * Restrição para quando resto = 0 
 * botao refresh
+* cores (retornar as cores vivas )
 
 
