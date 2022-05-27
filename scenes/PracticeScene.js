@@ -1,6 +1,6 @@
 
-let cont = 0;
-let x, y; // posiçao da tabela e colunas  
+
+
 let primeiroNumero, segundoNumero; // valores aleatorios
 let rf; // valor colocado pela pessoa 
 let dividendoC, divisorC, restoC, quocienteC, resultado; // valores corretos de cada coluna
@@ -9,7 +9,9 @@ let mdc, r;  // texto da barra 1 e 2
 let resultadofinal, element; // assets
 let dividendoUti, divisorUti, restoUti, quocienteUti; // valores inseridos pelo utilizador 1 coluna 
 let dividendoUti1,divisorUti1,restoUti1,quocienteUti1, nRow, row, table;
-let whitecolor = false;
+
+
+
 
 class PracticeScene extends Phaser.Scene{
 
@@ -31,9 +33,18 @@ class PracticeScene extends Phaser.Scene{
         this.load.image('backl','assets/backl.png',37,40,18);
         this.load.html('tableform', 'assets/tableform.html');
         this.load.html('resultadofinal', 'assets/resultadofinal.html');
+        this.load.html('tablecorrigir', 'assets/tablecorrigir.html');
+
     }
      
-    create() {    
+    create() {   
+        let  cont =0;  // ncliks no mais
+        let whitecolor = false;  
+        primeiroNumero = Phaser.Math.Between(0,10000);
+        segundoNumero = Phaser.Math.Between(0,10000);
+         
+
+
         var grelhaConfig = {scene:this, rows:12,cols:12};
         this.aGrid = new AlignGrid(grelhaConfig);
         //this.aGrid.showNumbers();
@@ -91,6 +102,8 @@ class PracticeScene extends Phaser.Scene{
         this.backl = this.add.sprite(0,0,'backl');
         this.aGrid.placeAtIndex(12.5,this.backl);
         Align.scaleToGameW(this.backl, 0.07);
+        
+        //this.calculaMDC();
 
         
         this.refresh.setInteractive({useHandCursor: true});
@@ -148,14 +161,26 @@ class PracticeScene extends Phaser.Scene{
         this.corrigir.setInteractive({useHandCursor: true});
         this.corrigir.on('pointerdown', function () {
             this.calculaMDC();
+            //console.log(nlinhas);
             this.corrigir.setVisible(false);
             this.verificar.setVisible(false);
+            trfc.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+            table = document.getElementById('row-principal');
+            table ='' 
+
+
             
             rf = resultadofinal.getChildByName("rf").value;
             if (rf == ''){
                 document.getElementById("rf-input").value = resultado;
                 trfe.setText( 'Devias ter tentado resolver por ti próprio!', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
             }
+            var element1 = this.add.dom("", "").createFromCache('tablecorrigir');
+            this.aGrid.placeAtIndex(77.5, element1);
+      
+            element1.addListener('click');
+            document.getElementById("row-principal-corrigir");
+
         }, this);
 
         this.corrigir.on('pointerover', function(){
@@ -228,7 +253,7 @@ class PracticeScene extends Phaser.Scene{
         this.paint.on('pointerdown', function () {
             var rp = document.getElementById('row-principal')
             var rpNumberOfChildren = rp.children.length;
-            
+           
             if(whitecolor==false){
                 if (rpNumberOfChildren > 1) {
                     for (let i = 1; i < rpNumberOfChildren; i++) {
@@ -256,7 +281,8 @@ class PracticeScene extends Phaser.Scene{
                 }
                 whitecolor = false;
             }
-
+            
+           
 
             //this.openExternalLink();
             
@@ -276,7 +302,7 @@ class PracticeScene extends Phaser.Scene{
             this.paint.displayWidth -= 5;
             this.tpaint.setVisible(false);
         }, this);
-         
+        
         
         this.mais.setInteractive({useHandCursor: true});
         this.mais.on('pointerdown', function () {        
@@ -291,10 +317,11 @@ class PracticeScene extends Phaser.Scene{
             divisorUti = element.getChildByName("divisor").value;
             quocienteUti = element.getChildByName("quociente").value;
             restoUti = element.getChildByName("resto").value;
+            trfe.setActive(false).setVisible(false);
 
             if (cont==0){
                 this.calculaMDC1coluna();
-                //console.log(cont)
+                console.log(cont)
                 if(restoUti > 0){
                     //console.log(restoUti)
                     if ( dividendoUti == dividendoC &&  divisorUti == divisorC && restoUti ==restoC && quocienteUti==quocienteC && 
@@ -451,7 +478,7 @@ class PracticeScene extends Phaser.Scene{
                 restoC= divisorC
                 divisorC= dividendoC 
                 dividendoC= dividendoC =divisorC * quocienteC +restoC
-
+               
 
                 console.log(dividendoC);
                 console.log(divisorC);
@@ -505,16 +532,16 @@ class PracticeScene extends Phaser.Scene{
         }, this);
 
         this.verificar.on('pointerdown', function () {
+            
             trfc.setVisible(true);
             trfe.setVisible(true);
             tcolv.setVisible(false);
-            
+            //console.log(cont)
             this.calculaMDC();
-            //console.log(resultadofinal);   //valor colocado pela pessoa
-            console.log(resultado);          // valor calculado plea funçao calculamdc
+            
             rf = resultadofinal.getChildByName("rf").value;
-
-            console.log(rf);
+            console.log(resultado);          // valor calculado plea funçao calculamdc
+            console.log(rf);                //valor colocado pela pessoa
 
             if (rf == resultado   ){
                 trfe.setActive(false).setVisible(false);
@@ -530,8 +557,7 @@ class PracticeScene extends Phaser.Scene{
         
         }, this);
         //gerar 2 numeros aleatorios
-        primeiroNumero = Phaser.Math.Between(0,10000);
-        segundoNumero = Phaser.Math.Between(0,10000);
+       
 
         this.calculaMDC1coluna();
         this.barrainf1();
@@ -572,28 +598,34 @@ class PracticeScene extends Phaser.Scene{
 
     // valor do mdc correto dos valores aleatorios 
     calculaMDC(){
-        while(primeiroNumero != 0 & segundoNumero != 0){
-            if(primeiroNumero > segundoNumero){
-                var resto = primeiroNumero % segundoNumero;
-                primeiroNumero = segundoNumero;
-                segundoNumero = resto;
+        var primeiroNumero1= primeiroNumero
+        var segundoNumero1= segundoNumero
+        
+        while(primeiroNumero1 != 0 & segundoNumero1 != 0){
+            //nlinhas++;
+           if(primeiroNumero1 > segundoNumero1){
+                var resto = primeiroNumero1 % segundoNumero1;
+                primeiroNumero1 = segundoNumero1;
+                segundoNumero1 = resto;
             }else{
-                resto = segundoNumero % primeiroNumero;
-                segundoNumero = primeiroNumero;
-                primeiroNumero = resto;
+                resto = segundoNumero1 % primeiroNumero1;
+                segundoNumero1 = primeiroNumero1;
+                primeiroNumero1 = resto;
             }
         }
 
-        if (primeiroNumero == 0) {
-            resultado = segundoNumero;
+        if (primeiroNumero1 == 0) {
+            resultado = segundoNumero1;
         }
         else {
-            resultado = primeiroNumero;
+            resultado = primeiroNumero1;
         }
+        //console.log(nlinhas);
     }
-    // mdc soemnte da 1 ªcolunas 
+    // mdc somente da 1 ªcolunas 
     
     calculaMDC1coluna(){
+       
         if (primeiroNumero > segundoNumero){
             dividendoC = primeiroNumero;
             divisorC = segundoNumero;
