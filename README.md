@@ -5,7 +5,7 @@
 -> *PraticeScene*:
 
 * centrar a tabela 
-* botao "-" (atualizar o mdc ) 
+* botao "-" (atualizar o mdc )  (em processo) :( 
 * corrigir (fazer tabela ) 
 * qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza (feito) -> bia testa 
 * cores (feitas a trocar alternadamente (cores vivas e branco) -> bia testa 
