@@ -7,7 +7,7 @@
 * centrar a tabela 
 * botao "-" (atualizar o mdc )  (em processo) :( 
 * corrigir (fazer tabela ) 
-* qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza (feito) -> bia testa 
+* qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza (feito) -> bia testa ( clica no botao refresh dps de remotar) testa todas as maneiras possiveis.)  
 * cores (feitas a trocar alternadamente (cores vivas e branco)) -> bia testa 
  
 
