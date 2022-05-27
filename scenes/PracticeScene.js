@@ -147,8 +147,7 @@ class PracticeScene extends Phaser.Scene{
             this.calculaMDC();
             this.corrigir.setVisible(false);
             this.verificar.setVisible(false);
-
-
+            
             rf = resultadofinal.getChildByName("rf").value;
             if (rf == ''){
                 document.getElementById("rf-input").value = resultado;
@@ -225,19 +224,37 @@ class PracticeScene extends Phaser.Scene{
         this.paint.on('pointerdown', function () {
             var rp = document.getElementById('row-principal')
             var rpNumberOfChildren = rp.children.length;
+            
+            if(whitecolor==false){
+                if (rpNumberOfChildren > 1) {
+                    for (let i = 1; i < rpNumberOfChildren; i++) {
+                        var columnNumberOfChildren = rp.children[i].children.length;
 
-            if (rpNumberOfChildren > 1) {
-                for (let i = 1; i < rpNumberOfChildren; i++) {
-                    var columnNumberOfChildren = rp.children[i].children.length;
-
-                    for (let z = 0; z < columnNumberOfChildren; z++) {
-                        rp.children[i].children[z].style.backgroundColor = 'white';
+                        for (let z = 0; z < columnNumberOfChildren; z++) {
+                            rp.children[i].children[z].style.backgroundColor = 'white';
+                        }
                     }
                 }
-            }
-            whitecolor = true;
+                whitecolor = true;
+            }else{
+                if (rpNumberOfChildren > 1) {
+                    for (let i = 1; i < rpNumberOfChildren; i++) {
+                        var columnNumberOfChildren = rp.children[i].children.length;
+    
+                        for (let z = 0; z < columnNumberOfChildren; z++) {
+                            if (z==0) rp.children[i].children[z].style.backgroundColor = '#2ECCFA';
+                            if (z==1) rp.children[i].children[z].style.backgroundColor = '#FE2E2E';
+                            if (z==2) rp.children[i].children[z].style.backgroundColor = '#80FF00';
+                            if (z==3) rp.children[i].children[z].style.backgroundColor = '#E6E6E6';
 
-            this.openExternalLink();
+                        }
+                    }
+                }
+                whitecolor = false;
+            }
+
+
+            //this.openExternalLink();
             
         }, this);
 
@@ -339,6 +356,11 @@ class PracticeScene extends Phaser.Scene{
                         nRow = nRow.replace('#FE2E2E', '#FFF')
                         nRow = nRow.replace('#80FF00', '#FFF')
                         nRow = nRow.replace('#E6E6E6', '#FFF')
+                    }else{
+                        nRow = nRow.replace('#FFF','#2ECCFA')
+                        nRow = nRow.replace('#FFF','#FE2E2E')
+                        nRow = nRow.replace( '#FFF','#80FF00')
+                        nRow = nRow.replace( '#FFF','#E6E6E6')
                     }
                     //console.log(cont);
                     if(restoUti1 > 0){
