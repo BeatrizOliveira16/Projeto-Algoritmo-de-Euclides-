@@ -5,20 +5,14 @@
 -> *PraticeScene*:
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
-* botao "-" (atualizar o mdc ) (completamente certo qnd se apaga a 2 coluna, apagar uma coluna superior a 2 n da) em processo: o resto ta desaparecido
- 
-
--> LISTA DE ESPERA PARA APROVAÇAO (VERIFICA BIA)
-* qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza (feito) -> bia testa ( clica no botao refresh dps de remotar, testa todas as maneiras possiveis.)  
-* cores (feitas a trocar alternadamente (cores vivas e branco)) -> bia testa ( refresh, sair da cena...)
-* corrigir (fazer tabela ) (ja aparece a tabela :) )  
- 
-
-
+* botao "-" (atualizar o mdc, apagar uma coluna superior a 2 n da) em processo: o resto ta desaparecido
+* alterar a cor da linha do quociente (tem de ser diferente das restantes nas duas versões)
+* aumentar o scroll
+* meter as cores iguais na diagonal na tabela
+* Quando se clica no mais, em que o resto = 0, o botão verifica estoura
 
 -> *CONCLUIDO*:
 * corrigir (fazer tudo)
-* cores (tudo a branco) 
 * verificaçao dos valores inseridos pelo utilizador     
 * InfoScene 
 * UnderstandScene
@@ -29,8 +23,8 @@
 * botao limpar 
 * Restrição para quando resto = 0 
 * botao refresh
-* cores (retornar as cores vivas )
 * clicar no mais dps do verificar estoura (na 1 coluna)
-
-
-
+* cores (feitas a trocar alternadamente (cores vivas e branco))
+* corrigir (aparecer a tabela ) 
+* botão "-" (atualizar o mdc para a segunda coluna)
+* qnd se sai da cena praticar, o valor do mdc alterar
