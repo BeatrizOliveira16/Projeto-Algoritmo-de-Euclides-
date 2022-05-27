@@ -6,11 +6,12 @@
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
 * botao "-" (atualizar o mdc ) (completamente certo qnd se apaga a 2 coluna, apagar uma coluna superior a 2 n da) em processo: o resto ta desaparecido
-* corrigir (fazer tabela ) (ja aparece a tabela :) )  
+ 
 
 -> LISTA DE ESPERA PARA APROVAÇAO (VERIFICA BIA)
 * qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza (feito) -> bia testa ( clica no botao refresh dps de remotar, testa todas as maneiras possiveis.)  
 * cores (feitas a trocar alternadamente (cores vivas e branco)) -> bia testa ( refresh, sair da cena...)
+* corrigir (fazer tabela ) (ja aparece a tabela :) )  
  
 
 
