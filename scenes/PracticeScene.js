@@ -423,7 +423,44 @@ class PracticeScene extends Phaser.Scene{
         this.menos.setInteractive({useHandCursor: true});
         this.menos.on('pointerdown', function () {
             //debugger
+            //console.log(table.children.length)
             table = document.getElementById('row-principal');
+            //console.log(table.children.length)
+            if(table.children.length == 3) {
+                if (primeiroNumero > segundoNumero){
+                    dividendoC = primeiroNumero;
+                    divisorC = segundoNumero;
+                } else {
+                    divisorC = primeiroNumero;
+                    dividendoC = segundoNumero;
+                }
+                if(dividendoC > divisorC){
+                    restoC = dividendoC % divisorC;
+                    quocienteC = Math.floor( dividendoC / divisorC);
+                } else { 
+                    restoC = divisorC % dividendoC;
+                    quocienteC = Math.floor( divisorC / dividendoC);
+                }
+                console.log(dividendoC);
+                console.log(divisorC);
+                console.log(restoC);
+                console.log(quocienteC); 
+            }else {
+                //quocienteC = so deus sabe 
+                restoC= divisorC
+                divisorC= dividendoC 
+                dividendoC= dividendoC =divisorC * quocienteC +restoC
+
+
+                console.log(dividendoC);
+                console.log(divisorC);
+                console.log(restoC);
+                console.log(quocienteC);
+            }
+
+
+            
+            //table = document.getElementById('row-principal');
             if (table.children.length > 2){  
                 table.removeChild(table.lastElementChild);
                 this.tweens.add({targets: this.paint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
