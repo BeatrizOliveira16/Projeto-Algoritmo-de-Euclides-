@@ -1,7 +1,7 @@
 # Projeto
 ->*FALTA*:
 * Escolher uma fonte de jeito (bia) 
-##FALTA:
+
 -> *PraticeScene*:
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
