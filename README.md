@@ -1,14 +1,14 @@
 # Projeto
 ->*FALTA*:
 * Escolher uma fonte de jeito (bia) 
-
+##FALTA:
 -> *PraticeScene*:
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
 * botao "-" (atualizar o mdc )  (em processo) :( (apenas apaga a 2ªcoluna e retoma sem stress) 
 * corrigir (fazer tabela ) 
 
--> Em espera (VERIFICA BIA)
+-> LISTA DE ESPERA PARA APROVAÇAO (VERIFICA BIA)
 * qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza (feito) -> bia testa ( clica no botao refresh dps de remotar, testa todas as maneiras possiveis.)  
 * cores (feitas a trocar alternadamente (cores vivas e branco)) -> bia testa 
  
