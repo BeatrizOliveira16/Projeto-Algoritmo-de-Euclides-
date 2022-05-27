@@ -7,6 +7,7 @@
 * centrar a tabela 
 * botao "-" (atualizar o mdc ) 
 * corrigir (fazer tabela ) 
+* qnd se sai da cena praticar e se retomar o mdc nao atualiza 
  
 
 
