@@ -7,7 +7,8 @@
 * centrar a tabela 
 * botao "-" (atualizar o mdc ) 
 * corrigir (fazer tabela ) 
-* qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza 
+* qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza (feito) -> bia testa 
+* cores (feitas) -> bia testa 
  
 
 
