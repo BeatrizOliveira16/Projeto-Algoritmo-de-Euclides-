@@ -3,7 +3,7 @@
 * Escolher uma fonte de jeito (bia) 
 
 -> *PraticeScene*:
-
+* botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
 * botao "-" (atualizar o mdc )  (em processo) :( (apenas apagar a 2ªcoluna e retoma sem stress) 
 * corrigir (fazer tabela ) 
