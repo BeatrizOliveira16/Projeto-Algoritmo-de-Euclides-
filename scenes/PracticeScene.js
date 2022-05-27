@@ -447,6 +447,7 @@ class PracticeScene extends Phaser.Scene{
                 console.log(quocienteC); 
             }else {
                 //quocienteC = so deus sabe 
+                /*
                 restoC= divisorC
                 divisorC= dividendoC 
                 dividendoC= dividendoC =divisorC * quocienteC +restoC
@@ -456,6 +457,7 @@ class PracticeScene extends Phaser.Scene{
                 console.log(divisorC);
                 console.log(restoC);
                 console.log(quocienteC);
+                */
             }
 
 
