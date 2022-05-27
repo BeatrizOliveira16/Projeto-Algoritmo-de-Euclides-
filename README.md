@@ -5,7 +5,7 @@
 -> *PraticeScene*:
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
-* botao "-" (atualizar o mdc )  (em processo) :( (apenas apaga a 2ªcoluna e retoma sem stress) 
+* botao "-" (atualizar o mdc ) (completamente certo qnd se apaga a 2 coluna, apagar uma coluna superior a 2 n da) em processo: o resto ta desaparecido
 * corrigir (fazer tabela ) 
 
 -> LISTA DE ESPERA PARA APROVAÇAO (VERIFICA BIA)
