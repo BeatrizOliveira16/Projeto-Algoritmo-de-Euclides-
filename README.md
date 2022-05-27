@@ -5,7 +5,7 @@
 -> *PraticeScene*:
 
 * centrar a tabela 
-* botao "-" (atualizar o mdc )  (em processo) :( (ja da para apagar a 2ªcoluna sem stress)
+* botao "-" (atualizar o mdc )  (em processo) :( (apenas apagar a 2ªcoluna e retoma sem stress) 
 * corrigir (fazer tabela ) 
 * qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza (feito) -> bia testa ( clica no botao refresh dps de remotar, testa todas as maneiras possiveis.)  
 * cores (feitas a trocar alternadamente (cores vivas e branco)) -> bia testa 
