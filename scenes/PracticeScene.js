@@ -9,6 +9,7 @@ let mdc, r;  // texto da barra 1 e 2
 let resultadofinal, element; // assets
 let dividendoUti, divisorUti, restoUti, quocienteUti; // valores inseridos pelo utilizador 1 coluna 
 let dividendoUti1,divisorUti1,restoUti1,quocienteUti1, nRow, row, table;
+let _dividendo, _divisor, _resto, _quociente;
 
 
 
@@ -33,7 +34,7 @@ class PracticeScene extends Phaser.Scene{
         this.load.image('backl','assets/backl.png',37,40,18);
         this.load.html('tableform', 'assets/tableform.html');
         this.load.html('resultadofinal', 'assets/resultadofinal.html');
-        this.load.html('tablecorrigir', 'assets/tablecorrigir.html');
+        
 
     }
      
@@ -116,7 +117,8 @@ class PracticeScene extends Phaser.Scene{
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
             Align.scaleToGameW(this.barrainfo1, 0.60);
             this.barrainf1();
-        
+            
+
             //atualizar inf da barra info2
             r.setText('m.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
             trfc.setActive(false).setVisible(false);
@@ -165,22 +167,60 @@ class PracticeScene extends Phaser.Scene{
             this.corrigir.setVisible(false);
             this.verificar.setVisible(false);
             trfc.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
-            table = document.getElementById('row-principal');
-            table ='' 
+      
+            
+            var tableCorrigida = document.getElementById('row-principal')
+            rf = resultadofinal.getChildByName("rf").value;
+           
+            document.getElementById("rf-input").value = resultado;
+            trfe.setText( 'Devias ter tentado resolver por ti próprio!', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+            
+            this.calculaMDC1coluna()
+            console.log(restoC)
 
+            var tableCorrigida = document.getElementById('row-principal')
+            _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`
+            _divisor= `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`
+            _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`
+            _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`
+
+            nRow = `
+                <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
+                    ${_dividendo}    
+                    ${_divisor}
+                    ${_resto}
+                    ${_quociente}
+                </div>
+            `; 
+            while(restoC > 0){
+                if (tableCorrigida.children.length ==2){
+                    
+                    document.getElementById("dividendo").value = dividendoC;
+                    document.getElementById("divisor").value = divisorC;
+                    document.getElementById("resto").value = restoC;
+                    document.getElementById("quociente").value = quocienteC;
+                    //add a 3 coluna
+                    document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
+                    
+
+                } else if (tableCorrigida.children.length >2 ){
+                    this.calculaMDCcol()
+                    //console.log(DividendoC)
+                    tableCorrigida.lastElementChild.querySelector('input[name="dividendoc"]').value = dividendoC
+                    tableCorrigida.lastElementChild.querySelector('input[name="divisorc"]').value = divisorC
+                    tableCorrigida.lastElementChild.querySelector('input[name="restoc"]').value = restoC
+                    tableCorrigida.lastElementChild.querySelector('input[name="quocientec"]').value = quocienteC
+
+                    if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
+
+                }
+               
+                
+            }
 
             
-            rf = resultadofinal.getChildByName("rf").value;
-            if (rf == ''){
-                document.getElementById("rf-input").value = resultado;
-                trfe.setText( 'Devias ter tentado resolver por ti próprio!', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
-            }
-            var element1 = this.add.dom("", "").createFromCache('tablecorrigir');
-            this.aGrid.placeAtIndex(77.5, element1);
-      
-            element1.addListener('click');
-            document.getElementById("row-principal-corrigir");
 
+            
         }, this);
 
         this.corrigir.on('pointerover', function(){
@@ -269,7 +309,7 @@ class PracticeScene extends Phaser.Scene{
                 if (rpNumberOfChildren > 1) {
                     for (let i = 1; i < rpNumberOfChildren; i++) {
                         var columnNumberOfChildren = rp.children[i].children.length;
-    
+                         
                         for (let z = 0; z < columnNumberOfChildren; z++) {
                             if (z==0) rp.children[i].children[z].style.backgroundColor = '#2ECCFA';
                             if (z==1) rp.children[i].children[z].style.backgroundColor = '#FE2E2E';
@@ -332,11 +372,11 @@ class PracticeScene extends Phaser.Scene{
                         console.log("certo");
 
                             //console.log(colorwhite)
-                            let _dividendo=  `<input id="dividendo" type="number"  name="dividendo" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`
-                            let _divisor= `<input id="divisor" type="number"  name="divisor" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`
-                            let _resto = `<input id="resto" type="number"  name="resto" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`
-                            let _quociente = `<input id="quociente" type="number"  name="quociente" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`
-                            
+                            _dividendo=  `<input id="dividendoc" type="number"  name="dividendo" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`
+                            _divisor= `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`
+                            _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`
+                            _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`
+                              
                             
                         nRow = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -487,8 +527,6 @@ class PracticeScene extends Phaser.Scene{
                 */
             }
 
-
-            
             //table = document.getElementById('row-principal');
             if (table.children.length > 2){  
                 table.removeChild(table.lastElementChild);
@@ -543,16 +581,58 @@ class PracticeScene extends Phaser.Scene{
             console.log(resultado);          // valor calculado plea funçao calculamdc
             console.log(rf);                //valor colocado pela pessoa
 
-            if (rf == resultado   ){
-                trfe.setActive(false).setVisible(false);
-                trfc.setText('Parabéns. Resultado correto!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
- 
-           
+            if (rf == resultado ){
+                document.getElementById("rf-input").value = resultado;
+                trfe.setText( 'Parabéns. Com trabalho os bons resultados  aparecerão. ', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+                //'Parabéns. Com trabalho e dedicação os bons resultados  aparecerão. '
+
+                this.calculaMDC1coluna()
+                console.log(restoC)
+
+                var tableCorrigida = document.getElementById('row-principal')
+                _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`
+                _divisor= `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`
+                _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`
+                _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`
+
+                nRow = `
+                    <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
+                        ${_dividendo}    
+                        ${_divisor}
+                        ${_resto}
+                        ${_quociente}
+                    </div>
+                `; 
+                while(restoC > 0){
+                    if (tableCorrigida.children.length ==2){
+
+                        document.getElementById("dividendo").value = dividendoC;
+                        document.getElementById("divisor").value = divisorC;
+                        document.getElementById("resto").value = restoC;
+                        document.getElementById("quociente").value = quocienteC;
+                        //add a 3 coluna
+                        document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
+
+
+                    } else if (tableCorrigida.children.length >2 ){
+                        this.calculaMDCcol()
+                        //console.log(DividendoC)
+                        tableCorrigida.lastElementChild.querySelector('input[name="dividendoc"]').value = dividendoC
+                        tableCorrigida.lastElementChild.querySelector('input[name="divisorc"]').value = divisorC
+                        tableCorrigida.lastElementChild.querySelector('input[name="restoc"]').value = restoC
+                        tableCorrigida.lastElementChild.querySelector('input[name="quocientec"]').value = quocienteC
+
+                        if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
+                        //
+                    }
+                    this.corrigir.setActive(false).setVisible(false)
+                    this.verificar.setActive(false).setVisible(false)
+                
+
+                }
             }else {
                 trfc.setActive(false).setVisible(false);
                 trfe.setText( 'Deves ter cometido algum erro! Tenta outra vez!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-                
-
             }
         
         }, this);
