@@ -4,10 +4,11 @@
 
 -> *PraticeScene*:
 * botao limpar estoura qnd nao tem valores 
-* clicar no mais dps do verificar estoura (na 1 coluna)
 * centrar a tabela 
 * botao "-" (atualizar o mdc )  (em processo) :( (apenas apaga a 2ªcoluna e retoma sem stress) 
 * corrigir (fazer tabela ) 
+
+-> Em espera
 * qnd se sai da cena praticar e se retoma a msm cena  o mdc nao atualiza (feito) -> bia testa ( clica no botao refresh dps de remotar, testa todas as maneiras possiveis.)  
 * cores (feitas a trocar alternadamente (cores vivas e branco)) -> bia testa 
  
@@ -28,5 +29,7 @@
 * Restrição para quando resto = 0 
 * botao refresh
 * cores (retornar as cores vivas )
+* clicar no mais dps do verificar estoura (na 1 coluna)
+
 
 
