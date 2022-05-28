@@ -4,6 +4,7 @@
 
 -> *PraticeScene*:
 * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
+* verificar o dividendo, divisor, quociente no verificar 
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
 * botao "-" (atualizar o mdc, apagar uma coluna superior a 2 n da) em processo: o resto ta desaparecido
