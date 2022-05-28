@@ -3,13 +3,16 @@
 * Escolher uma fonte de jeito (bia) 
 
 -> *PraticeScene*:
+* nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
 * botao "-" (atualizar o mdc, apagar uma coluna superior a 2 n da) em processo: o resto ta desaparecido
 * alterar a cor da linha do quociente (tem de ser diferente das restantes nas duas versões)
-* aumentar o scroll ( é para apagar xD -> tem que se colocar a tabela a deslocar  )
 * meter as cores iguais na diagonal na tabela (impossivel) 
 * Quando se clica no mais, em que o resto = 0, o botão verifica estoura
+
+-> *SEI LA* 
+* aumentar o scroll ( é para apagar xD -> tem que se colocar a tabela a deslocar)
 
 -> *CONCLUIDO*:
 * corrigir (fazer tudo)
