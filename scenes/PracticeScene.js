@@ -122,7 +122,7 @@ class PracticeScene extends Phaser.Scene{
             trfc.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
       
             
-            var tableCorrigida = document.getElementById('row-principal');
+            
             rf = resultadofinal.getChildByName("rf").value;
            
             document.getElementById("rf-input").value = resultado;
@@ -132,10 +132,10 @@ class PracticeScene extends Phaser.Scene{
             console.log(restoC);
 
             var tableCorrigida = document.getElementById('row-principal');
-            _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
-            _divisor= `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-            _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-            _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`;
+            _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
+            _divisor= `<input id="divisorc" type="number"  name="divisorc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+            _resto = `<input id="restoc" type="number"  name="restoc"  disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+            _quociente = `<input id="quocientec" type="number"  name="quocientec" disabled  style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`;
 
             nRow = `
                 <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -238,11 +238,12 @@ class PracticeScene extends Phaser.Scene{
             if (cont==0){
                 this.calculaMDC1coluna();
                 console.log(cont);
-                if(restoUti > 0){
+                if(restoC > 0){
                     //console.log(restoUti)
                     if ( dividendoUti == dividendoC &&  divisorUti == divisorC && restoUti ==restoC && quocienteUti==quocienteC && 
                     dividendoUti != '' &&  divisorUti != '' && restoUti !='' && quocienteUti!='' ){
-
+                        //table = document.getElementById('row-principal')
+                        
                         tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                         console.log("certo");
 
@@ -305,7 +306,7 @@ class PracticeScene extends Phaser.Scene{
                         nRow = nRow.replace( '#FFF','#E6E6E6');
                     }
                     //console.log(cont);
-                    if(restoUti1 > 0){
+                    if(restoC > 0){
                         if ( dividendoUti1 == dividendoC &&  divisorUti1 == divisorC && restoUti1 ==restoC && quocienteUti1==quocienteC && 
                             divisorUti1 != '' &&  dividendoUti1 != '' && restoUti != '' && quocienteUti1 != ''){
                             tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
@@ -474,7 +475,7 @@ class PracticeScene extends Phaser.Scene{
                 
         this.refresh.setInteractive({useHandCursor: true});
         this.refresh.on('pointerdown', function(){
-            cont =0;  // colocar o nº de cliques do mais = 0 para recomeçar a fazer o mdc
+            cont= 0;  // colocar o nº de cliques do mais = 0 para recomeçar a fazer o mdc
             primeiroNumero = Phaser.Math.Between(0,10000);
             segundoNumero = Phaser.Math.Between(0,10000);
             //atualizar inf da barra info1
@@ -553,10 +554,10 @@ class PracticeScene extends Phaser.Scene{
                 console.log(restoC);
 
                 var tableCorrigida = document.getElementById('row-principal');
-                _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
-                _divisor= `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-                _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`;
+                _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc"  disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
+                _divisor= `<input id="divisorc" type="number"  name="divisorc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+                _resto = `<input id="restoc" type="number"  name="restoc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+                _quociente = `<input id="quocientec" type="number"  name="quocientec" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`;
 
                 nRow = `
                     <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
