@@ -121,8 +121,6 @@ class PracticeScene extends Phaser.Scene{
             this.verificar.setVisible(false);
             trfc.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
       
-            
-            
             rf = resultadofinal.getChildByName("rf").value;
            
             document.getElementById("rf-input").value = resultado;
@@ -163,8 +161,11 @@ class PracticeScene extends Phaser.Scene{
                     tableCorrigida.lastElementChild.querySelector('input[name="quocientec"]').value = quocienteC;
 
                     if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
-                }     
+                }   
+            
             }
+            this.tweens.add({targets: this.mais,x: '+=300',duration: 0.01 ,ease: 'Power3'});
+            this.tweens.add({targets: this.menos,x: '+=300',duration: 0.01 ,ease: 'Power3'});
         }, this);
 
         this.corrigir.on('pointerover', function(){
@@ -261,10 +262,11 @@ class PracticeScene extends Phaser.Scene{
                                 ${_quociente}
                             </div>
                         `; 
-                            //document.getElementById("row-principal").innerHTML += nRow;   
+                             
                             document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
                             cont++;
-                            //console.log(cont);
+                            
+                            //table = document.getElementById('row-principal')
                             this.tweens.add({targets: this.paint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.limpar,x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.infog2,x: '-=103',duration: 0.01 ,ease: 'Power3'});
@@ -272,7 +274,7 @@ class PracticeScene extends Phaser.Scene{
                             this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.mais,x: '+=150',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.menos,x: '+=150',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: table,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+                            //this.tweens.add({targets: this.table,x: '+=150',duration: 0.01 ,ease: 'Power3'});
 
                             this.calculaMDCcol();
                     } else {
@@ -361,8 +363,24 @@ class PracticeScene extends Phaser.Scene{
             //debugger
             //console.log(table.children.length);
             table = document.getElementById('row-principal');
-            //console.log(table.children.length);
-            if(table.children.length == 3) {
+            if (table.children.length > 2){  
+                table.removeChild(table.lastElementChild);
+                this.tweens.add({targets: this.paint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.limpar,x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.infog2,x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.tinfo, x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.tpaint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.mais,x: '-=150',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.menos,x: '-=150',duration: 0.01 ,ease: 'Power3'});
+            }else if (table.children.length ==2){
+                table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
+                table.lastElementChild.querySelector('input[name="divisor"]').value = '';
+                table.lastElementChild.querySelector('input[name="resto"]').value = '';
+                table.lastElementChild.querySelector('input[name="quociente"]').value = '';
+            }
+            
+            console.log(table.children.length);
+            if(table.children.length == 2) {
                 if (primeiroNumero > segundoNumero){
                     dividendoC = primeiroNumero;
                     divisorC = segundoNumero;
@@ -382,34 +400,18 @@ class PracticeScene extends Phaser.Scene{
                 console.log(restoC);
                 console.log(quocienteC); 
             }else {
-                //quocienteC = so deus sabe 
-                /*
-                restoC= divisorC
-                divisorC= dividendoC 
-                dividendoC= dividendoC =divisorC * quocienteC +restoC
-               
+                this.calculaMDC1coluna()
+                //console.log((table.children.length) - 1)
+                for ( var j = 1; j<(table.children.length) - 1 ;j++){
+                    this.calculaMDCcol();
+                }
                 console.log(dividendoC);
                 console.log(divisorC);
                 console.log(restoC);
-                console.log(quocienteC);
-                */
+                console.log(quocienteC); 
             }
-            //table = document.getElementById('row-principal');
-            if (table.children.length > 2){  
-                table.removeChild(table.lastElementChild);
-                this.tweens.add({targets: this.paint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.limpar,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.infog2,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.tinfo, x: '+=103',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.tpaint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.mais,x: '-=150',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.menos,x: '-=150',duration: 0.01 ,ease: 'Power3'});
-            }else if (table.children.length ==2){
-                table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
-                table.lastElementChild.querySelector('input[name="divisor"]').value = '';
-                table.lastElementChild.querySelector('input[name="resto"]').value = '';
-                table.lastElementChild.querySelector('input[name="quociente"]').value = '';
-            }
+            
+      
         }, this);
 
         this.menos.on('pointerover', function(){
