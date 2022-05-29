@@ -6,7 +6,7 @@
 * Centrar os botoes "<-", "->"  e home  
 
 -> *PraticeScene*:
-* imagem para a 
+* imagem para o botao info 
 * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 * verificar o dividendo, divisor, quociente no verificar (ultima coluna) 
 * botao limpar estoura qnd nao tem valores 
