@@ -6,6 +6,7 @@
 * Centrar os botoes "<-", "->"  e home  (bia)
 
 -> *PraticeScene*:
+* Pedir o botao do link  
 * imagem para o botao info 
 * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 * centrar a tabela 
