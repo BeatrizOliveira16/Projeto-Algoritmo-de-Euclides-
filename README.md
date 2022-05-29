@@ -11,10 +11,9 @@
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
 * meter as cores iguais na diagonal na tabela (impossivel) 
-* Quando se clica no mais, em que o resto = 0, o botão verifica estoura
 
 
--> Lista de espera de verificação (testa bia) 
+-> *Lista de espera de verificação (testa bia) 
  * botao "-" para todas as colunas 
 
 
