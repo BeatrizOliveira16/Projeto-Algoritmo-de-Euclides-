@@ -379,29 +379,16 @@ class PracticeScene extends Phaser.Scene{
                 table.lastElementChild.querySelector('input[name="quociente"]').value = '';
             }
             
-            console.log(table.children.length);
+            //console.log(table.children.length);
             if(table.children.length == 2) {
-                if (primeiroNumero > segundoNumero){
-                    dividendoC = primeiroNumero;
-                    divisorC = segundoNumero;
-                } else {
-                    divisorC = primeiroNumero;
-                    dividendoC = segundoNumero;
-                }
-                if(dividendoC > divisorC){
-                    restoC = dividendoC % divisorC;
-                    quocienteC = Math.floor( dividendoC / divisorC);
-                } else { 
-                    restoC = divisorC % dividendoC;
-                    quocienteC = Math.floor( divisorC / dividendoC);
-                }
+                this.calculaMDC1coluna();
                 console.log(dividendoC);
                 console.log(divisorC);
                 console.log(restoC);
                 console.log(quocienteC); 
-            }else {
-                this.calculaMDC1coluna()
-                //console.log((table.children.length) - 1)
+            } else {
+                this.calculaMDC1coluna();
+                
                 for ( var j = 1; j<(table.children.length) - 1 ;j++){
                     this.calculaMDCcol();
                 }
@@ -411,6 +398,7 @@ class PracticeScene extends Phaser.Scene{
                 console.log(quocienteC); 
             }
             
+           
       
         }, this);
 
