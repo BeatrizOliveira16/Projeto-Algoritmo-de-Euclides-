@@ -8,7 +8,6 @@
 -> *PraticeScene*:
 * imagem para o botao info 
 * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
-* botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
 
 
