@@ -11,7 +11,6 @@
 * verificar o dividendo, divisor, quociente no verificar (ultima coluna) 
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
-* alterar a cor da linha do quociente (tem de ser diferente das restantes nas duas versões)
 * meter as cores iguais na diagonal na tabela (impossivel) 
 * Quando se clica no mais, em que o resto = 0, o botão verifica estoura
 * Verificar com o mdc correto e ter uma coluna vazia, estoura 
