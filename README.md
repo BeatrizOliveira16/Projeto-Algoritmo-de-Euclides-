@@ -11,7 +11,7 @@
 * centrar a tabela 
 
 
--> *COISAS IMPOSSIVES, OU QUASE  
+-> *COISAS IMPOSSIVES, OU QUASE*
 * meter as cores iguais na diagonal na tabela (impossivel) 
 
 -> *Lista de espera de verificação (testa bia)*
