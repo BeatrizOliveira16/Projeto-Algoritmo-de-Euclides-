@@ -10,10 +10,12 @@
 * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
+
+
+-> *COISAS IMPOSSIVES, OU QUASE  
 * meter as cores iguais na diagonal na tabela (impossivel) 
 
-
--> *Lista de espera de verificação (testa bia) 
+-> *Lista de espera de verificação (testa bia)*
  * botao "-" para todas as colunas 
 
 
