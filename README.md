@@ -15,7 +15,7 @@
 * meter as cores iguais na diagonal na tabela (impossivel) 
 
 -> *Lista de espera de verificação (testa bia)*
- * botao "-" para todas as colunas 
+ * botao "-" para todas as colunas (verificação dos valores)
 
 
 -> *SEI LA* 
