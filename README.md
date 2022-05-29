@@ -8,12 +8,11 @@
 -> *PraticeScene*:
 * imagem para o botao info 
 * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
-* verificar o dividendo, divisor, quociente no verificar (ultima coluna) 
 * botao limpar estoura qnd nao tem valores 
 * centrar a tabela 
 * meter as cores iguais na diagonal na tabela (impossivel) 
 * Quando se clica no mais, em que o resto = 0, o botão verifica estoura
-* Verificar com o mdc correto e ter uma coluna vazia, estoura 
+
 
 -> Lista de espera de verificação (testa bia) 
  * botao "-" para todas as colunas 
