@@ -11,6 +11,11 @@
 * alterar a cor da linha do quociente (tem de ser diferente das restantes nas duas versões)
 * meter as cores iguais na diagonal na tabela (impossivel) 
 * Quando se clica no mais, em que o resto = 0, o botão verifica estoura
+* Verificar com o mdc correto e ter uma coluna vazia, estoura 
+
+-> QUESTOES: 
+qnd a tabela ja ta feita o mais e o menos desaparecem? pq se add mais colunas vai estourar
+ 
 
 -> *SEI LA* 
 * aumentar o scroll ( é para apagar xD -> tem que se colocar a tabela a deslocar)
