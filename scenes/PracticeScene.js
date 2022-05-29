@@ -2,7 +2,7 @@
 let primeiroNumero, segundoNumero; // valores aleatorios
 let rf; // valor colocado pela pessoa 
 let dividendoC, divisorC, restoC, quocienteC, resultado; // valores corretos de cada coluna
-let tcolv, trfc, trfe;// texto caso os valores estejam corretos ou errados
+let tcolv, trfc, trfe, tlimpar;// texto caso os valores estejam corretos ou errados
 let mdc, r;  // texto da barra 1 e 2 
 let resultadofinal, element; // assets
 let dividendoUti, divisorUti, restoUti, quocienteUti; // valores inseridos pelo utilizador 1 coluna 
@@ -34,8 +34,8 @@ class PracticeScene extends Phaser.Scene{
     create() {   
         let  cont =0;  // ncliks no mais
         let whitecolor = false;  
-        primeiroNumero = Phaser.Math.Between(0,10000);
-        segundoNumero = Phaser.Math.Between(0,10000);
+        primeiroNumero = Phaser.Math.Between(1,100);
+        segundoNumero = Phaser.Math.Between(1,100);
          
         var grelhaConfig = {scene:this, rows:12,cols:12};
         this.aGrid = new AlignGrid(grelhaConfig);
@@ -100,7 +100,8 @@ class PracticeScene extends Phaser.Scene{
         this.backl.setInteractive({useHandCursor: true});
         this.backl.on('pointerdown', function () {
             this.scene.start('FirstScene');
-            cont=1; 
+            cont=1;
+
         }, this);
 
         this.backl.on('pointerover', function(){
@@ -115,6 +116,8 @@ class PracticeScene extends Phaser.Scene{
 
         this.corrigir.setInteractive({useHandCursor: true});
         this.corrigir.on('pointerdown', function () {
+            tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
             this.calculaMDC();
             //console.log(nlinhas);
             this.corrigir.setVisible(false);
@@ -127,8 +130,14 @@ class PracticeScene extends Phaser.Scene{
             trfe.setText( 'Devias ter tentado resolver por ti próprio!', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
             
             this.calculaMDC1coluna();
-            console.log(restoC);
-
+            //console.log(restoC);
+            
+            table = document.getElementById('row-principal')
+            while (table.children.length>2 ){
+                table.removeChild(table.lastElementChild);
+                
+            }
+            
             var tableCorrigida = document.getElementById('row-principal');
             _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
             _divisor= `<input id="divisorc" type="number"  name="divisorc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
@@ -153,6 +162,8 @@ class PracticeScene extends Phaser.Scene{
                     document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
 
                 } else if (tableCorrigida.children.length >2 ){
+                    
+
                     this.calculaMDCcol()
                     //console.log(DividendoC)
                     tableCorrigida.lastElementChild.querySelector('input[name="dividendoc"]').value = dividendoC;
@@ -166,6 +177,15 @@ class PracticeScene extends Phaser.Scene{
             }
             this.tweens.add({targets: this.mais,x: '+=300',duration: 0.01 ,ease: 'Power3'});
             this.tweens.add({targets: this.menos,x: '+=300',duration: 0.01 ,ease: 'Power3'});
+
+            this.corrigir.setActive(false).setVisible(false);
+            this.verificar.setActive(false).setVisible(false);
+            this.mais.setActive(false).setVisible(false);
+            this.menos.setActive(false).setVisible(false);
+            this.limpar.setActive(false).setVisible(false);
+            this.infog2.setActive(false).setVisible(false);
+            
+            
         }, this);
 
         this.corrigir.on('pointerover', function(){
@@ -178,7 +198,7 @@ class PracticeScene extends Phaser.Scene{
 
         this.infog2.setInteractive({useHandCursor: true});
         this.infog2.on('pointerdown', function () {
-            
+            tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
         }, this);
 
         this.infog2.on('pointerover', function(){
@@ -198,6 +218,7 @@ class PracticeScene extends Phaser.Scene{
 
         this.limpar.setInteractive({useHandCursor: true});
         this.limpar.on('pointerdown', function () {
+            table = document.getElementById('row-principal')
             if (table.lastElementChild.querySelector('input[name="dividendo"]').value !='' &&
             table.lastElementChild.querySelector('input[name="divisor"]').value != '' &&
             table.lastElementChild.querySelector('input[name="resto"]').value != '' &&
@@ -207,9 +228,8 @@ class PracticeScene extends Phaser.Scene{
                 table.lastElementChild.querySelector('input[name="resto"]').value = '';
                 table.lastElementChild.querySelector('input[name="quociente"]').value = '';
             } else{
-                this.textlimpar = this.add.text(12, 18, ' gjksdjkf', { fontFamily: 'myfont4', fontSize: 25, color: '#0000000' });
-                //this.tweens.add({targets: this.textlimpar ,duration: 0.01 ,ease: 'Power3'});
-                console.log("a");
+                tlimpar.setText(' A coluna já se encontra vazia ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
             } 
         }, this);
 
@@ -223,6 +243,8 @@ class PracticeScene extends Phaser.Scene{
 
         this.mais.setInteractive({useHandCursor: true});
         this.mais.on('pointerdown', function () {        
+            tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
             // valores inseridos pelo utilizador da 2º coluna pra a frente 
             dividendoUti1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendo"]').value;
             divisorUti1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisor"]').value;
@@ -252,7 +274,7 @@ class PracticeScene extends Phaser.Scene{
                         _dividendo =  `<input id="dividendoc" type="number"  name="dividendo" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
                         _divisor = `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
                         _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                        _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`;
+                        _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#DCDCDC'};">`;
                               
                         nRow = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -300,12 +322,12 @@ class PracticeScene extends Phaser.Scene{
                         nRow = nRow.replace('#2ECCFA', '#FFF');
                         nRow = nRow.replace('#FE2E2E', '#FFF');
                         nRow = nRow.replace('#80FF00', '#FFF');
-                        nRow = nRow.replace('#E6E6E6', '#FFF');
+                        
                     }else{
                         nRow = nRow.replace('#FFF','#2ECCFA');
                         nRow = nRow.replace('#FFF','#FE2E2E');
                         nRow = nRow.replace( '#FFF','#80FF00');
-                        nRow = nRow.replace( '#FFF','#E6E6E6');
+                      
                     }
                     //console.log(cont);
                     if(restoC > 0){
@@ -360,6 +382,8 @@ class PracticeScene extends Phaser.Scene{
 
         this.menos.setInteractive({useHandCursor: true});
         this.menos.on('pointerdown', function () {
+            tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
             //debugger
             //console.log(table.children.length);
             table = document.getElementById('row-principal');
@@ -378,7 +402,6 @@ class PracticeScene extends Phaser.Scene{
                 table.lastElementChild.querySelector('input[name="resto"]').value = '';
                 table.lastElementChild.querySelector('input[name="quociente"]').value = '';
             }
-            
             //console.log(table.children.length);
             if(table.children.length == 2) {
                 this.calculaMDC1coluna();
@@ -386,7 +409,7 @@ class PracticeScene extends Phaser.Scene{
                 console.log(divisorC);
                 console.log(restoC);
                 console.log(quocienteC); 
-            } else {
+            }else {
                 this.calculaMDC1coluna();
                 
                 for ( var j = 1; j<(table.children.length) - 1 ;j++){
@@ -398,7 +421,6 @@ class PracticeScene extends Phaser.Scene{
                 console.log(quocienteC); 
             }
             
-           
       
         }, this);
 
@@ -418,6 +440,8 @@ class PracticeScene extends Phaser.Scene{
 
         this.paint.setInteractive({useHandCursor: true});
         this.paint.on('pointerdown', function () {
+            tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
             var rp = document.getElementById('row-principal')
             var rpNumberOfChildren = rp.children.length;
             if(whitecolor==false){
@@ -426,7 +450,10 @@ class PracticeScene extends Phaser.Scene{
                         var columnNumberOfChildren = rp.children[i].children.length;
 
                         for (let z = 0; z < columnNumberOfChildren; z++) {
-                            rp.children[i].children[z].style.backgroundColor = 'white';
+                            rp.children[i].children[0].style.backgroundColor = 'white'
+                            rp.children[i].children[1].style.backgroundColor = 'white'
+                            rp.children[i].children[2].style.backgroundColor = 'white'
+                            
                         }
                     }
                 }
@@ -439,7 +466,7 @@ class PracticeScene extends Phaser.Scene{
                             if (z==0) rp.children[i].children[z].style.backgroundColor = '#2ECCFA';
                             if (z==1) rp.children[i].children[z].style.backgroundColor = '#FE2E2E';
                             if (z==2) rp.children[i].children[z].style.backgroundColor = '#80FF00';
-                            if (z==3) rp.children[i].children[z].style.backgroundColor = '#E6E6E6';
+                            if (z==3) rp.children[i].children[z].style.backgroundColor = '#DCDCDC';
                         }
                     }
                 }
@@ -465,9 +492,11 @@ class PracticeScene extends Phaser.Scene{
                 
         this.refresh.setInteractive({useHandCursor: true});
         this.refresh.on('pointerdown', function(){
+            tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
             cont= 0;  // colocar o nº de cliques do mais = 0 para recomeçar a fazer o mdc
-            primeiroNumero = Phaser.Math.Between(0,10000);
-            segundoNumero = Phaser.Math.Between(0,10000);
+            primeiroNumero = Phaser.Math.Between(1,100);
+            segundoNumero = Phaser.Math.Between(1,100) ;
             //atualizar inf da barra info1
             this.barrainfo1 = this.add.sprite(0,0,'barrainfo1');
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
@@ -530,18 +559,42 @@ class PracticeScene extends Phaser.Scene{
             tcolv.setVisible(false);
             //console.log(cont)
             this.calculaMDC();
+
+            if ( dividendoUti1 != dividendoC && divisorUti1 != divisorC && restoUti1 !=restoC && quocienteUti1!=quocienteC) {
+                trfe.setText( 'Deves ter cometido algum erro! Tenta outra vez!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            }
+            
             
             rf = resultadofinal.getChildByName("rf").value;
-            console.log(resultado);          // valor calculado plea funçao calculamdc
-            console.log(rf);                //valor colocado pela pessoa
-
+            console.log(resultado);             // valor calculado plea funçao calculamdc
+            console.log(rf);                    //valor colocado pela pessoa
+            
+            
+            table = document.getElementById('row-principal')
+            if (table.children.length == 2 ){
+                if ( dividendoUti != dividendoC && divisorUti != divisorC && restoUti !=restoC && quocienteUti !=quocienteC) {
+                    trfe.setText( 'Deves ter cometido algum erro! Tenta outra vez!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                }
+            } else if (table.children.length > 2){
+                if ( dividendoUti1 != dividendoC && divisorUti1 != divisorC && restoUti1 !=restoC && quocienteUti1!=quocienteC) {
+                    trfe.setText( 'Deves ter cometido algum erro! Tenta outra vez!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                }
+            }
+            
             if (rf == resultado ){
+
                 document.getElementById("rf-input").value = resultado;
-                trfe.setText( 'Parabéns. Com trabalho os bons resultados  aparecerão. ', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+                trfe.setText( 'Parabéns! Com trabalho os bons resultados aparecerão. ', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
                 //'Parabéns. Com trabalho e dedicação os bons resultados  aparecerão. '
 
                 this.calculaMDC1coluna();
                 console.log(restoC);
+                table = document.getElementById('row-principal')
+                
+                while (table.children.length>2 ){
+                    table.removeChild(table.lastElementChild);
+                    
+                }
 
                 var tableCorrigida = document.getElementById('row-principal');
                 _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc"  disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
@@ -578,6 +631,10 @@ class PracticeScene extends Phaser.Scene{
                     }
                     this.corrigir.setActive(false).setVisible(false);
                     this.verificar.setActive(false).setVisible(false);
+                    this.mais.setActive(false).setVisible(false);
+                    this.menos.setActive(false).setVisible(false);
+                    this.limpar.setActive(false).setVisible(false);
+                    this.infog2.setActive(false).setVisible(false);
                 }
             }else {
                 trfc.setActive(false).setVisible(false);
@@ -593,6 +650,7 @@ class PracticeScene extends Phaser.Scene{
         this.tableinput();
         trfc = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
         trfe = this.add.text(400, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        tlimpar = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
         tcolv = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
 
         //input resultado final
@@ -645,11 +703,13 @@ class PracticeScene extends Phaser.Scene{
         else {
             resultado = primeiroNumero1;
         }
-        //console.log(nlinhas);
+   
     }
 
     // mdc somente da 1 ªcolunas 
     calculaMDC1coluna(){
+        
+
         if (primeiroNumero > segundoNumero){
             dividendoC = primeiroNumero;
             divisorC = segundoNumero;
@@ -664,6 +724,8 @@ class PracticeScene extends Phaser.Scene{
             restoC = divisorC % dividendoC;
             quocienteC = Math.floor( divisorC / dividendoC);
         }
+        
+
     }
     
     // mdc das colunas s/ 1º coluna
