@@ -14,7 +14,7 @@
 * Verificar com o mdc correto e ter uma coluna vazia, estoura 
 
 -> QUESTOES: 
-qnd a tabela ja ta feita o mais e o menos desaparecem? pq se add mais colunas vai estourar
+* qnd a tabela ja ta feita o mais e o menos desaparecem? pq se add mais colunas vai estourar
  
 
 -> *SEI LA* 
