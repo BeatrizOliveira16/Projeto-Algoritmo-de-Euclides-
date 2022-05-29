@@ -3,7 +3,7 @@
 * Escolher uma fonte de jeito (bia) 
 
 -> *UnderstandScene*: 
-* Centrar os botoes "<-", "->"  e home  
+* Centrar os botoes "<-", "->"  e home  (bia)
 
 -> *PraticeScene*:
 * imagem para o botao info 
