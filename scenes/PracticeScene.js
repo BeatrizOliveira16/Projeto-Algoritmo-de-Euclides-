@@ -251,20 +251,22 @@ class PracticeScene extends Phaser.Scene{
             restoUti1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="resto"]').value;
             quocienteUti1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').value;
             
+           
             // valores inseridos pelo utilizador da 1 coluna 
             dividendoUti = element.getChildByName("dividendo").value;
             divisorUti = element.getChildByName("divisor").value;
             quocienteUti = element.getChildByName("quociente").value;
             restoUti = element.getChildByName("resto").value;
+            
             trfe.setActive(false).setVisible(false);
 
             if (cont==0){
                 this.calculaMDC1coluna();
                 console.log(cont);
-                if(restoC > 0){
+                if(restoUti > 0){
                     //console.log(restoUti)
                     if ( dividendoUti == dividendoC &&  divisorUti == divisorC && restoUti ==restoC && quocienteUti==quocienteC && 
-                    dividendoUti != '' &&  divisorUti != '' && restoUti !='' && quocienteUti!='' ){
+                    dividendoUti != '' &&  divisorUti != '' && restoUti !='' && quocienteUti !='' ){
                         //table = document.getElementById('row-principal')
                         
                         tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
@@ -333,7 +335,7 @@ class PracticeScene extends Phaser.Scene{
                       
                     }
                     //console.log(cont);
-                    if(restoC > 0){
+                    if(restoUti1 > 0){
                         if ( dividendoUti1 == dividendoC &&  divisorUti1 == divisorC && restoUti1 ==restoC && quocienteUti1==quocienteC && 
                             divisorUti1 != '' &&  dividendoUti1 != '' && restoUti != '' && quocienteUti1 != ''){
                             tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
@@ -523,6 +525,12 @@ class PracticeScene extends Phaser.Scene{
                table.removeChild(table.lastElementChild);
                 
             }
+            /*
+            element = this.add.dom("", "").createFromCache('tableform');
+            this.aGrid.placeAtIndex(77.5, element);
+            element.addListener('click');
+            */
+
 
             
             whitecolor = false 
@@ -532,8 +540,6 @@ class PracticeScene extends Phaser.Scene{
             this.aGrid.placeAtIndex(67,this.mais);
             this.aGrid.placeAtIndex(91,this.menos);
 
-
-           
             if(table.children.length ==2){
 
                 //table = table.replace('#FFF','#2ECCFA')
@@ -601,6 +607,12 @@ class PracticeScene extends Phaser.Scene{
             }
             
             if (rf == resultado ){
+                this.corrigir.setActive(false).setVisible(false);
+                this.verificar.setActive(false).setVisible(false);
+                this.mais.setActive(false).setVisible(false);
+                this.menos.setActive(false).setVisible(false);
+                this.limpar.setActive(false).setVisible(false);
+                this.infog2.setActive(false).setVisible(false);
 
                 document.getElementById("rf-input").value = resultado;
                 trfe.setText( 'Parabéns! Com trabalho os bons resultados aparecerão. ', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
@@ -648,12 +660,7 @@ class PracticeScene extends Phaser.Scene{
 
                         if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
                     }
-                    this.corrigir.setActive(false).setVisible(false);
-                    this.verificar.setActive(false).setVisible(false);
-                    this.mais.setActive(false).setVisible(false);
-                    this.menos.setActive(false).setVisible(false);
-                    this.limpar.setActive(false).setVisible(false);
-                    this.infog2.setActive(false).setVisible(false);
+                    
                 }
             }else {
                 trfc.setActive(false).setVisible(false);
