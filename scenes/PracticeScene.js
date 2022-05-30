@@ -142,7 +142,7 @@ class PracticeScene extends Phaser.Scene{
             _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
             _divisor= `<input id="divisorc" type="number"  name="divisorc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
             _resto = `<input id="restoc" type="number"  name="restoc"  disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-            _quociente = `<input id="quocientec" type="number"  name="quocientec" disabled  style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`;
+            _quociente = `<input id="quocientec" type="number"  name="quocientec" disabled  style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
             nRow = `
                 <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -274,7 +274,7 @@ class PracticeScene extends Phaser.Scene{
                         _dividendo =  `<input id="dividendoc" type="number"  name="dividendo" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
                         _divisor = `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
                         _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                        _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#DCDCDC'};">`;
+                        _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
                               
                         nRow = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -323,10 +323,13 @@ class PracticeScene extends Phaser.Scene{
                         nRow = nRow.replace('#FE2E2E', '#FFF');
                         nRow = nRow.replace('#80FF00', '#FFF');
                         
-                    }else{
+                    }else{  
                         nRow = nRow.replace('#FFF','#2ECCFA');
                         nRow = nRow.replace('#FFF','#FE2E2E');
                         nRow = nRow.replace( '#FFF','#80FF00');
+
+                      
+
                       
                     }
                     //console.log(cont);
@@ -492,6 +495,7 @@ class PracticeScene extends Phaser.Scene{
                 
         this.refresh.setInteractive({useHandCursor: true});
         this.refresh.on('pointerdown', function(){
+            
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
 
             cont= 0;  // colocar o nº de cliques do mais = 0 para recomeçar a fazer o mdc
@@ -514,25 +518,41 @@ class PracticeScene extends Phaser.Scene{
             resultadofinal.getChildByName("rf").value = '';
             table = document.getElementById('row-principal');
             
-            while (table.children.length > 2) {
-                table.removeChild(table.lastElementChild);
-            }
             
+            while (table.children.length > 2) {
+               table.removeChild(table.lastElementChild);
+                
+            }
+
+            
+            whitecolor = false 
             this.aGrid.placeAtIndex(64,this.infog2);
             this.aGrid.placeAtIndex(76,this.paint);
             this.aGrid.placeAtIndex(88,this.limpar);
             this.aGrid.placeAtIndex(67,this.mais);
             this.aGrid.placeAtIndex(91,this.menos);
+
+
            
             if(table.children.length ==2){
+
+                //table = table.replace('#FFF','#2ECCFA')
                 table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
+                table.lastElementChild.querySelector('input[name="dividendo"]') = '#2ECCFA'
                 table.lastElementChild.querySelector('input[name="divisor"]').value = '';
                 table.lastElementChild.querySelector('input[name="resto"]').value = '';
                 table.lastElementChild.querySelector('input[name="quociente"]').value = '';
+
+              
             }
             this.corrigir.setVisible(true);
             this.verificar.setVisible(true);
+            this.mais.setVisible(true);
+            this.menos.setVisible(true);
+            this.limpar.setVisible(true);
+            this.infog2.setVisible(true);
             //this.calculaMDCcol();
+            
         },this);
 
         this.refresh.on('pointerover', function(){
@@ -600,7 +620,7 @@ class PracticeScene extends Phaser.Scene{
                 _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc"  disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
                 _divisor= `<input id="divisorc" type="number"  name="divisorc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
                 _resto = `<input id="restoc" type="number"  name="restoc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                _quociente = `<input id="quocientec" type="number"  name="quocientec" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#E6E6E6'};">`;
+                _quociente = `<input id="quocientec" type="number"  name="quocientec" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
                 nRow = `
                     <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
