@@ -533,7 +533,7 @@ class PracticeScene extends Phaser.Scene{
 
 
             
-            whitecolor = false 
+            //whitecolor = false 
             this.aGrid.placeAtIndex(64,this.infog2);
             this.aGrid.placeAtIndex(76,this.paint);
             this.aGrid.placeAtIndex(88,this.limpar);
@@ -582,17 +582,16 @@ class PracticeScene extends Phaser.Scene{
             trfc.setVisible(true);
             trfe.setVisible(true);
             tcolv.setVisible(false);
-            //console.log(cont)
             this.calculaMDC();
 
+            //acho que nao é preciso esta condição
             if ( dividendoUti1 != dividendoC && divisorUti1 != divisorC && restoUti1 !=restoC && quocienteUti1!=quocienteC) {
                 trfe.setText( 'Deves ter cometido algum erro! Tenta outra vez!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
             }
-            
-            
+
             rf = resultadofinal.getChildByName("rf").value;
-            console.log(resultado);             // valor calculado plea funçao calculamdc
-            console.log(rf);                    //valor colocado pela pessoa
+            console.log(resultado);                             // valor calculado plea funçao calculamdc
+            console.log(rf);                                    //valor colocado pela pessoa
             
             
             table = document.getElementById('row-principal')
@@ -619,7 +618,6 @@ class PracticeScene extends Phaser.Scene{
                 //'Parabéns. Com trabalho e dedicação os bons resultados  aparecerão. '
 
                 this.calculaMDC1coluna();
-                console.log(restoC);
                 table = document.getElementById('row-principal')
                 
                 while (table.children.length>2 ){
