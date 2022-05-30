@@ -6,7 +6,6 @@
 * Centrar os botoes "<-", "->"  e home  (bia)
 
 -> *PraticeScene*:
-* Qnd se clica no refresh e tem a cor branca, continua branca (erro na primeira coluna) 
 * Pedir o botao do link e a imagem do botao da infog2
 * imagem para o botao infog2 
 * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
