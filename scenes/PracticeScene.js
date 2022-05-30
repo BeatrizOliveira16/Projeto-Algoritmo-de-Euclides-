@@ -538,7 +538,6 @@ class PracticeScene extends Phaser.Scene{
 
                 //table = table.replace('#FFF','#2ECCFA')
                 table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
-                table.lastElementChild.querySelector('input[name="dividendo"]') = '#2ECCFA'
                 table.lastElementChild.querySelector('input[name="divisor"]').value = '';
                 table.lastElementChild.querySelector('input[name="resto"]').value = '';
                 table.lastElementChild.querySelector('input[name="quociente"]').value = '';
