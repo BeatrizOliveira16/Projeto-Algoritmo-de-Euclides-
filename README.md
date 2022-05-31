@@ -8,26 +8,15 @@
 * colocar o mais e o certo certos em todos os casos 
 * colocar o paint no verificar e corrigir  
 * colocar a preto o disabled
-
-
--> *COISAS IMPOSSIVES, OU QUASE*
-* meter as cores iguais na diagonal na tabela (impossivel) 
+* meter as cores iguais na diagonal na tabela 
 
 -> *Lista de espera de verificação (testa bia)*
  * botao "-" para todas as colunas (verificação dos valores)
  * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 
-
 -> *CONCLUIDO*:
 * valor do resultado ja nao altera, e partir da 2 coluna do corrigir e verificar tbm ja nao alteram (qnd aparece a tabela feita ) 
 * corrigir (fazer tudo)
-* verificaçao dos valores inseridos pelo utilizador     
-* InfoScene 
-* UnderstandScene
-* Jogo adaptado para os diversos tipos de ecrãs incluindo smartphones
-* CreditsScene
-* Mudar a cor dos botoes corrigir, limpar e verificar
-* Corrigir o facto dos botões da informação e dos créditos não funcionarem depois dessa cena ter sido fechada (Relacionado com o facto do Phaser não aceitar que as Scenes tenha cenas repetidas) 
 * botao limpar 
 * Restrição para quando resto = 0 
 * botao refresh
@@ -36,7 +25,3 @@
 * corrigir (aparecer a tabela ) 
 * botão "-" (atualizar o mdc para a segunda coluna)
 * qnd se sai da cena praticar, o valor do mdc alterar
-
-
--> *UnderstandScene*: 
-* Centrar os botoes "<-", "->"  e home  (bia)
