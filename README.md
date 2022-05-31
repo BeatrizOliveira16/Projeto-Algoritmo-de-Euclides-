@@ -4,7 +4,9 @@
 
 -> *PraticeScene*:
 * imagem para o botao infog2 
-* centrar a tabela
+* atualizar a posiçao da tabela no refresh
+* colocar o mais e o certo certos em todos os casos 
+* colocar o paint no verificar e corrigir  
 * colocar a preto o disabled
 
 
