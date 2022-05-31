@@ -2,7 +2,7 @@
 ->*FALTA*:
    * Escolher uma fonte de jeito (bia) 
 
-  -> *PraticeScene*:
+ -> *PraticeScene*:
     * imagem para o botao infog2 
     * atualizar a posiçao da tabela no refresh
     * colocar o mais e o certo certos em todos os casos 
@@ -10,7 +10,7 @@
     * colocar a preto o disabled
     * meter as cores iguais na diagonal na tabela 
 
-  -> *Lista de espera de verificação (testa bia)*
+ -> *Lista de espera de verificação (testa bia)*
     * botao "-" para todas as colunas (verificação dos valores)
     * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 
