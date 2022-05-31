@@ -15,7 +15,7 @@ class UnderstandScene extends Phaser.Scene{
         this.load.image('comp8','assets/compreeender8.png');
         this.load.image('comp9','assets/compreeender9.png');
         this.load.image('bthome','assets/bthome.png');
-        this.load.image('backl','assets/backl.png');
+        this.load.image('backl','assets/backl.png',{ frameWidth: 32, frameHeight: 48 });
         this.load.image('backr','assets/backr.png');
 
         
@@ -32,18 +32,14 @@ class UnderstandScene extends Phaser.Scene{
         this.comp1.setOrigin(0.5, 0.544);
        
             
-        this.bthome = this.add.sprite(0,0,'bthome');
-        this.aGrid.placeAtIndex(120.3,this.bthome);
-        Align.scaleToGameW(this.bthome, 0.07);
+        this.bthome = this.add.sprite(150,1090,'bthome');
+        Align.scaleToGameW(this.bthome, 0.062);
 
-        this.backl = this.add.sprite(0,0,'backl');
-        this.aGrid.placeAtIndex(129.5,this.backl);
-        Align.scaleToGameW(this.backl, 0.07);
-
-
-        this.backr = this.add.sprite(0,0,'backr');
-        this.aGrid.placeAtIndex(130.5,this.backr);
-        Align.scaleToGameW(this.backr, 0.07); 
+        this.backl = this.add.sprite(1700,1090,'backl');
+        Align.scaleToGameW(this.backl, 0.062);
+        
+        this.backr = this.add.sprite(1900,1090,'backr');
+        Align.scaleToGameW(this.backr, 0.062); 
 
 
      
@@ -57,79 +53,66 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp1.setScale(1.92);
                 this.comp1.setOrigin(0.5, 0.544);
 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
                      
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
             }
             if (i==1){
                 this.comp2 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp2');
                 this.aGrid.placeAtIndex(77.5, this.comp2);
                 this.comp2.setScale(1.92);
                 this.comp2.setOrigin(0.5, 0.544);
-
+                
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
                      
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                
             }
             if (i==2){
                 this.comp3 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp3');
                 this.aGrid.placeAtIndex(77.5, this.comp3);
                 this.comp3.setScale(1.92);
                 this.comp3.setOrigin(0.5, 0.544);
-
+                
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
                      
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+               
             }
             if (i==3){
                 this.comp4 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp4');
                 this.aGrid.placeAtIndex(77.5, this.comp4);
                 this.comp4.setScale(1.92);
                 this.comp4.setOrigin(0.5, 0.544);
-
+                
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
                      
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+               
             }
             if (i==4){
                 this.comp5 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp5');
@@ -137,19 +120,15 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp5.setScale(1.92);
                 this.comp5.setOrigin(0.5, 0.544);
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
+               
             }
             if (i==5){
                 this.comp6 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp6');
@@ -157,19 +136,17 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp6.setScale(1.92);
                 this.comp6.setOrigin(0.5, 0.544);
 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
+
                      
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+               
             }
             if (i==6){
                 this.comp7 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp7');
@@ -177,39 +154,32 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp7.setScale(1.92);
                 this.comp7.setOrigin(0.5, 0.544);
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
+        
             }
             if (i==7){
                 this.comp8 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp8');
                 this.aGrid.placeAtIndex(77.5, this.comp8);
                 this.comp8.setScale(1.92);
                 this.comp8.setOrigin(0.5, 0.544);
+                
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                 
             }
             if (i==8){
                 this.comp9 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp9');
@@ -217,19 +187,17 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp9.setScale(1.92);
                 this.comp9.setOrigin(0.5, 0.544);
 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
+
                      
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                
             }
         }, this);
         this.backl.on('pointerover', function(){
@@ -256,19 +224,14 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp1.setScale(1.92);
                 this.comp1.setOrigin(0.5, 0.544);
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
             }
             if (i==1){
                 this.comp2 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp2');
@@ -277,18 +240,14 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp2.setOrigin(0.5, 0.544);
 
                      
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
             }
             if (i==2){
                 this.comp3 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp3');
@@ -296,19 +255,14 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp3.setScale(1.92);
                 this.comp3.setOrigin(0.5, 0.544);
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
             }
             if (i==3){
                 this.comp4 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp4');
@@ -316,19 +270,14 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp4.setScale(1.92);
                 this.comp4.setOrigin(0.5, 0.544);
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
             }
             if (i==4){
                 this.comp5 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp5');
@@ -336,59 +285,44 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp5.setScale(1.92);
                 this.comp5.setOrigin(0.5, 0.544);
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
-            }
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
+            }    
             if (i==5){
                 this.comp6 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp6');
                 this.aGrid.placeAtIndex(77.5, this.comp6);
                 this.comp6.setScale(1.92);
                 this.comp6.setOrigin(0.5, 0.544);
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
             }
             if (i==6){
                 this.comp7 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp7');
                 this.aGrid.placeAtIndex(77.5, this.comp7);
                 this.comp7.setScale(1.92);
                 this.comp7.setOrigin(0.5, 0.544);
-
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
             }
             if (i==7){
                 this.comp8 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp8');
@@ -396,19 +330,14 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp8.setScale(1.92);
                 this.comp8.setOrigin(0.5, 0.544);
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
             }
             if (i==8){
                 this.comp9 = this.add.image(game.config.width / 2, game.config.height / 2, 'comp9');
@@ -416,19 +345,14 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp9.setScale(1.92);
                 this.comp9.setOrigin(0.5, 0.544);
 
-                     
-                this.bthome = this.add.sprite(0,0,'bthome');
-                this.aGrid.placeAtIndex(120.3,this.bthome);
-                Align.scaleToGameW(this.bthome, 0.07);
-
-                this.backl = this.add.sprite(0,0,'backl');
-                this.aGrid.placeAtIndex(129.5,this.backl);
-                Align.scaleToGameW(this.backl, 0.07);
-
-
-                this.backr = this.add.sprite(0,0,'backr');
-                this.aGrid.placeAtIndex(130.5,this.backr);
-                Align.scaleToGameW(this.backr, 0.07); 
+                this.bthome = this.add.sprite(150,1090,'bthome');
+                Align.scaleToGameW(this.bthome, 0.062);
+        
+                this.backl = this.add.sprite(1700,1090,'backl');
+                Align.scaleToGameW(this.backl, 0.062);
+                
+                this.backr = this.add.sprite(1900,1090,'backr');
+                Align.scaleToGameW(this.backr, 0.062); 
             }
 
 
@@ -451,7 +375,7 @@ class UnderstandScene extends Phaser.Scene{
         this.bthome.setInteractive({useHandCursor: true});
         this.bthome.on('pointerdown', function () {
             this.scene.start('FirstScene');
-            cont=1; 
+            //cont=1; 
         }, this);
         this.bthome.on('pointerover', function(){
             this.bthome.displayHeight += 5;
