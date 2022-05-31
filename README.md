@@ -6,7 +6,6 @@
 * Centrar os botoes "<-", "->"  e home  (bia)
 
 -> *PraticeScene*:
-* Pedir o botao do link e a imagem do botao da infog2 (em espera)
 * imagem para o botao infog2 
 * centrar a tabela 
 
