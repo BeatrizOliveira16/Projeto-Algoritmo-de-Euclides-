@@ -3,16 +3,16 @@
    * Escolher uma fonte de jeito (bia) 
 
  -> *PraticeScene*:
-    * imagem para o botao infog2 
-    * atualizar a posiçao da tabela no refresh
-    * colocar o mais e o certo certos em todos os casos 
-    * colocar o paint no verificar e corrigir  
-    * colocar a preto o disabled
-    * meter as cores iguais na diagonal na tabela 
+ * imagem para o botao infog2 
+ * atualizar a posiçao da tabela no refresh
+ * colocar o mais e o certo certos em todos os casos 
+ * colocar o paint no verificar e corrigir  
+ * colocar a preto o disabled
+ * meter as cores iguais na diagonal na tabela 
 
  -> *Lista de espera de verificação (testa bia)*
-    * botao "-" para todas as colunas (verificação dos valores)
-    * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
+  * botao "-" para todas as colunas (verificação dos valores)
+  * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 
 -> *CONCLUIDO*:
    * valor do resultado ja nao altera, e partir da 2 coluna do corrigir e verificar tbm ja nao alteram (qnd aparece a tabela feita ) 
