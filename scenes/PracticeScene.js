@@ -27,6 +27,7 @@ class PracticeScene extends Phaser.Scene{
         this.load.image('barrainfo1','assets/barrainfo1.png'); 
         this.load.image('barrainfo2','assets/barrainfo2.png',37,40,18);
         this.load.image('backl','assets/backl.png',37,40,18);
+        this.load.image('linkd','assets/btlinkdivision.png',37,40,18);
         this.load.html('tableform', 'assets/tableform.html');
         this.load.html('resultadofinal', 'assets/resultadofinal.html');
     }
@@ -61,6 +62,10 @@ class PracticeScene extends Phaser.Scene{
         this.infog2 = this.add.sprite(0,0,'infog2');
         this.aGrid.placeAtIndex(64,this.infog2);
         Align.scaleToGameW(this.infog2, 0.04);
+
+        this.linkd = this.add.sprite(0,0,'linkd');
+        this.aGrid.placeAtIndex(118,this.linkd);
+        Align.scaleToGameW(this.linkd, 0.04);
 
         this.paint = this.add.sprite(0,0,'paint');
         this.aGrid.placeAtIndex(76,this.paint);
@@ -248,6 +253,22 @@ class PracticeScene extends Phaser.Scene{
 
         this.limpar.on('pointerout', function () {
             this.limpar.setTint();
+        }, this);
+
+
+        this.linkd.setInteractive({useHandCursor: true});
+        this.linkd.on('pointerdown', function () {
+            this.openExternalLink();
+        }, this);
+
+        this.linkd.on('pointerover', function(){
+            this.linkd.displayHeight += 5;
+            this.linkd.displayWidth += 5;
+        }, this);
+
+        this.linkd.on('pointerout', function(){
+            this.linkd.displayHeight -= 5;
+            this.linkd.displayWidth -= 5;
         }, this);
 
         this.mais.setInteractive({useHandCursor: true});
