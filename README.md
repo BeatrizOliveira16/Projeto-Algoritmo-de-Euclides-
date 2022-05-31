@@ -18,9 +18,6 @@
  * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 
 
--> *SEI LA* 
-* aumentar o scroll ( é para apagar xD -> tem que se colocar a tabela a deslocar)
-
 -> *CONCLUIDO*:
 * valor do resultado ja nao altera, e partir da 2 coluna do corrigir e verificar tbm ja nao alteram (qnd aparece a tabela feita ) 
 * corrigir (fazer tudo)
