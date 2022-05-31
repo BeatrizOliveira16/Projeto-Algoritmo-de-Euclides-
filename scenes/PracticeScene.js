@@ -271,7 +271,7 @@ class PracticeScene extends Phaser.Scene{
 
             if (cont==0){
                 this.calculaMDC1coluna();
-                console.log(cont);
+                //console.log(cont);
                 if(restoUti > 0){
                     //console.log(restoUti)
                     if ( dividendoUti == dividendoC &&  divisorUti == divisorC && restoUti ==restoC && quocienteUti==quocienteC && 
