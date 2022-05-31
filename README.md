@@ -8,7 +8,6 @@
 -> *PraticeScene*:
 * Pedir o botao do link e a imagem do botao da infog2
 * imagem para o botao infog2 
-* nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 * centrar a tabela 
 
 
@@ -17,6 +16,7 @@
 
 -> *Lista de espera de verificação (testa bia)*
  * botao "-" para todas as colunas (verificação dos valores)
+ * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
 
 
 -> *SEI LA* 
