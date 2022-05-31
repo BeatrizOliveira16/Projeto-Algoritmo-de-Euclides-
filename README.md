@@ -2,12 +2,10 @@
 ->*FALTA*:
 * Escolher uma fonte de jeito (bia) 
 
--> *UnderstandScene*: 
-* Centrar os botoes "<-", "->"  e home  (bia)
-
 -> *PraticeScene*:
 * imagem para o botao infog2 
-* centrar a tabela 
+* centrar a tabela
+* colocar a preto o disabled
 
 
 -> *COISAS IMPOSSIVES, OU QUASE*
@@ -39,3 +37,7 @@
 * corrigir (aparecer a tabela ) 
 * botão "-" (atualizar o mdc para a segunda coluna)
 * qnd se sai da cena praticar, o valor do mdc alterar
+
+
+-> *UnderstandScene*: 
+* Centrar os botoes "<-", "->"  e home  (bia)
