@@ -35,8 +35,8 @@ class PracticeScene extends Phaser.Scene{
     create() {   
         let  cont =0;  // ncliks no mais
         let whitecolor = false;  
-        primeiroNumero = Phaser.Math.Between(1,100);
-        segundoNumero = Phaser.Math.Between(1,100);
+        primeiroNumero = Phaser.Math.Between(1,1000);
+        segundoNumero = Phaser.Math.Between(1,1000);
          
         var grelhaConfig = {scene:this, rows:12,cols:12};
         this.aGrid = new AlignGrid(grelhaConfig);
@@ -76,12 +76,12 @@ class PracticeScene extends Phaser.Scene{
         Align.scaleToGameW(this.limpar, 0.05);
 
         this.mais = this.add.sprite(0,0,'mais');
-        this.aGrid.placeAtIndex(67,this.mais);
+        this.aGrid.placeAtIndex(20,this.mais);
         Align.scaleToGameW(this.mais, 0.035);
         
 
         this.menos = this.add.sprite(0,0,'menos');
-        this.aGrid.placeAtIndex(91,this.menos);
+        this.aGrid.placeAtIndex(27,this.menos);
         Align.scaleToGameW(this.menos, 0.035);
 
         this.barrainfo2 = this.add.sprite(0,0,'barrainfo2');
@@ -142,15 +142,20 @@ class PracticeScene extends Phaser.Scene{
             table = document.getElementById('row-principal')
             while (table.children.length>2 ){
                 table.removeChild(table.lastElementChild);
+
+                var elements = document.getElementById('row-principal');
+                var  marginLeft = 0;
+                marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 80;
+                elements.style.marginLeft = marginLeft + 'px';
                 
             }
             document.getElementById("row-principal").disabled = true;
 
             var tableCorrigida = document.getElementById('row-principal');
-            _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
-            _divisor= `<input id="divisorc" type="number"  name="divisorc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-            _resto = `<input id="restoc" type="number"  name="restoc"  disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-            _quociente = `<input id="quocientec" type="number"  name="quocientec" disabled  style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+            _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc"  disabled{black} style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
+            _divisor= `<input id="divisorc" type="number"  name="divisorc"  disabled{black} style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+            _resto = `<input id="restoc" type="number"  name="restoc"   disabled{black} style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+            _quociente = `<input id="quocientec" type="number"  name="quocientec"  disabled{black} style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
             nRow = `
                 <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -162,6 +167,8 @@ class PracticeScene extends Phaser.Scene{
             `; 
             while(restoC > 0){
                 if (tableCorrigida.children.length ==2){
+                    
+
                     document.getElementById("dividendo").value = dividendoC;
                     document.getElementById("dividendo").disabled = true;
                     document.getElementById("divisor").value = divisorC;
@@ -174,6 +181,12 @@ class PracticeScene extends Phaser.Scene{
                     document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
 
                 } else if (tableCorrigida.children.length >2 ){
+                    var elements = document.getElementById('row-principal');
+                    var  marginLeft = 0;
+
+                    marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 80;
+                    elements.style.marginLeft = marginLeft + 'px';
+
                     
 
                     this.calculaMDCcol()
@@ -184,7 +197,12 @@ class PracticeScene extends Phaser.Scene{
                     tableCorrigida.lastElementChild.querySelector('input[name="quocientec"]').value = quocienteC;
 
                     if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
-                }   
+                }  
+                this.tweens.add({targets: this.paint,x: '-=88', repeat: tableCorrigida.children.length, duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.tpaint,x: '-=88', repeat: tableCorrigida.children.length, duration: 0.01 ,ease: 'Power3'});
+
+
+ 
             
             }
             this.tweens.add({targets: this.mais,x: '+=300',duration: 0.01 ,ease: 'Power3'});
@@ -297,7 +315,7 @@ class PracticeScene extends Phaser.Scene{
                     //console.log(restoUti)
                     if ( dividendoUti == dividendoC &&  divisorUti == divisorC && restoUti ==restoC && quocienteUti==quocienteC && 
                     dividendoUti != '' &&  divisorUti != '' && restoUti !='' && quocienteUti !='' ){
-                        //table = document.getElementById('row-principal')
+                       
                         
                         tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                         console.log("certo");
@@ -320,21 +338,24 @@ class PracticeScene extends Phaser.Scene{
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisor"]').disabled = true ;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="resto"]').disabled = true ;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').disabled = true ;
-
-
-
-                            document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
+                            
                             cont++;
                             
                             //table = document.getElementById('row-principal')
-                            this.tweens.add({targets: this.paint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.limpar,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.infog2,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.paint,x: '-=84',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.limpar,x: '-=80',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.infog2,x: '-=84',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.mais,x: '+=150',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.menos,x: '+=150',duration: 0.01 ,ease: 'Power3'});
-                            //this.tweens.add({targets: this.table,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+
+                            document.getElementById('row-principal').insertAdjacentHTML('beforeend', nRow);
+                            var elements = document.getElementById('row-principal');
+                            var  marginLeft = 0;
+
+                            marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 80;
+                            elements.style.marginLeft = marginLeft + 'px';
 
                             this.calculaMDCcol();
                     } else {
@@ -366,30 +387,35 @@ class PracticeScene extends Phaser.Scene{
                         nRow = nRow.replace('#FFF','#FE2E2E');
                         nRow = nRow.replace( '#FFF','#80FF00');
                     }
-                    //console.log(cont);
+                    console.log(cont);
                     if(restoUti1 > 0){
                         if ( dividendoUti1 == dividendoC &&  divisorUti1 == divisorC && restoUti1 ==restoC && quocienteUti1==quocienteC && 
                             divisorUti1 != '' &&  dividendoUti1 != '' && restoUti != '' && quocienteUti1 != ''){
+            
+
                             tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-                            this.tweens.add({targets: this.paint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.limpar,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.infog2,x: '-=103',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.paint,x: '-=88',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.limpar,x: '-=80',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.infog2,x: '-=88',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.mais,x: '+=150',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.menos,x: '+=150',duration: 0.01 ,ease: 'Power3'});
 
-                            //col.addListener('click');
+                            
                             console.log("certo");
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendo"]').disabled = true;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisor"]').disabled = true;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="resto"]').disabled = true;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').disabled = true;
 
+                            document.getElementById('row-principal').insertAdjacentHTML('beforeend', nRow); 
+                            var elements = document.getElementById('row-principal');
+                            var marginLeft = 0;
+                                
+                            marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) -80;
+                            elements.style.marginLeft = marginLeft + 'px';
 
-
-                          
-                            document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
 
                             this.calculaMDCcol();
                         } else {
@@ -436,14 +462,24 @@ class PracticeScene extends Phaser.Scene{
                 document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisor"]').disabled = false;
                 document.getElementById('row-principal').lastElementChild.querySelector('input[name="resto"]').disabled = false;
                 document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').disabled = false;
-                this.tweens.add({targets: this.paint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.limpar,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.infog2,x: '+=103',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.paint,x: '+=84',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.limpar,x: '+=80',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.infog2,x: '+=84',duration: 0.01 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tinfo, x: '+=103',duration: 0.01 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tpaint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
                 this.tweens.add({targets: this.mais,x: '-=150',duration: 0.01 ,ease: 'Power3'});
                 this.tweens.add({targets: this.menos,x: '-=150',duration: 0.01 ,ease: 'Power3'});
-            }else if (table.children.length ==2){
+
+                var elements = document.getElementById('row-principal');
+                var  marginLeft = 0;
+
+                marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 80;
+                elements.style.marginLeft = marginLeft + 'px';
+
+
+
+                
+            }else if (table.children.length == 2){
                 tlimpar.setText('A tabela já se encontrado no seu estado inicial', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                 table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
                 table.lastElementChild.querySelector('input[name="divisor"]').value = '';
@@ -549,8 +585,8 @@ class PracticeScene extends Phaser.Scene{
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
 
             cont= 0;  // colocar o nº de cliques do mais = 0 para recomeçar a fazer o mdc
-            primeiroNumero = Phaser.Math.Between(1,100);
-            segundoNumero = Phaser.Math.Between(1,100) ;
+            primeiroNumero = Phaser.Math.Between(1,1000);
+            segundoNumero = Phaser.Math.Between(1,1000) ;
             //atualizar inf da barra info1
             this.barrainfo1 = this.add.sprite(0,0,'barrainfo1');
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
@@ -570,11 +606,10 @@ class PracticeScene extends Phaser.Scene{
             
             
             while (table.children.length > 2) {
-               table.removeChild(table.lastElementChild);
-                
+                table.removeChild(table.lastElementChild);
             }
-            
-            //whitecolor = false 
+
+
             this.aGrid.placeAtIndex(64,this.infog2);
             this.aGrid.placeAtIndex(76,this.paint);
             this.aGrid.placeAtIndex(88,this.limpar);
@@ -626,6 +661,9 @@ class PracticeScene extends Phaser.Scene{
         }, this);
 
         this.verificar.on('pointerdown', function () {
+            tlimpar.setText( ' ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            
+
             trfc.setVisible(true);
             trfe.setVisible(true);
             tcolv.setVisible(false);
@@ -653,6 +691,7 @@ class PracticeScene extends Phaser.Scene{
             }
             
             if (rf == resultado ){
+                this.aGrid.placeAtIndex(76,this.paint);
                 document.getElementById("rf-input").disabled = true;
                 this.corrigir.setActive(false).setVisible(false);
                 this.verificar.setActive(false).setVisible(false);
@@ -660,6 +699,8 @@ class PracticeScene extends Phaser.Scene{
                 this.menos.setActive(false).setVisible(false);
                 this.limpar.setActive(false).setVisible(false);
                 this.infog2.setActive(false).setVisible(false);
+
+                
 
                 document.getElementById("rf-input").value = resultado;
                 trfe.setText( 'Parabéns! Com trabalho os bons resultados aparecerão. ', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
@@ -670,14 +711,21 @@ class PracticeScene extends Phaser.Scene{
                 
                 while (table.children.length>2 ){
                     table.removeChild(table.lastElementChild);
+
+                    var elements = document.getElementById('row-principal');
+                    var  marginLeft = 0;
+
+                    marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 80;
+                    elements.style.marginLeft = marginLeft + 'px';
+
                     
                 }
 
                 var tableCorrigida = document.getElementById('row-principal');
-                _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc"  disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
-                _divisor= `<input id="divisorc" type="number"  name="divisorc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-                _resto = `<input id="restoc" type="number"  name="restoc" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                _quociente = `<input id="quocientec" type="number"  name="quocientec" disabled style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+                _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc"  disabled{black} style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
+                _divisor= `<input id="divisorc" type="number"  name="divisorc" disabled{black} style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+                _resto = `<input id="restoc" type="number"  name="restoc" disabled{black} style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+                _quociente = `<input id="quocientec" type="number"  name="quocientec" disabled{black} style="font-size: 40px;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
                 nRow = `
                     <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -689,6 +737,8 @@ class PracticeScene extends Phaser.Scene{
                 `; 
                 while(restoC > 0){
                     if (tableCorrigida.children.length ==2){
+                        this.tweens.add({targets: this.paint,x: '-=200',duration: 0.01 ,ease: 'Power3'});
+
                         
                         document.getElementById("dividendo").value = dividendoC;
                         document.getElementById("dividendo").disabled = true;
@@ -698,11 +748,18 @@ class PracticeScene extends Phaser.Scene{
                         document.getElementById("resto").disabled = true;
                         document.getElementById("quociente").value = quocienteC;
                         document.getElementById("quociente").disabled = true;
-
-                        //add a 3 coluna
+                        
                         document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
 
                     } else if (tableCorrigida.children.length > 2){
+                        var elements = document.getElementById('row-principal');
+                        var  marginLeft = 0;
+
+                        marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 80;
+                        elements.style.marginLeft = marginLeft + 'px';
+
+                       
+                        
                         this.calculaMDCcol()
                         //console.log(DividendoC)
                         tableCorrigida.lastElementChild.querySelector('input[name="dividendoc"]').value = dividendoC;
@@ -710,8 +767,13 @@ class PracticeScene extends Phaser.Scene{
                         tableCorrigida.lastElementChild.querySelector('input[name="restoc"]').value = restoC;
                         tableCorrigida.lastElementChild.querySelector('input[name="quocientec"]').value = quocienteC;
 
-                        if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow); 
+                        if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRow);
+                        //this.tweens.add({targets: this.paint,x: '-=88',duration: 0.01 ,ease: 'Power3'});
+                       
                     }
+                    this.tweens.add({targets: this.paint,x: '-=88', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
+                    this.tweens.add({targets: this.tpaint,x: '-=88', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
+
                     
                 }
             }else {
