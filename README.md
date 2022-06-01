@@ -5,7 +5,6 @@
  -> *PraticeScene*:
  * imagem para o botao infog2 
  * colocar o mais e o certo certos em todos os casos 
- * colocar o paint no verificar e corrigir  
  * colocar a preto o disabled
  * meter as cores iguais na diagonal na tabela 
 
