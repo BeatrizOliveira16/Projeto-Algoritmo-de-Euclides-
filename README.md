@@ -4,7 +4,6 @@
 
  -> *PraticeScene*:
  * imagem para o botao infog2 
- * colocar o mais e o certo certos em todos os casos 
  * colocar a preto o disabled
  * meter as cores iguais na diagonal na tabela 
 
