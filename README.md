@@ -4,7 +4,6 @@
 
  -> *PraticeScene*:
  * imagem para o botao infog2 
- * atualizar a posiçao da tabela no refresh
  * colocar o mais e o certo certos em todos os casos 
  * colocar o paint no verificar e corrigir  
  * colocar a preto o disabled
@@ -13,6 +12,7 @@
  -> *Lista de espera de verificação (testa bia)*
   * botao "-" para todas as colunas (verificação dos valores)
   * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
+  * atualizar a posiçao da tabela no refresh
 
 -> *CONCLUIDO*:
    * valor do resultado ja nao altera, e partir da 2 coluna do corrigir e verificar tbm ja nao alteram (qnd aparece a tabela feita ) 
