@@ -35,7 +35,6 @@ class PracticeScene extends Phaser.Scene{
     create() {   
         let  cont =0;  // ncliks no mais
         let whitecolor = false;
-        let tamanhoantigo=0;  
         primeiroNumero = Phaser.Math.Between(1,1000);
         segundoNumero = Phaser.Math.Between(1,1000);
          
@@ -76,14 +75,11 @@ class PracticeScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(88,this.limpar);
         Align.scaleToGameW(this.limpar, 0.05);
 
-        this.mais = this.add.sprite(0,0,'mais');
-        this.aGrid.placeAtIndex(20,this.mais);
-        Align.scaleToGameW(this.mais, 0.035);
-        
-
-        this.menos = this.add.sprite(0,0,'menos');
-        this.aGrid.placeAtIndex(27,this.menos);
-        Align.scaleToGameW(this.menos, 0.035);
+        this.mais = this.add.sprite(1280,590,'mais');
+        Align.scaleToGameW(this.mais, 0.037);
+    
+        this.menos = this.add.sprite(1280,700,'menos');
+        Align.scaleToGameW(this.menos, 0.037);
 
         this.barrainfo2 = this.add.sprite(0,0,'barrainfo2');
         this.aGrid.placeAtIndex(125.5,this.barrainfo2);
@@ -349,8 +345,8 @@ class PracticeScene extends Phaser.Scene{
                             this.tweens.add({targets: this.infog2,x: '-=84',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.mais,x: '+=150',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.menos,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.mais,x: '+=75',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.menos,x: '+=75',duration: 0.01 ,ease: 'Power3'});
 
                             document.getElementById('row-principal').insertAdjacentHTML('beforeend', nRow);
                             var elements = document.getElementById('row-principal');
@@ -401,8 +397,8 @@ class PracticeScene extends Phaser.Scene{
                             this.tweens.add({targets: this.infog2,x: '-=88',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.mais,x: '+=150',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.menos,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.mais,x: '+=75',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.menos,x: '+=75',duration: 0.01 ,ease: 'Power3'});
 
                             
                             console.log("certo");
@@ -469,8 +465,8 @@ class PracticeScene extends Phaser.Scene{
                 this.tweens.add({targets: this.infog2,x: '+=84',duration: 0.01 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tinfo, x: '+=103',duration: 0.01 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tpaint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.mais,x: '-=150',duration: 0.01 ,ease: 'Power3'});
-                this.tweens.add({targets: this.menos,x: '-=150',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.mais,x: '-=75',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.menos,x: '-=75',duration: 0.01 ,ease: 'Power3'});
 
                 var elements = document.getElementById('row-principal');
                 var  marginLeft = 0;
@@ -622,8 +618,12 @@ class PracticeScene extends Phaser.Scene{
             this.aGrid.placeAtIndex(64,this.infog2);
             this.aGrid.placeAtIndex(76,this.paint);
             this.aGrid.placeAtIndex(88,this.limpar);
-            this.aGrid.placeAtIndex(67,this.mais);
-            this.aGrid.placeAtIndex(91,this.menos);
+            
+            this.mais.setPosition(1280,590);
+            this.menos.setPosition(1280,700);
+            
+    
+            
 
             if(table.children.length ==2){
 
