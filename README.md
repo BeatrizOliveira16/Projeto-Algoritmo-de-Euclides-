@@ -4,7 +4,6 @@
 
  -> *PraticeScene*:
  * imagem para o botao infog2 
- * colocar a preto o disabled
  * meter as cores iguais na diagonal na tabela 
 
  -> *Lista de espera de verificação (testa bia)*
