@@ -118,6 +118,7 @@ class PracticeScene extends Phaser.Scene{
 
         this.corrigir.setInteractive({useHandCursor: true});
         this.corrigir.on('pointerdown', function () {
+            tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
 
             this.calculaMDC();
@@ -196,7 +197,7 @@ class PracticeScene extends Phaser.Scene{
 
                     var n = tableCorrigida.children.length
                     n -=3;
-                    console.log(n)
+                    
                 }  
             }
 
@@ -304,7 +305,7 @@ class PracticeScene extends Phaser.Scene{
             quocienteUti = element.getChildByName("quociente").value;
             restoUti = element.getChildByName("resto").value;
             
-            trfe.setActive(false).setVisible(false);
+            trfe.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
 
             if (cont==0){
                 this.calculaMDC1coluna();
@@ -452,6 +453,7 @@ class PracticeScene extends Phaser.Scene{
         this.menos.setInteractive({useHandCursor: true});
         this.menos.on('pointerdown', function () {
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
            
             table = document.getElementById('row-principal');
             if (table.children.length > 2){  
@@ -478,11 +480,20 @@ class PracticeScene extends Phaser.Scene{
 
                 
             }else if (table.children.length == 2){
-                tlimpar.setText('A tabela já se encontrado no seu estado inicial', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-                table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
-                table.lastElementChild.querySelector('input[name="divisor"]').value = '';
-                table.lastElementChild.querySelector('input[name="resto"]').value = '';
-                table.lastElementChild.querySelector('input[name="quociente"]').value = '';
+                tlimpar.setText('A tabela já se encontra no seu estado inicial', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                if (table.lastElementChild.querySelector('input[name="dividendo"]').value !='' ||
+                table.lastElementChild.querySelector('input[name="divisor"]').value != '' ||
+                table.lastElementChild.querySelector('input[name="resto"]').value != '' ||
+                table.lastElementChild.querySelector('input[name="quociente"]').value != ''){
+                    table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
+                    table.lastElementChild.querySelector('input[name="divisor"]').value = '';
+                    table.lastElementChild.querySelector('input[name="resto"]').value = '';
+                    table.lastElementChild.querySelector('input[name="quociente"]').value = '';
+                    
+                    tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                
+                }
+            
                 table.lastElementChild.querySelector('input[name="dividendo"]').disabled = false;
                 table.lastElementChild.querySelector('input[name="divisor"]').disabled = false;
                 table.lastElementChild.querySelector('input[name="resto"]').disabled = false;
@@ -583,8 +594,8 @@ class PracticeScene extends Phaser.Scene{
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
 
             cont= 0;  // colocar o nº de cliques do mais = 0 para recomeçar a fazer o mdc
-            primeiroNumero = Phaser.Math.Between(1,1000);
-            segundoNumero = Phaser.Math.Between(1,1000) ;
+            primeiroNumero = Phaser.Math.Between(1,9999);
+            segundoNumero = Phaser.Math.Between(1,9999) ;
             //atualizar inf da barra info1
             this.barrainfo1 = this.add.sprite(0,0,'barrainfo1');
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
@@ -594,9 +605,10 @@ class PracticeScene extends Phaser.Scene{
 
             //atualizar inf da barra info2
             r.setText('m.d.c. (' + primeiroNumero + ' , ' + segundoNumero +')  = ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-            trfc.setActive(false).setVisible(false);
-            trfe.setActive(false).setVisible(false);
-            tcolv.setActive(false).setVisible(false);
+            trfc.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            trfe.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
             
        
             resultadofinal.getChildByName("rf").value = '';
@@ -674,8 +686,8 @@ class PracticeScene extends Phaser.Scene{
             
 
             trfc.setVisible(true);
-            trfe.setVisible(true);
-            tcolv.setVisible(false);
+            trfe.setText( 'Deves ter cometido algum erro! Tenta outra vez!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
             this.calculaMDC();
 
             //acho que nao é preciso esta condição
@@ -790,7 +802,7 @@ class PracticeScene extends Phaser.Scene{
                 this.tweens.add({targets: this.tpaint,x: '-=88px', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
                 
             }else {
-                trfc.setActive(false).setVisible(false);
+                trfc.setText( ' ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                 trfe.setText( 'Deves ter cometido algum erro! Tenta outra vez!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
             }
         }, this);
