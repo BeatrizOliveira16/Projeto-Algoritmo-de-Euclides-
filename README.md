@@ -8,7 +8,7 @@
 
  -> *Lista de espera de verificação (testa bia)*
   * botao "-" para todas as colunas (verificação dos valores)
-  * nao deixar que os valores ja verificados na tabela, sejam alterados -> torna-los label  (acho eu) 
+  * nao deixar que os valores ja verificados na tabela, sejam alterados 
   * atualizar a posiçao da tabela no refresh
 
 -> *CONCLUIDO*:
