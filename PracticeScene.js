@@ -345,8 +345,8 @@ class PracticeScene extends Phaser.Scene{
                             this.tweens.add({targets: this.infog2,x: '-=84',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.mais,x: '+=150',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.menos,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.mais,x: '+=75',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.menos,x: '+=75',duration: 0.01 ,ease: 'Power3'});
 
                             document.getElementById('row-principal').insertAdjacentHTML('beforeend', nRow);
                             var elements = document.getElementById('row-principal');
@@ -397,8 +397,8 @@ class PracticeScene extends Phaser.Scene{
                             this.tweens.add({targets: this.infog2,x: '-=88',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tinfo, x: '-=103',duration: 0.01 ,ease: 'Power3'});
                             this.tweens.add({targets: this.tpaint,x: '-=103',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.mais,x: '+=150',duration: 0.01 ,ease: 'Power3'});
-                            this.tweens.add({targets: this.menos,x: '+=150',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.mais,x: '+=75',duration: 0.01 ,ease: 'Power3'});
+                            this.tweens.add({targets: this.menos,x: '+=75',duration: 0.01 ,ease: 'Power3'});
 
                             
                             console.log("certo");
@@ -465,8 +465,8 @@ class PracticeScene extends Phaser.Scene{
                 this.tweens.add({targets: this.infog2,x: '+=84',duration: 0.01 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tinfo, x: '+=103',duration: 0.01 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tpaint,x: '+=103',duration: 0.01 ,ease: 'Power3'});
-                //this.tweens.add({targets: this.mais,x: '-=84',duration: 0.01 ,ease: 'Power3'});
-                //this.tweens.add({targets: this.menos,x: '-=60',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.mais,x: '-=75',duration: 0.01 ,ease: 'Power3'});
+                this.tweens.add({targets: this.menos,x: '-=75',duration: 0.01 ,ease: 'Power3'});
 
                 var elements = document.getElementById('row-principal');
                 var  marginLeft = 0;
@@ -620,11 +620,8 @@ class PracticeScene extends Phaser.Scene{
             this.aGrid.placeAtIndex(88,this.limpar);
             
             this.mais.setPosition(1280,590);
-
-         
-        
             this.menos.setPosition(1280,700);
-            Align.scaleToGameW(this.menos, 0.037);
+            
     
             
 
