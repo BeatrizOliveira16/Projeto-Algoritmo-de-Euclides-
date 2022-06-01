@@ -333,11 +333,13 @@ class PracticeScene extends Phaser.Scene{
                                 ${_quociente}
                             </div>
                         `; 
+                        
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendo"]').disabled = true ;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisor"]').disabled = true ;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="resto"]').disabled = true ;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').disabled = true ;
                             
+                             
                             cont++;
                             
                             //table = document.getElementById('row-principal')
