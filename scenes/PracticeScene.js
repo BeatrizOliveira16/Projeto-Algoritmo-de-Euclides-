@@ -152,10 +152,10 @@ class PracticeScene extends Phaser.Scene{
             document.getElementById("row-principal").disabled = true;
 
             var tableCorrigida = document.getElementById('row-principal');
-            _dividendo=  `<input id="dividendoc" type="number"  name="dividendoc"  disabled{black} style="font-size: 40px;width: 151.18px;border: 1.5px solid black;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
-            _divisor= `<input id="divisorc" type="number"  name="divisorc"  disabled{black} style="font-size: 40px;width: 151.18px;border: 1.5px solid black;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-            _resto = `<input id="restoc" type="number"  name="restoc"   disabled{black} style="font-size: 40px;width: 151.18px;border: 1.5px solid black;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-            _quociente = `<input id="quocientec" type="number"  name="quocientec"  disabled{black} style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+            _dividendo=  `<input id="dividendoc" inputmode="numeric"  name="dividendoc"  disabled{black} style="font-size: 40px;width: 151.18px;border: 1.5px solid black;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
+            _divisor= `<input id="divisorc" inputmode="numeric"  name="divisorc"  disabled{black} style="font-size: 40px;width: 151.18px;border: 1.5px solid black;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+            _resto = `<input id="restoc"inputmode="numeric"  name="restoc"   disabled{black} style="font-size: 40px;width: 151.18px;border: 1.5px solid black;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+            _quociente = `<input id="quocientec" inputmode="numeric"  name="quocientec"  disabled{black} style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
             nRow = `
                 <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -334,10 +334,10 @@ class PracticeScene extends Phaser.Scene{
                         console.log("certo");
 
                         //console.log(colorwhite);
-                        _dividendo =  `<input id="dividendoc" type="number"  name="dividendo" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
-                        _divisor = `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-                        _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                        _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+                        _dividendo =  `<input id="dividendoc" inputmode="numeric"  name="dividendo" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
+                        _divisor = `<input id="divisorc" inputmode="numeric"  name="divisor" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+                        _resto = `<input id="restoc" inputmode="numeric" name="resto" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+                        _quociente = `<input id="quocientec" inputmode="numeric"  name="quociente" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
                               
                         nRow = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -757,7 +757,6 @@ class PracticeScene extends Phaser.Scene{
                 this.limpar.setActive(false).setVisible(false);
                 this.infog2.setActive(false).setVisible(false);
 
-                
 
                 document.getElementById("rf-input").value = resultado;
                 document.getElementById('rf-input').style.color= 'black';
