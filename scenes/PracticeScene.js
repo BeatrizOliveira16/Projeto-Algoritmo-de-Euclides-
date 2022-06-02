@@ -267,7 +267,9 @@ class PracticeScene extends Phaser.Scene{
             if (table.lastElementChild.querySelector('input[name="dividendo"]').value !='' ||
             table.lastElementChild.querySelector('input[name="divisor"]').value != '' ||
             table.lastElementChild.querySelector('input[name="resto"]').value != '' ||
-            table.lastElementChild.querySelector('input[name="quociente"]').value != ''){          
+            table.lastElementChild.querySelector('input[name="quociente"]').value != ''){  
+                tlimpar.setText(' ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+        
                 table.lastElementChild.querySelector('input[name="dividendo"]').value = '';
                 table.lastElementChild.querySelector('input[name="divisor"]').value = '';
                 table.lastElementChild.querySelector('input[name="resto"]').value = '';
@@ -334,10 +336,10 @@ class PracticeScene extends Phaser.Scene{
                         console.log("certo");
 
                         //console.log(colorwhite);
-                        _dividendo =  `<input id="dividendoc" inputmode="numeric"  name="dividendo" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
-                        _divisor = `<input id="divisorc" inputmode="numeric"  name="divisor" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-                        _resto = `<input id="restoc" inputmode="numeric" name="resto" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                        _quociente = `<input id="quocientec" inputmode="numeric"  name="quociente" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendo" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#2ECCFA'};">`;
+                        _divisor = `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+                        _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+                        _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
                               
                         nRow = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
