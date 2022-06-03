@@ -12,7 +12,6 @@ class Info2Scene extends Phaser.Scene{
 
     create() {   
         this.aGrid = new AlignGrid({scene:this, rows:12,cols:12});
-
         this.InfoBoard = this.add.image(game.config.width / 2, game.config.height / 2, 'InfoBoard');
         this.InfoBoard.setScale(1.93);
         this.aGrid.placeAtIndex(77.5, this.InfoBoard);
