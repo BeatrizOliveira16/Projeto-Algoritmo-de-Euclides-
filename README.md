@@ -4,7 +4,7 @@
 
  -> *PraticeScene*:
  * atualizar as cores no paint
- * retirar o "<-" no 1º compreender e o "->" no ultimo compreender  
+
 
 -> *CONCLUIDO*:
    * valor do resultado ja nao altera, e partir da 2 coluna do corrigir e verificar tbm ja nao alteram (qnd aparece a tabela feita ) 
