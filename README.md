@@ -4,7 +4,8 @@
 
  -> *PraticeScene*:
  * imagem para o botao infog2 
- * meter as cores iguais na diagonal na tabela 
+ * atualizar as cores no refresh
+ * atulizar as cores no menos
 
  -> *Lista de espera de verificação (testa bia)*
   * botao "-" para todas as colunas (verificação dos valores)
