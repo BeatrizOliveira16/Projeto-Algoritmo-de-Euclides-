@@ -4,6 +4,7 @@ scenes.push(FirstScene);
 scenes.push(CreditsScene);
 scenes.push(InfoScene);
 scenes.push(PracticeScene);
+scenes.push(Info2Scene);
 scenes.push(UnderstandScene);
 
 const config = {
