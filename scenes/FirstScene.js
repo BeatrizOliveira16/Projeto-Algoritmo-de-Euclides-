@@ -22,8 +22,8 @@ class FirstScene extends Phaser.Scene{
         this.button1 = this.add.sprite(0,0,'button1');
         this.button2 = this.add.sprite(0,0,'button2');
         this.titulo = this.add.image(0,0,'titulo');
-        this.creditos = this.add.sprite(0,0,'creditos');
-        this.info = this.add.sprite(0,0,'info');
+        this.creditos = this.add.sprite(1850,1070,'creditos');
+        this.info = this.add.sprite(1850,830,'info');
 
         //Criação de uma grelha de forma a que os objetos mantenham-se no mesmo sítio apesar das variações dos tamamhos do ecrã
         this.aGrid = new AlignGrid({scene:this, rows:12,cols:12});
@@ -34,15 +34,14 @@ class FirstScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(17.5, this.titulo);
         this.aGrid.placeAtIndex(65.5, this.button1);
         this.aGrid.placeAtIndex(101.5, this.button2);
-        this.aGrid.placeAtIndex(106.5,this.creditos);
-        this.aGrid.placeAtIndex(130.5,this.info);
+        
 
         //Escalar o tamanho dos botões 
         Align.scaleToGameW(this.titulo,0.77);
         Align.scaleToGameW(this.button1,0.40);
         Align.scaleToGameW(this.button2,0.40);
-        Align.scaleToGameW(this.creditos,0.1);
-        Align.scaleToGameW(this.info,0.1);
+        Align.scaleToGameW(this.creditos,0.075);
+        Align.scaleToGameW(this.info,0.075);
 
         //Aumentar o fundo para a janela
         this.background.setScale(1.44);

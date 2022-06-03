@@ -3,8 +3,10 @@
    * Escolher uma fonte de jeito (bia) 
 
  -> *PraticeScene*:
- * imagem para o botao infog2 
- * meter as cores iguais na diagonal na tabela 
+ * imagem para o botao infog2
+ * atualizar as cores no paint
+ * retirar o "<-" no 1º compreender e o "->" no ultimo compreender  
+
 
  -> *Lista de espera de verificação (testa bia)*
   * botao "-" para todas as colunas (verificação dos valores)
