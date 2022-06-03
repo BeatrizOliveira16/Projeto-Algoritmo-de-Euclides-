@@ -21,4 +21,4 @@
    * cores (feitas a trocar alternadamente (cores vivas e branco))
    * botão "-" (atualizar o mdc para a segunda coluna)
    * qnd se sai da cena praticar, o valor do mdc alterar
-   *  imagem para o botao infog2
+   * imagem para o botao infog2
