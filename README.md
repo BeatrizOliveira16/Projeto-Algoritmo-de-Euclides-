@@ -4,7 +4,8 @@
 
  -> *PraticeScene*:
  * imagem para o botao infog2
- * atualizar as cores no paint  
+ * atualizar as cores no paint
+ * retirar o "<-" no 1º compreender e o "->" no ultimo compreender  
 
 
  -> *Lista de espera de verificação (testa bia)*
