@@ -3,8 +3,7 @@
    * Escolher uma fonte de jeito (bia) 
 
  -> *PraticeScene*:
- * atualizar as cores no paint
-
+   * atualizar as cores no paint
 
 -> *CONCLUIDO*:
    * valor do resultado ja nao altera, e partir da 2 coluna do corrigir e verificar tbm ja nao alteram (qnd aparece a tabela feita ) 
