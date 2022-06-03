@@ -108,7 +108,6 @@ class PracticeScene extends Phaser.Scene{
         this.home.on('pointerdown', function () {
             this.scene.start('FirstScene');
             cont=1;
-
         }, this);
 
         this.home.on('pointerover', function(){
