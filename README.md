@@ -3,9 +3,9 @@
    * Escolher uma fonte de jeito (bia) 
 
  -> *PraticeScene*:
- * imagem para o botao infog2 
- * atualizar as cores no refresh
- * atulizar as cores no menos
+ * imagem para o botao infog2
+ * atualizar as cores no paint  
+
 
  -> *Lista de espera de verificação (testa bia)*
   * botao "-" para todas as colunas (verificação dos valores)
