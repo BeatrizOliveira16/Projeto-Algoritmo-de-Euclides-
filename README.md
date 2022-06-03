@@ -3,10 +3,8 @@
    * Escolher uma fonte de jeito (bia) 
 
  -> *PraticeScene*:
- * imagem para o botao infog2
  * atualizar as cores no paint
  * retirar o "<-" no 1º compreender e o "->" no ultimo compreender  
-
 
  -> *Lista de espera de verificação (testa bia)*
   * botao "-" para todas as colunas (verificação dos valores)
@@ -23,3 +21,4 @@
    * cores (feitas a trocar alternadamente (cores vivas e branco))
    * botão "-" (atualizar o mdc para a segunda coluna)
    * qnd se sai da cena praticar, o valor do mdc alterar
+   *  imagem para o botao infog2
