@@ -37,7 +37,8 @@ class UnderstandScene extends Phaser.Scene{
 
         this.backl = this.add.sprite(1700,1090,'backl');
         Align.scaleToGameW(this.backl, 0.062);
-        
+       
+
         this.backr = this.add.sprite(1900,1090,'backr');
         Align.scaleToGameW(this.backr, 0.062); 
 
@@ -52,13 +53,10 @@ class UnderstandScene extends Phaser.Scene{
                 this.aGrid.placeAtIndex(77.5, this.comp1);
                 this.comp1.setScale(1.92);
                 this.comp1.setOrigin(0.5, 0.544);
-
+              
                 this.bthome = this.add.sprite(150,1090,'bthome');
                 Align.scaleToGameW(this.bthome, 0.062);
-        
-                this.backl = this.add.sprite(1700,1090,'backl');
-                Align.scaleToGameW(this.backl, 0.062);
-                
+
                 this.backr = this.add.sprite(1900,1090,'backr');
                 Align.scaleToGameW(this.backr, 0.062); 
                      
@@ -193,8 +191,7 @@ class UnderstandScene extends Phaser.Scene{
                 this.backl = this.add.sprite(1700,1090,'backl');
                 Align.scaleToGameW(this.backl, 0.062);
                 
-                this.backr = this.add.sprite(1900,1090,'backr');
-                Align.scaleToGameW(this.backr, 0.062); 
+            
 
                      
                 
@@ -227,9 +224,7 @@ class UnderstandScene extends Phaser.Scene{
                 this.bthome = this.add.sprite(150,1090,'bthome');
                 Align.scaleToGameW(this.bthome, 0.062);
         
-                this.backl = this.add.sprite(1700,1090,'backl');
-                Align.scaleToGameW(this.backl, 0.062);
-                
+               
                 this.backr = this.add.sprite(1900,1090,'backr');
                 Align.scaleToGameW(this.backr, 0.062); 
             }
@@ -345,14 +340,14 @@ class UnderstandScene extends Phaser.Scene{
                 this.comp9.setScale(1.92);
                 this.comp9.setOrigin(0.5, 0.544);
 
-                this.bthome = this.add.sprite(150,1090,'bthome');
+                this.bthome = this.add.sprite(120,1080,'bthome');
                 Align.scaleToGameW(this.bthome, 0.062);
         
-                this.backl = this.add.sprite(1700,1090,'backl');
+                this.backl = this.add.sprite(1939,1090,'backl');
                 Align.scaleToGameW(this.backl, 0.062);
                 
-                this.backr = this.add.sprite(1900,1090,'backr');
-                Align.scaleToGameW(this.backr, 0.062); 
+                
+              
             }
 
 
