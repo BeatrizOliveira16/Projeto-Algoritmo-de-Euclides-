@@ -43,7 +43,6 @@ class PracticeScene extends Phaser.Scene{
         segundoNumero = Phaser.Math.Between(1,1000);
      
     
-         
         var grelhaConfig = {scene:this, rows:12,cols:12};
         this.aGrid = new AlignGrid(grelhaConfig);
         //this.aGrid.showNumbers();
@@ -95,6 +94,7 @@ class PracticeScene extends Phaser.Scene{
         Align.scaleToGameW(this.verificar, 0.1);
 
         this.corrigir = this.add.sprite(0,0,'corrigir');
+        this.corrigir.setActive('false').setVisible('false');
         this.aGrid.placeAtIndex(140.5,this.corrigir);
         Align.scaleToGameW(this.corrigir, 0.1);
 
@@ -563,8 +563,6 @@ class PracticeScene extends Phaser.Scene{
            
         }, this);
 
-       
-        
 
         this.mais.on('pointerover', function(){
             this.mais.displayHeight += 5;
@@ -794,10 +792,6 @@ class PracticeScene extends Phaser.Scene{
                 document.getElementById('row-principal').lastElementChild.querySelector('input[name="resto"]').disabled = false ;
                 document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').disabled = false;
                 document.getElementById("rf-input").disabled = false;
-
-
-
-
               
             }
             this.corrigir.setVisible(true);
