@@ -207,6 +207,7 @@ class PracticeScene extends Phaser.Scene{
                         _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#99CC13'};">`;
                         _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
+
                         var nRowC = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
                                 ${_dividendo}    
@@ -215,6 +216,7 @@ class PracticeScene extends Phaser.Scene{
                                 ${_quociente}
                             </div>
                         `; 
+                        savedColors.push(['#FE2E2E', '#80FF00','#99CC13', '#DCDCDC'])
 
 
                         //add a 3 coluna
@@ -264,6 +266,8 @@ class PracticeScene extends Phaser.Scene{
                         _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':colors[index]};">`;
                         _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
+                        
+
                         var nRowCcol = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
                                 ${_dividendo}    
@@ -272,7 +276,10 @@ class PracticeScene extends Phaser.Scene{
                                 ${_quociente}
                             </div>
                         `; 
+
+
                         index++;
+                        savedColors.push([c1, c2,colors[index], '#DCDCDC'])
 
                         if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRowCcol); 
 
@@ -430,6 +437,7 @@ class PracticeScene extends Phaser.Scene{
                             </div>
                         `; 
                             
+                            savedColors.push(['#FE2E2E', '#80FF00','#99CC13', '#DCDCDC'])
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendo"]').disabled = true ;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisor"]').disabled = true ;
                             document.getElementById('row-principal').lastElementChild.querySelector('input[name="resto"]').disabled = true ;
@@ -458,6 +466,8 @@ class PracticeScene extends Phaser.Scene{
                             this.tweens.add({targets: this.menos,x: '+=75',duration: 0.01 ,ease: 'Power3'});
 
                             document.getElementById('row-principal').insertAdjacentHTML('beforeend', nRow);
+                            
+
                             var elements = document.getElementById('row-principal');
                             var  marginLeft = 0;
 
@@ -510,7 +520,11 @@ class PracticeScene extends Phaser.Scene{
                             _divisor = `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c2};">`;
                             _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':colors[index]};">`;
                             _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
-                                  
+                            
+                         
+                            savedColors.push([c1, c2,colors[index], '#DCDCDC'])
+                            
+                            
                             nRow1 = `
                                 <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
                                     ${_dividendo}    
@@ -715,6 +729,7 @@ class PracticeScene extends Phaser.Scene{
 
             if(whitecolor==false){
                 if (rpNumberOfChildren > 1) {
+                    savedColors = [];
                     for (let i = 1; i < rpNumberOfChildren; i++) {  // nr de colunas
                         var columnNumberOfChildren = rp.children[i].children.length;
 
@@ -735,7 +750,11 @@ class PracticeScene extends Phaser.Scene{
                 }
 
                 whitecolor = true;
+                console.log( "whitecolor = true")
+                console.log(savedColors)
             }else{
+                console.log( "whitecolor = false")
+                console.log(savedColors)
                 if (rpNumberOfChildren > 1) {
                     for (let i = 1; i < rpNumberOfChildren; i++) {
 
