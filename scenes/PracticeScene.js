@@ -2,7 +2,7 @@
 let primeiroNumero, segundoNumero; // valores aleatorios
 let rf; // valor colocado pela pessoa 
 let dividendoC, divisorC, restoC, quocienteC, resultado; // valores corretos de cada coluna
-let tcolv, trfc, trfe, tlimpar;// texto caso os valores estejam corretos ou errados
+let tcolv, trfc, trfe, tlimpar,ttabelavazia, tcorrigir;// texto caso os valores estejam corretos ou errados
 let mdc, r;  // texto da barra 1 e 2 
 let resultadofinal, element; // assets
 let dividendoUti, divisorUti, restoUti, quocienteUti; // valores inseridos pelo utilizador 1 coluna 
@@ -35,12 +35,13 @@ class PracticeScene extends Phaser.Scene{
     }
      
     create() {   
-        let  index=0,cont =0;  // ncliks no mais
+        let index=0, cont=0;  // index -> posiçao do array das cores,  cont -> ncliks no mais
         let whitecolor = false;
         let nverificar = 0; 
-        
-        primeiroNumero = Phaser.Math.Between(1,1000);
-        segundoNumero = Phaser.Math.Between(1,1000);
+        let savedColors = [];  // array q guarda as cores ja colocadas
+
+        primeiroNumero = Phaser.Math.Between(1,9999);
+        segundoNumero = Phaser.Math.Between(1,9999);
      
     
         var grelhaConfig = {scene:this, rows:12,cols:12};
@@ -122,10 +123,15 @@ class PracticeScene extends Phaser.Scene{
 
         this.corrigir.setInteractive({useHandCursor: true});
         this.corrigir.on('pointerdown', function () {
+
             if ( nverificar > 3){
                 index=0;
                 tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                 tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                trfe.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                ttabelavazia.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+
+
 
                 this.calculaMDC();
                 //console.log(nlinhas);
@@ -140,7 +146,7 @@ class PracticeScene extends Phaser.Scene{
 
 
 
-                trfe.setText( 'Devias ter tentado resolver por ti próprio!', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+                tcorrigir.setText( 'Devias ter tentado resolver por ti próprio!', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
 
                 this.calculaMDC1coluna();
                 //console.log(restoC);
@@ -151,7 +157,7 @@ class PracticeScene extends Phaser.Scene{
 
                     var elements = document.getElementById('row-principal');
                     var  marginLeft = 0;
-                    marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 80;
+                    marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 57;
                     elements.style.marginLeft = marginLeft + 'px';
 
                 }
@@ -200,10 +206,10 @@ class PracticeScene extends Phaser.Scene{
                         document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').style.color= 'black';
                         document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').style.border= '1.5px solid black'
 
-                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendoc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-                        _divisor = `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                        _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#99CC13'};">`;
-                        _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+                        _divisor = `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+                        _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#99CC13'};">`;
+                        _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
                         var nRowC = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -221,7 +227,7 @@ class PracticeScene extends Phaser.Scene{
                     } else if (tableCorrigida.children.length >2 ){
                         var elements = document.getElementById('row-principal');
                         var  marginLeft = 0;
-                        marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 80;
+                        marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 57;
                         elements.style.marginLeft = marginLeft + 'px';
 
 
@@ -233,6 +239,21 @@ class PracticeScene extends Phaser.Scene{
                         tableCorrigida.lastElementChild.querySelector('input[name="divisorc"]').value = divisorC;
                         tableCorrigida.lastElementChild.querySelector('input[name="restoc"]').value = restoC;
                         tableCorrigida.lastElementChild.querySelector('input[name="quocientec"]').value = quocienteC;
+                        tableCorrigida.lastElementChild.querySelector('input[name="dividendoc"]').disabled = true;
+                        tableCorrigida.lastElementChild.querySelector('input[name="divisorc"]').disabled = true;
+                        tableCorrigida.lastElementChild.querySelector('input[name="restoc"]').disabled = true;
+                        tableCorrigida.lastElementChild.querySelector('input[name="quocientec"]').disabled = true;
+
+                        
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendoc"]').style.color= 'black';
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendoc"]').style.border = '1.5px solid black'
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisorc"]').style.color= 'black';
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisorc"]').style.border= '1.5px solid black'
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="restoc"]').style.color= 'black';
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="restoc"]').style.border= '1.5px solid black'
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="quocientec"]').style.color= 'black';
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="quocientec"]').style.border= '1.5px solid black'
+
 
 
                         c1= document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisorc"]').style.backgroundColor;
@@ -242,10 +263,10 @@ class PracticeScene extends Phaser.Scene{
 
                         const colors = ['#6666CC', '#CE68F9', '#D1672C', '#7FF23A', '#DE4066', '#479A9A', '#7FF217', '#EA6297', '#999919', '#FDF731'];
 
-                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendoc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c1};">`;
-                        _divisor = `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c2};">`;
-                        _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':colors[index]};">`;
-                        _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c1};">`;
+                        _divisor = `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c2};">`;
+                        _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':colors[index]};">`;
+                        _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
                         var nRowCcol = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -317,7 +338,11 @@ class PracticeScene extends Phaser.Scene{
 
         this.limpar.setInteractive({useHandCursor: true});
         this.limpar.on('pointerdown', function () {
+            trfe.setText( '', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
             tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            ttabelavazia.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+
 
             table = document.getElementById('row-principal')
             if (table.lastElementChild.querySelector('input[name="dividendo"]').value !='' ||
@@ -331,7 +356,7 @@ class PracticeScene extends Phaser.Scene{
                 table.lastElementChild.querySelector('input[name="resto"]').value = '';
                 table.lastElementChild.querySelector('input[name="quociente"]').value = '';
             } else{
-                tlimpar.setText(' A coluna já se encontra vazia ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                tlimpar.setText(' A coluna já se encontra vazia. ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
 
             } 
         }, this);
@@ -363,6 +388,8 @@ class PracticeScene extends Phaser.Scene{
         this.mais.setInteractive({useHandCursor: true});
         this.mais.on('pointerdown', function () {        
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            ttabelavazia.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+
 
             // valores inseridos pelo utilizador da 2º coluna pra a frente 
             dividendoUti1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendo"]').value;
@@ -393,10 +420,10 @@ class PracticeScene extends Phaser.Scene{
                       
                     
                         //console.log(colorwhite);
-                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendo" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-                        _divisor = `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                        _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#99CC13'};">`;
-                        _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendo" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+                        _divisor = `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+                        _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#99CC13'};">`;
+                        _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
                               
                         nRow = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -438,12 +465,12 @@ class PracticeScene extends Phaser.Scene{
                             var elements = document.getElementById('row-principal');
                             var  marginLeft = 0;
 
-                            marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 80;
+                            marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 57;
                             elements.style.marginLeft = marginLeft + 'px';
 
                             this.calculaMDCcol();
                     } else {
-                        tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                        tcolv.setText('Os valores inseridos estão incorretos.', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                         console.log("errado");
                         console.log(dividendoC);
                         console.log(divisorC);
@@ -451,7 +478,7 @@ class PracticeScene extends Phaser.Scene{
                         console.log(quocienteC); 
                     }   
                 } else if(restoUti == ""){
-                    tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                    tcolv.setText('Os valores inseridos estão incorretos.', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                     console.log("errado");
                     console.log(dividendoC);
                     console.log(divisorC);
@@ -483,10 +510,10 @@ class PracticeScene extends Phaser.Scene{
                             
                             const colors = ['#6666CC', '#CE68F9', '#D1672C', '#7FF23A', '#DE4066', '#479A9A', '#7FF217', '#EA6297', '#999919', '#FDF731'];
                             
-                            _dividendo =  `<input id="dividendoc" type="number"   name="dividendo" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c1};">`;
-                            _divisor = `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c2};">`;
-                            _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':colors[index]};">`;
-                            _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+                            _dividendo =  `<input id="dividendoc" type="number"   name="dividendo" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c1};">`;
+                            _divisor = `<input id="divisorc" type="number"  name="divisor" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c2};">`;
+                            _resto = `<input id="restoc" type="number"  name="resto" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':colors[index]};">`;
+                            _quociente = `<input id="quocientec" type="number"  name="quociente" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
                                   
                             nRow1 = `
                                 <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -532,13 +559,13 @@ class PracticeScene extends Phaser.Scene{
                             var elements = document.getElementById('row-principal');
                             var marginLeft = 0; 
                                 
-                            marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) -80;
+                            marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 57;
                             elements.style.marginLeft = marginLeft + 'px';
 
 
                             this.calculaMDCcol();
                         } else {
-                            tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                            tcolv.setText('Os valores inseridos estão incorretos.', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                             console.log("errado");
                             console.log(dividendoC);
                             console.log(divisorC);
@@ -552,7 +579,7 @@ class PracticeScene extends Phaser.Scene{
             
                     } 
                     else if(restoUti1 == ""){
-                        tcolv.setText('Valores inseridos estão incorretos', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                        tcolv.setText('Os valores inseridos estão incorretos.', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                         console.log("errado");
                         console.log(dividendoC);
                         console.log(divisorC);
@@ -580,8 +607,12 @@ class PracticeScene extends Phaser.Scene{
 
         this.menos.setInteractive({useHandCursor: true});
         this.menos.on('pointerdown', function () {
+            trfe.setText( '', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
             tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            ttabelavazia.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+
            
             table = document.getElementById('row-principal');
             if (table.children.length > 2){  
@@ -601,7 +632,7 @@ class PracticeScene extends Phaser.Scene{
                 var elements = document.getElementById('row-principal');
                 var  marginLeft = 0;
 
-                marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 80;
+                marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 57;
                 elements.style.marginLeft = marginLeft + 'px';
                 c1 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisor"]').style.backgroundColor;
                 c2 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="resto"]').style.backgroundColor;
@@ -615,9 +646,10 @@ class PracticeScene extends Phaser.Scene{
                
                 
             }else if (table.children.length == 2){
-                
-                tlimpar.setText('A tabela já se encontra no seu estado inicial', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-                
+
+                tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+                ttabelavazia.setText('A tabela já se encontra no seu estado inicial.', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
                 
                 if (table.lastElementChild.querySelector('input[name="dividendo"]').value !='' ||
                 table.lastElementChild.querySelector('input[name="divisor"]').value != '' ||
@@ -678,44 +710,52 @@ class PracticeScene extends Phaser.Scene{
         this.paint.setInteractive({useHandCursor: true});
         this.paint.on('pointerdown', function () {
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            ttabelavazia.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+
 
             var rp = document.getElementById('row-principal')
             var rpNumberOfChildren = rp.children.length;
+
+
             if(whitecolor==false){
                 if (rpNumberOfChildren > 1) {
-                    for (let i = 1; i < rpNumberOfChildren; i++) {
+                    for (let i = 1; i < rpNumberOfChildren; i++) {  // nr de colunas
                         var columnNumberOfChildren = rp.children[i].children.length;
 
-                        for (let z = 0; z < columnNumberOfChildren; z++) {
-                            rp.children[i].children[0].style.backgroundColor = 'white'
-                            rp.children[i].children[1].style.backgroundColor = 'white'
-                            rp.children[i].children[2].style.backgroundColor = 'white'
-                            
+                        // guardar as cores
+                        let columnColors = [];
+
+                        for (let z = 0; z < (columnNumberOfChildren - 1); z++) { // nr de linhas
+                            columnColors.push(rp.children[i].children[z].style.backgroundColor)
+                        }
+
+                        savedColors.push(columnColors)
+
+                        // colocar a branco
+                        for (let z = 0; z < (columnNumberOfChildren - 1); z++) { // nr de linhas
+                            rp.children[i].children[z].style.backgroundColor = 'white'
                         }
                     }
                 }
+
                 whitecolor = true;
             }else{
                 if (rpNumberOfChildren > 1) {
                     for (let i = 1; i < rpNumberOfChildren; i++) {
+
                         var columnNumberOfChildren = rp.children[i].children.length;
+                        
                         for (let z = 0; z < columnNumberOfChildren; z++) {
-                          /*
-                            console.log(rpNumberOfChildren)
-                            console.log(i)
-                            if (rpNumberOfChildren>=3){
-                                if (z==0) rp.children[i].children[z].style.backgroundColor = rp.children[i-1].children[z+1].style.backgroundColor
-                                if (z==1) rp.children[i].children[z].style.backgroundColor = rp.children[i-1].children[z+2].style.backgroundColor
-                                if (z==2) rp.children[i].children[z].style.backgroundColor = '#80FF00';
-                                if (z==3) rp.children[i].children[z].style.backgroundColor = '#DCDCDC';
-                            }
-                           */ 
+                            rp.children[i].children[z].style.backgroundColor = savedColors[i - 1][z];
                         }
                     }
                 }
+
+                savedColors = [];
+
                 whitecolor = false;
             }
-            //this.openExternalLink();
+        
         }, this);
 
         this.paint.on('pointerover', function(){
@@ -736,7 +776,7 @@ class PracticeScene extends Phaser.Scene{
         this.refresh.setInteractive({useHandCursor: true});
         this.refresh.on('pointerdown', function(){
             nverificar=0;
-            
+            ttabelavazia.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
             index =0;
             cont= 0;  // colocar o nº de cliques do mais = 0 para recomeçar a fazer o mdc
@@ -754,6 +794,8 @@ class PracticeScene extends Phaser.Scene{
             trfc.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
             trfe.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
             tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+            tcorrigir.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
 
             
        
@@ -767,7 +809,7 @@ class PracticeScene extends Phaser.Scene{
                 var elements = document.getElementById('row-principal');
                 var  marginLeft = 0;
 
-                marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 80;
+                marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 57;
                 elements.style.marginLeft = marginLeft + 'px';
 
             }
@@ -827,7 +869,8 @@ class PracticeScene extends Phaser.Scene{
             nverificar++;
             console.log(nverificar)
             tlimpar.setText( ' ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
-            
+            ttabelavazia.setText( ' ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
+
 
             trfc.setVisible(true);
             trfe.setText( 'Deves ter cometido algum erro! Tenta outra vez!', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
@@ -869,8 +912,8 @@ class PracticeScene extends Phaser.Scene{
                 document.getElementById("rf-input").value = resultado;
                 document.getElementById('rf-input').style.color= 'black';
 
-                trfe.setText( 'Parabéns! Com trabalho os bons resultados aparecerão. ', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
-                //'Parabéns. Com trabalho e dedicação os bons resultados  aparecerão. '
+                trfc.setText( 'Parabéns! Com trabalho os bons resultados aparecerão. ', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
+                trfe.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
 
                 this.calculaMDC1coluna();
                 table = document.getElementById('row-principal')
@@ -881,7 +924,7 @@ class PracticeScene extends Phaser.Scene{
                     var elements = document.getElementById('row-principal');
                     var  marginLeft = 0;
 
-                    marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 80;
+                    marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 57;
                     elements.style.marginLeft = marginLeft + 'px';
 
                     
@@ -932,10 +975,10 @@ class PracticeScene extends Phaser.Scene{
                         document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').style.color= 'black';
                         document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').style.border= '1.5px solid black'
 
-                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendoc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
-                        _divisor = `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
-                        _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#99CC13'};">`;
-                        _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#FE2E2E'};">`;
+                        _divisor = `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#80FF00'};">`;
+                        _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':'#99CC13'};">`;
+                        _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
                               
                         var nRowC = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -952,7 +995,7 @@ class PracticeScene extends Phaser.Scene{
                         var elements = document.getElementById('row-principal');
                         var  marginLeft = 0;
 
-                        marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 80;
+                        marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 57;
                         elements.style.marginLeft = marginLeft + 'px';
 
 
@@ -962,6 +1005,22 @@ class PracticeScene extends Phaser.Scene{
                         tableCorrigida.lastElementChild.querySelector('input[name="divisorc"]').value = divisorC;
                         tableCorrigida.lastElementChild.querySelector('input[name="restoc"]').value = restoC;
                         tableCorrigida.lastElementChild.querySelector('input[name="quocientec"]').value = quocienteC;
+
+                        tableCorrigida.lastElementChild.querySelector('input[name="dividendoc"]').disabled = true;
+                        tableCorrigida.lastElementChild.querySelector('input[name="divisorc"]').disabled = true;
+                        tableCorrigida.lastElementChild.querySelector('input[name="restoc"]').disabled = true;
+                        tableCorrigida.lastElementChild.querySelector('input[name="quocientec"]').disabled = true;
+
+                        
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendoc"]').style.color= 'black';
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="dividendoc"]').style.border = '1.5px solid black'
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisorc"]').style.color= 'black';
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisorc"]').style.border= '1.5px solid black'
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="restoc"]').style.color= 'black';
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="restoc"]').style.border= '1.5px solid black'
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="quocientec"]').style.color= 'black';
+                        document.getElementById('row-principal').lastElementChild.querySelector('input[name="quocientec"]').style.border= '1.5px solid black'
+
                          
                         c1= document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisorc"]').style.backgroundColor;
                         c2 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="restoc"]').style.backgroundColor;
@@ -970,10 +1029,10 @@ class PracticeScene extends Phaser.Scene{
                         
                         const colors = ['#6666CC', '#CE68F9', '#D1672C', '#7FF23A', '#DE4066', '#479A9A', '#7FF217', '#EA6297', '#999919', '#FDF731'];
                         
-                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendoc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c1};">`;
-                        _divisor = `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c2};">`;
-                        _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':colors[index]};">`;
-                        _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 151.18px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
+                        _dividendo =  `<input id="dividendoc" type="number"   name="dividendoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c1};">`;
+                        _divisor = `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c2};">`;
+                        _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':colors[index]};">`;
+                        _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
 
                         var nRowCcol = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -1012,10 +1071,12 @@ class PracticeScene extends Phaser.Scene{
         this.barrainf1();
         this.barrainf2();
         this.tableinput();
-        trfc = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-        trfe = this.add.text(400, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-        tlimpar = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
-        tcolv = this.add.text(550, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        trfc = this.add.text(275, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        trfe = this.add.text(353, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        tlimpar = this.add.text(583, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        tcolv = this.add.text(500, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        tcorrigir = this.add.text(460, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
+        ttabelavazia = this.add.text(410, 820, ' ', { fontFamily: 'myfont4', fontSize: 70, color: '#403217' }).setVisible(true);
 
         //input resultado final
         resultadofinal = this.add.dom(1250,1050).createFromCache('resultadofinal');
