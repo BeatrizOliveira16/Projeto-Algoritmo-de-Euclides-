@@ -65,26 +65,23 @@ class PracticeScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(45.7,this.refresh);
         Align.scaleToGameW(this.refresh, 0.07);
 
-        this.infog2 = this.add.sprite(0,0,'infog2');
-        this.aGrid.placeAtIndex(64,this.infog2);
+        this.infog2 = this.add.sprite(800,560,'infog2');
         Align.scaleToGameW(this.infog2, 0.04);
 
         this.linkd = this.add.sprite(1900,345,'linkd');
         Align.scaleToGameW(this.linkd, 0.07);
 
-        this.paint = this.add.sprite(0,0,'paint');
-        this.aGrid.placeAtIndex(76,this.paint);
+        this.paint = this.add.sprite(800,660,'paint');
         Align.scaleToGameW(this.paint, 0.04);
 
-        this.limpar = this.add.sprite(0,0,'limpar');
-        this.aGrid.placeAtIndex(88,this.limpar);
+        this.limpar = this.add.sprite(800,740,'limpar');
         Align.scaleToGameW(this.limpar, 0.05);
 
-        this.mais = this.add.sprite(1280,590,'mais');
-        Align.scaleToGameW(this.mais, 0.037);
+        this.mais = this.add.sprite(1240,580,'mais');
+        Align.scaleToGameW(this.mais, 0.04);
     
-        this.menos = this.add.sprite(1280,700,'menos');
-        Align.scaleToGameW(this.menos, 0.037);
+        this.menos = this.add.sprite(1240,700,'menos');
+        Align.scaleToGameW(this.menos, 0.04);
 
         this.barrainfo2 = this.add.sprite(0,0,'barrainfo2');
         this.aGrid.placeAtIndex(125.5,this.barrainfo2);
@@ -100,7 +97,6 @@ class PracticeScene extends Phaser.Scene{
         Align.scaleToGameW(this.corrigir, 0.1);
 
         this.home = this.add.sprite(200,1043,'home');
-        //this.aGrid.placeAtIndex(12.5,this.backl);
         Align.scaleToGameW(this.home, 0.07);
         
         //this.calculaMDC();
@@ -289,7 +285,7 @@ class PracticeScene extends Phaser.Scene{
 
                 this.aGrid.placeAtIndex(76,this.paint);
                 console.log(tableCorrigida.children.length)
-                this.tweens.add({targets: this.paint,x: '-=80px', loop: n, duration: 0.000001 ,ease: 'Power3'});
+                this.tweens.add({targets: this.paint,x: '-=55px', loop: n, duration: 0.000001 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tpaint,x: '-=88px', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
                 
 
@@ -782,6 +778,7 @@ class PracticeScene extends Phaser.Scene{
             cont= 0;  // colocar o nº de cliques do mais = 0 para recomeçar a fazer o mdc
             primeiroNumero = Phaser.Math.Between(1,9999);
             segundoNumero = Phaser.Math.Between(1,9999) ;
+
             //atualizar inf da barra info1
             this.barrainfo1 = this.add.sprite(0,0,'barrainfo1');
             this.aGrid.placeAtIndex(41.5,this.barrainfo1);
@@ -797,31 +794,25 @@ class PracticeScene extends Phaser.Scene{
             tcorrigir.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
 
 
-            
-       
             resultadofinal.getChildByName("rf").value = '';
             table = document.getElementById('row-principal');
             
             
             while (table.children.length > 2) {
                 table.removeChild(table.lastElementChild);
-
                 var elements = document.getElementById('row-principal');
                 var  marginLeft = 0;
-
                 marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 57;
                 elements.style.marginLeft = marginLeft + 'px';
 
             }
 
-
-            this.aGrid.placeAtIndex(64,this.infog2);
-            this.aGrid.placeAtIndex(76,this.paint);
-            this.aGrid.placeAtIndex(88,this.limpar);
-            
-            this.mais.setPosition(1280,590);
-            this.menos.setPosition(1280,700);
-            
+            this.infog2.setPosition(800,560);
+            this.paint.setPosition(800,660);
+            this.limpar.setPosition(800,740);
+            this.mais.setPosition(1240,580);
+            this.menos.setPosition(1240,700);
+       
             if(table.children.length ==2){
 
                 //table = table.replace('#FFF','#2ECCFA')
@@ -1056,7 +1047,7 @@ class PracticeScene extends Phaser.Scene{
                 
                 this.aGrid.placeAtIndex(76,this.paint);
                 console.log(tableCorrigida.children.length)
-                this.tweens.add({targets: this.paint,x: '-=80px', loop: n, duration: 0.000001 ,ease: 'Power3'});
+                this.tweens.add({targets: this.paint,x: '-=55px', loop: n, duration: 0.000001 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tpaint,x: '-=88px', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
                 
             }else {
