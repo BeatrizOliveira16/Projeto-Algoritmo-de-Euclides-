@@ -12,5 +12,4 @@ Caso queiras vê-lo a funcionar, basta ires a:
 
  -> *PraticeScene*:
    * atualizar as cores no paint
-   * centrar os textos
 
