@@ -40,8 +40,8 @@ class PracticeScene extends Phaser.Scene{
         let nverificar = 0; 
         let savedColors = [];  // array q guarda as cores ja colocadas
 
-        primeiroNumero = Phaser.Math.Between(1,9999);
-        segundoNumero = Phaser.Math.Between(1,9999);
+        primeiroNumero = 81 //Phaser.Math.Between(1,9999);
+        segundoNumero = 997 //Phaser.Math.Between(1,9999);
      
     
         var grelhaConfig = {scene:this, rows:12,cols:12};
@@ -295,7 +295,10 @@ class PracticeScene extends Phaser.Scene{
                 this.tweens.add({targets: this.paint,x: '-=61.5px', loop: n, duration: 0.000001 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tpaint,x: '-=88px', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
                 
-
+                if (tableCorrigida.children.length ==2){
+                    this.paint.setPosition(853,660);
+                }
+               
                 console.log(restoC) 
                 this.corrigir.setActive(false).setVisible(false);
                 this.verificar.setActive(false).setVisible(false);
