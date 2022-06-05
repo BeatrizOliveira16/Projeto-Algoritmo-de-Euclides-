@@ -7,9 +7,6 @@ O propósito era criar uma aplicação, funcional para dispostivos móveis, que 
 Caso queiras vê-lo a funcionar, basta ires a: 
 
 
-->*FALTA*:
-   * Escolher uma fonte de jeito (bia) 
-
  -> *PraticeScene*:
    * atualizar as cores no paint
 
