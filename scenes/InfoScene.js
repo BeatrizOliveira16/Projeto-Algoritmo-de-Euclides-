@@ -17,11 +17,13 @@ class InfoScene extends Phaser.Scene{
 
     create() 
     {   
+        let n= 0;
         this.aGrid = new AlignGrid({scene:this, rows:12,cols:12});
 
-        this.quadroInfo = this.add.image(game.config.width / 2, game.config.height / 2, 'quadroInfo');
-        this.quadroInfo.setScale(1.4);
-        this.aGrid.placeAtIndex(77.5, this.quadroInfo);
+        let quadroInfo;
+        quadroInfo = this.add.image(game.config.width / 2, game.config.height / 2, 'quadroInfo');
+        quadroInfo.setScale(1.4);
+        this.aGrid.placeAtIndex(77.5, quadroInfo);
 
         this.trevo = this.add.image(0,0,'trevo');
         Align.scaleToGameW(this.trevo, 0.085);
@@ -52,6 +54,8 @@ class InfoScene extends Phaser.Scene{
         this.aGrid.placeAtIndex(55,this.plusinfo);
         this.plusinfo.setOrigin(1.55, 1.25);
 
+    
+
         this.plusinfo.setInteractive({ useHandCursor: true });
         this.plusinfo.on('pointerdown', function () {
             this.quadroInfo2 = this.add.image(game.config.width / 2, game.config.height / 2, 'quadroInfo2');
@@ -59,6 +63,10 @@ class InfoScene extends Phaser.Scene{
             this.aGrid.placeAtIndex(77.5, this.quadroInfo2);
             this.quadroInfo2.setOrigin(0.5, 0.3);
             
+            if( n>1){
+                this.quadroInfo3.setVisible(false)
+                this.btfechar2.setVisible(false)
+            }
 
             this.trevo1 = this.add.image(0,0,'trevo');
             Align.scaleToGameW(this.trevo1, 0.085);
@@ -104,11 +112,11 @@ class InfoScene extends Phaser.Scene{
 
         this.plusinfo2.setInteractive({ useHandCursor: true });
         this.plusinfo2.on('pointerdown', function () {
+            n++;
             this.quadroInfo3 = this.add.image(game.config.width / 2, game.config.height / 2, 'quadroInfo3');
             this.quadroInfo3.setScale(1.4);
             this.aGrid.placeAtIndex(77.5, this.quadroInfo3);
             this.quadroInfo3.setOrigin(0.5, 0.3);
-
             this.trevo2 = this.add.image(0,0,'trevo');
             Align.scaleToGameW(this.trevo2, 0.085);
             this.aGrid.placeAtIndex(44,this.trevo2);

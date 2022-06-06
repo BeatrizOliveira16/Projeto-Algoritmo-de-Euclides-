@@ -41,7 +41,7 @@ class PracticeScene extends Phaser.Scene{
         let savedColors = [];  // array q guarda as cores ja colocadas
 
         primeiroNumero = Phaser.Math.Between(1,9999);
-        segundoNumero = Phaser.Math.Between(1,9999);
+        segundoNumero =  Phaser.Math.Between(1,9999);
      
     
         var grelhaConfig = {scene:this, rows:12,cols:12};
@@ -119,9 +119,9 @@ class PracticeScene extends Phaser.Scene{
 
         this.corrigir.setInteractive({useHandCursor: true});
         this.corrigir.on('pointerdown', function () {
-
+           
             if ( nverificar > 3){
-                index=0;
+               
                 tcolv.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                 tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
                 trfe.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
@@ -140,12 +140,10 @@ class PracticeScene extends Phaser.Scene{
                 document.getElementById("rf-input").disabled = true;
                 document.getElementById('rf-input').style.color= 'black';
 
-
-
                 tcorrigir.setText( 'Devias ter tentado resolver por ti próprio!', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
 
                 this.calculaMDC1coluna();
-                //console.log(restoC);
+               
 
                 table = document.getElementById('row-principal')
                 while (table.children.length>2 ){
@@ -155,10 +153,10 @@ class PracticeScene extends Phaser.Scene{
                     var  marginLeft = 0;
                     marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) + 57;
                     elements.style.marginLeft = marginLeft + 'px';
-
+                    //savedColors = [];
                 }
                 document.getElementById("row-principal").disabled = true;
-
+               
                 var tableCorrigida = document.getElementById('row-principal');
                 if(restoC ==0 ){
                     if (tableCorrigida.children.length ==2){
@@ -181,7 +179,7 @@ class PracticeScene extends Phaser.Scene{
                         document.getElementById('row-principal').lastElementChild.querySelector('input[name="quociente"]').style.border= '1.5px solid black'
                     }
                 }
-        
+                index = 0;
                 while(restoC > 0){
                     if (tableCorrigida.children.length ==2){
                         document.getElementById("dividendo").value = dividendoC;
@@ -216,20 +214,17 @@ class PracticeScene extends Phaser.Scene{
                                 ${_quociente}
                             </div>
                         `; 
-                        savedColors.push(['#FE2E2E', '#80FF00','#99CC13', '#DCDCDC'])
+                        //savedColors.push(['#FE2E2E', '#80FF00','#99CC13', '#DCDCDC'])
 
 
                         //add a 3 coluna
                         document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRowC); 
 
-                    } else if (tableCorrigida.children.length >2 ){
+                    } else if (tableCorrigida.children.length > 2){
                         var elements = document.getElementById('row-principal');
                         var  marginLeft = 0;
                         marginLeft += parseInt(window.getComputedStyle(elements).marginLeft, 10) - 57;
                         elements.style.marginLeft = marginLeft + 'px';
-
-
-
 
                         this.calculaMDCcol()
                     
@@ -252,11 +247,9 @@ class PracticeScene extends Phaser.Scene{
                         document.getElementById('row-principal').lastElementChild.querySelector('input[name="quocientec"]').style.color= 'black';
                         document.getElementById('row-principal').lastElementChild.querySelector('input[name="quocientec"]').style.border= '1.5px solid black'
 
-
-
-                        c1= document.getElementById('row-principal').lastElementChild.querySelector('input[name="divisorc"]').style.backgroundColor;
-                        c2 = document.getElementById('row-principal').lastElementChild.querySelector('input[name="restoc"]').style.backgroundColor;
-
+                        c1= tableCorrigida.lastElementChild.querySelector('input[name="divisorc"]').style.backgroundColor;
+                        c2 = tableCorrigida.lastElementChild.querySelector('input[name="restoc"]').style.backgroundColor;
+                        console.log(c1) 
                         console.log(index)
 
                         const colors = ['#6666CC', '#CE68F9', '#D1672C', '#7FF23A', '#DE4066', '#479A9A', '#7FF217', '#EA6297', '#999919', '#FDF731'];
@@ -265,8 +258,6 @@ class PracticeScene extends Phaser.Scene{
                         _divisor = `<input id="divisorc" type="number"  name="divisorc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':c2};">`;
                         _resto = `<input id="restoc" type="number"  name="restoc" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#FFF':colors[index]};">`;
                         _quociente = `<input id="quocientec" type="number"  name="quocientec" style="font-size: 40px;border: 1.5px solid black;width: 108px;height: 63.496px; text-align:center;background-color:${whitecolor?'#DCDCDC':'#DCDCDC'};">`;
-
-                        
 
                         var nRowCcol = `
                             <div style="display: flex; flex-direction: column; border-width:1mm; border-color:#000000"">
@@ -278,24 +269,33 @@ class PracticeScene extends Phaser.Scene{
                         `; 
 
 
+                        //savedColors.push([c1, c2,colors[index], '#DCDCDC'])
                         index++;
-                        savedColors.push([c1, c2,colors[index], '#DCDCDC'])
-
                         if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRowCcol); 
 
+                        
                         var n = tableCorrigida.children.length
                         n -=4;
+                       
+                        console.log(n)
 
                     }  
                 }
-        
+                if (tableCorrigida.children.length ==3){
+                    n = 0;
+                }
 
                 this.aGrid.placeAtIndex(76,this.paint);
-                console.log(tableCorrigida.children.length)
                 this.tweens.add({targets: this.paint,x: '-=61.5px', loop: n, duration: 0.000001 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tpaint,x: '-=88px', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
                 
-
+                if (tableCorrigida.children.length ==2){
+                    this.paint.setPosition(853,660);
+                }
+                if (tableCorrigida.children.length ==3){
+                    this.paint.setPosition(803,660);
+                }
+               
                 console.log(restoC) 
                 this.corrigir.setActive(false).setVisible(false);
                 this.verificar.setActive(false).setVisible(false);
@@ -719,6 +719,7 @@ class PracticeScene extends Phaser.Scene{
 
         this.paint.setInteractive({useHandCursor: true});
         this.paint.on('pointerdown', function () {
+           
             tlimpar.setText('', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
             ttabelavazia.setText( '', { fontFamily: 'myfont4', fontSize: 50, color: '#0000000' });
 
@@ -893,8 +894,8 @@ class PracticeScene extends Phaser.Scene{
             }
 
             rf = resultadofinal.getChildByName("rf").value;
-            console.log(resultado);                             // valor calculado plea funçao calculamdc
-            console.log(rf);                                    //valor colocado pela pessoa
+            console.log(resultado);                             // resultado -> valor calculado plea funçao calculamdc
+            console.log(rf);                                    // rf -> valor colocado pela pessoa
             
             
             table = document.getElementById('row-principal')
@@ -1063,11 +1064,20 @@ class PracticeScene extends Phaser.Scene{
                     }
                     
                 }
-                
+                if (tableCorrigida.children.length ==3){
+                    n = 0;
+                }
+
                 this.aGrid.placeAtIndex(76,this.paint);
-                console.log(tableCorrigida.children.length)
-                this.tweens.add({targets: this.paint,x: '-=61px', loop: n, duration: 0.000001 ,ease: 'Power3'});
+                this.tweens.add({targets: this.paint,x: '-=61.5px', loop: n, duration: 0.000001 ,ease: 'Power3'});
                 this.tweens.add({targets: this.tpaint,x: '-=88px', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
+                
+                if (tableCorrigida.children.length ==2){
+                    this.paint.setPosition(853,660);
+                }
+                if (tableCorrigida.children.length ==3){
+                    this.paint.setPosition(803,660);
+                }
                 
             }else {
                 trfc.setText( ' ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
