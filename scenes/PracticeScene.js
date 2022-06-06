@@ -273,28 +273,12 @@ class PracticeScene extends Phaser.Scene{
                         index++;
                         if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRowCcol); 
 
-                        
-                        var n = tableCorrigida.children.length
-                        n -=4;
+                        this.paint.x -= 57
                        
-                        console.log(n)
 
                     }  
                 }
-                if (tableCorrigida.children.length ==3){
-                    n = 0;
-                }
-
-                this.aGrid.placeAtIndex(76,this.paint);
-                this.tweens.add({targets: this.paint,x: '-=61.5px', loop: n, duration: 0.000001 ,ease: 'Power3'});
-                this.tweens.add({targets: this.tpaint,x: '-=88px', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
                 
-                if (tableCorrigida.children.length ==2){
-                    this.paint.setPosition(853,660);
-                }
-                if (tableCorrigida.children.length ==3){
-                    this.paint.setPosition(803,660);
-                }
                
                 console.log(restoC) 
                 this.corrigir.setActive(false).setVisible(false);
@@ -1057,27 +1041,13 @@ class PracticeScene extends Phaser.Scene{
 
                         if (restoC>0) document.getElementById("row-principal").insertAdjacentHTML('beforeend', nRowCcol);
                        
-                        var n = tableCorrigida.children.length
-                        n -=4;
-                        console.log(n)
+                        this.paint.x -= 57;
                        
                     }
                     
+                    
                 }
-                if (tableCorrigida.children.length ==3){
-                    n = 0;
-                }
-
-                this.aGrid.placeAtIndex(76,this.paint);
-                this.tweens.add({targets: this.paint,x: '-=61.5px', loop: n, duration: 0.000001 ,ease: 'Power3'});
-                this.tweens.add({targets: this.tpaint,x: '-=88px', repeat: tableCorrigida.children.length + 1, duration: 0.01 ,ease: 'Power3'});
                 
-                if (tableCorrigida.children.length ==2){
-                    this.paint.setPosition(853,660);
-                }
-                if (tableCorrigida.children.length ==3){
-                    this.paint.setPosition(803,660);
-                }
                 
             }else {
                 trfc.setText( ' ', { fontFamily: 'myfont4', fontSize: 100, color: '#0000000' });
