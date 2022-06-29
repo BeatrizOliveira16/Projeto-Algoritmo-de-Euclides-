@@ -17,13 +17,11 @@ class InfoScene extends Phaser.Scene{
 
     create() 
     {   
-      
         this.aGrid = new AlignGrid({scene:this, rows:12,cols:12});
 
-        let quadroInfo;
-        quadroInfo = this.add.image(game.config.width / 2, game.config.height / 2, 'quadroInfo');
-        quadroInfo.setScale(1.4);
-        this.aGrid.placeAtIndex(77.5, quadroInfo);
+        this.quadroInfo = this.add.image(game.config.width / 2, game.config.height / 2, 'quadroInfo');
+        this.quadroInfo.setScale(1.4);
+        this.aGrid.placeAtIndex(77.5, this.quadroInfo);
 
         this.trevo = this.add.image(0,0,'trevo');
         Align.scaleToGameW(this.trevo, 0.085);
@@ -40,21 +38,11 @@ class InfoScene extends Phaser.Scene{
             game.scene.stop('InfoScene');
             game.scene.resume('FirstScene');
         }, this);
-        this.btfechar.on('pointerover', function(){
-            this.btfechar.displayHeight += 5;
-            this.btfechar.displayWidth += 5;
-        },this);
-        this.btfechar.on('pointerout', function(){
-            this.btfechar.displayHeight -= 5;
-            this.btfechar.displayWidth -= 5;
-        },this);
 
         this.plusinfo = this.add.sprite(0,0,'plusinfo');
         Align.scaleToGameW(this.plusinfo, 0.024);
         this.aGrid.placeAtIndex(55,this.plusinfo);
         this.plusinfo.setOrigin(1.55, 1.25);
-
-    
 
         this.plusinfo.setInteractive({ useHandCursor: true });
         this.plusinfo.on('pointerdown', function () {
@@ -62,12 +50,6 @@ class InfoScene extends Phaser.Scene{
             this.quadroInfo2.setScale(1.4);
             this.aGrid.placeAtIndex(77.5, this.quadroInfo2);
             this.quadroInfo2.setOrigin(0.5, 0.3);
-            
-            
-                this.quadroInfo3.setVisible(false)
-                this.btfechar2.setVisible(false)
-                this.trevo2.setVisible(false)
-
             
 
             this.trevo1 = this.add.image(0,0,'trevo');
@@ -88,23 +70,7 @@ class InfoScene extends Phaser.Scene{
                 this.btfechar1.setVisible(false);
                 this.trevo1.setVisible(false);
             }, this);
-            this.btfechar1.on('pointerover', () => {
-                this.btfechar1.displayHeight += 5;
-                this.btfechar1.displayWidth += 5;
-            });
-            this.btfechar1.on('pointerout', () => {
-                this.btfechar1.displayHeight -= 5;
-                this.btfechar1.displayWidth -= 5;
-            });
         }, this);
-        this.plusinfo.on('pointerover', function(){
-            this.plusinfo.displayHeight += 5;
-            this.plusinfo.displayWidth += 5;
-        },this);
-        this.plusinfo.on('pointerout', function(){
-            this.plusinfo.displayHeight -= 5;
-            this.plusinfo.displayWidth -= 5;
-        },this);
 
 
         this.plusinfo2 = this.add.sprite(0,0,'plusinfo');
@@ -114,12 +80,11 @@ class InfoScene extends Phaser.Scene{
 
         this.plusinfo2.setInteractive({ useHandCursor: true });
         this.plusinfo2.on('pointerdown', function () {
-           
-           
             this.quadroInfo3 = this.add.image(game.config.width / 2, game.config.height / 2, 'quadroInfo3');
             this.quadroInfo3.setScale(1.4);
             this.aGrid.placeAtIndex(77.5, this.quadroInfo3);
             this.quadroInfo3.setOrigin(0.5, 0.3);
+
             this.trevo2 = this.add.image(0,0,'trevo');
             Align.scaleToGameW(this.trevo2, 0.085);
             this.aGrid.placeAtIndex(44,this.trevo2);
@@ -136,23 +101,7 @@ class InfoScene extends Phaser.Scene{
                 this.btfechar2.setVisible(false);
                 this.trevo2.setVisible(false);
            }, this);
-           this.btfechar2.on('pointerover', function(){
-            this.btfechar2.displayHeight += 5;
-            this.btfechar2.displayWidth += 5;
-           },this);
-           this.btfechar2.on('pointerout', function(){
-            this.btfechar2.displayHeight -= 5;
-            this.btfechar2.displayWidth -= 5;
-           },this);
-        }, this);  
-        this.plusinfo2.on('pointerover', function(){
-            this.plusinfo2.displayHeight += 5;
-            this.plusinfo2.displayWidth += 5;
-        },this);
-        this.plusinfo2.on('pointerout', function(){
-            this.plusinfo2.displayHeight -= 5;
-            this.plusinfo2.displayWidth -= 5;
-        },this); 
+        }, this);   
     }
 
     update () {}

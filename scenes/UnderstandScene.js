@@ -61,7 +61,6 @@ class UnderstandScene extends Phaser.Scene{
         this.bthome.setInteractive({useHandCursor: true});
         this.bthome.on('pointerdown', function () {
             this.scene.start('FirstScene');
-            //cont=1; 
         }, this);
         this.bthome.on('pointerover', function(){
             this.bthome.displayHeight += 5;
