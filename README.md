@@ -1,11 +1,7 @@
 # Projeto
--> Falta: 
-  
 
+Trabalho realizado, na unidade curricular Projeto do curso de Ciências da Computação, para o Hypatiamat. O projeto foi feito em JavaScript, utilizando o Phaser 3 e foi orientado por José Carlos Leite Ramalho e por Ricardo Neves Pinto.
 
-<<<<<<< HEAD
-=======
- -> *PraticeScene*:
-   * atualizar as cores no paint
+O propósito deste trabalho era criar uma aplicação, funcional para dispostivos móveis, que permita aprender a fazer o Algortimo de Euclides.
 
->>>>>>> 7ee991b692c3a7a55ea5a79a20c4262eb200f504
+Caso queiras ver o nosso projeto a funcionar, basta ires a: 
