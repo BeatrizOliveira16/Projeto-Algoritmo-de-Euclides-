@@ -1,3 +1,4 @@
 # Projeto
 
-Trabalho realizado na unidade curricular Projeto para o Hypatiamat.
+Trabalho realizado como projeto final da licenciatura para o Hypatiamat.
+Nota final: 17
